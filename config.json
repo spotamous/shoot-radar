@@ -114,50 +114,6 @@
     {
       "enabled": true,
       "conditions": {
-        "fog": {
-          "on": true
-        },
-        "sunrise": {
-          "on": true
-        },
-        "sunset": {
-          "on": true
-        },
-        "storm": {
-          "on": true
-        }
-      },
-      "notes": "300 m lookout over the bay. Fog banks below you on still autumn and winter mornings.",
-      "id": "arthurs-seat",
-      "name": "Arthurs Seat summit",
-      "lat": -38.357,
-      "lon": 144.951
-    },
-    {
-      "enabled": true,
-      "conditions": {
-        "sunset": {
-          "on": true
-        },
-        "storm": {
-          "on": true
-        },
-        "rainbow": {
-          "on": true
-        },
-        "moon": {
-          "on": true
-        }
-      },
-      "notes": "Bay pier and boat sheds. Sunset across the bay, storm cells over the water.",
-      "id": "mornington-pier",
-      "name": "Mornington Pier (Schnapper Point)",
-      "lat": -38.2155,
-      "lon": 145.0335
-    },
-    {
-      "enabled": true,
-      "conditions": {
         "sunrise": {
           "on": true
         },
@@ -186,30 +142,6 @@
     {
       "enabled": true,
       "conditions": {
-        "aurora": {
-          "on": true,
-          "kp": 5
-        },
-        "milkyway": {
-          "on": true
-        },
-        "swell": {
-          "on": true,
-          "height": 3
-        },
-        "sunset": {
-          "on": true
-        }
-      },
-      "notes": "Faces due south over Bass Strait. One of the darkest easy-access aurora spots near Melbourne.",
-      "id": "pyramid-rock",
-      "name": "Pyramid Rock, Phillip Island",
-      "lat": -38.5265,
-      "lon": 145.231
-    },
-    {
-      "enabled": true,
-      "conditions": {
         "sunset": {
           "on": true
         },
@@ -232,6 +164,70 @@
       "name": "The Nobbies, Phillip Island",
       "lat": -38.518,
       "lon": 145.105
+    },
+    {
+      "id": "arawata-hfwt",
+      "name": "Arawata",
+      "lat": -38.4,
+      "lon": 145.8667,
+      "notes": "Rolling green hills filled with foggy valleys",
+      "enabled": true,
+      "conditions": {
+        "sunrise": {
+          "on": true
+        },
+        "fog": {
+          "on": true
+        },
+        "milkyway": {
+          "on": true
+        }
+      },
+      "image": "images/arawata-hfwt-mv9ec416.jpg"
+    },
+    {
+      "id": "mount-donna-buang-bdkf",
+      "name": "Mount Donna Buang",
+      "lat": -37.7068,
+      "lon": 145.6807,
+      "notes": "Tall gum forests covered in snow",
+      "enabled": true,
+      "conditions": {
+        "fog": {
+          "on": true
+        },
+        "snow": {
+          "on": true
+        }
+      },
+      "image": "images/mount-donna-buang-bdkf-mv9ec6bn.jpg"
+    },
+    {
+      "id": "cathedral-range-nh2d",
+      "name": "Cathedral Range",
+      "lat": -37.4,
+      "lon": 145.75,
+      "notes": "Steep ol hike to North Jawbone Peak.",
+      "enabled": true,
+      "conditions": {
+        "sunrise": {
+          "on": true
+        },
+        "sunset": {
+          "on": true
+        },
+        "fog": {
+          "on": true
+        },
+        "milkyway": {
+          "on": true
+        },
+        "aurora": {
+          "on": true
+        }
+      },
+      "imagePos": "top",
+      "image": "images/cathedral-range-nh2d-mv9ec8ci.jpg"
     }
   ]
 }
