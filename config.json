@@ -28,9 +28,6 @@
         "aurora": {
           "on": true
         },
-        "wind": {
-          "on": true
-        },
         "sunrise": {
           "on": true
         }
@@ -39,7 +36,9 @@
       "id": "cape-schanck",
       "name": "Cape Schanck (Pulpit Rock)",
       "lat": -38.4925,
-      "lon": 144.8855
+      "lon": 144.8855,
+      "imagePos": "top",
+      "image": "images/cape-schanck-mv9dvuzi.jpg"
     },
     {
       "enabled": true,
