@@ -1,0 +1,54 @@
+name: Shoot Radar alerts
+
+on:
+  schedule:
+    # Morning digest 6:45am Melbourne (first = daylight saving, second = standard time)
+    - cron: '45 19 * * *'
+    - cron: '45 20 * * *'
+    # Evening digest 6:45pm Melbourne
+    - cron: '45 7 * * *'
+    - cron: '45 8 * * *'
+    # Live aurora watch every 30 min, roughly 5pm-4am Melbourne
+    - cron: '*/30 7-16 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'What to run'
+        type: choice
+        options: [digest, live]
+        default: digest
+
+permissions:
+  contents: write
+
+concurrency:
+  group: shoot-radar
+  cancel-in-progress: false
+
+jobs:
+  alert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check conditions and notify
+        run: node alert.js
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          NTFY_SERVER: ${{ vars.NTFY_SERVER }}
+          SCHEDULE: ${{ github.event.schedule }}
+          EVENT: ${{ github.event_name }}
+          MODE: ${{ inputs.mode }}
+      - name: Save alert state
+        run: |
+          if ! git diff --quiet -- state.json; then
+            git config user.name "shoot-radar-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add state.json
+            git commit -m "Update alert state [skip ci]"
+            git pull --rebase --autostash
+            git push
+          fi
