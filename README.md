@@ -31,6 +31,9 @@ The app edits `config.json` in your repository.
 
 Now add or edit spots, choose what to watch at each, and press **Save to GitHub**. The next digest uses the new settings.
 
+## Location photos
+In the location editor, use **Choose photo** (or paste an https image link) and pick how it crops. Photos are resized to 1600 px in your browser and uploaded to the repository's `images/` folder when you press **Save to GitHub**. They appear on the location cards, the radar and the alert cards, and the top spot's photo is attached to your phone digest. The repository is public, so anyone with the link can see them. Removing a photo doesn't delete the old file; delete it from `images/` on GitHub if you want it gone.
+
 ## How the scores work (0–100)
 
 | Condition | What it looks at |

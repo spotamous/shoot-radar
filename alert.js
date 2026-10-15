@@ -31,16 +31,25 @@ if (!manual && mode === 'digest') {
   if (!settings[slot]) { console.log(`${slot} digest disabled in settings`); process.exit(0); }
 }
 
-async function send({ title, body, tags = 'camera', priority = 3 }) {
+async function send({ title, body, tags = 'camera', priority = 3, attach = null }) {
   console.log(`\n=== ${title} ===\n${body}\n`);
   const topic = process.env.NTFY_TOPIC;
   if (!topic || process.env.DRY_RUN) { console.log(topic ? '(dry run, not sent)' : 'NTFY_TOPIC not set, not sent'); return; }
   const server = (process.env.NTFY_SERVER || 'https://ntfy.sh').replace(/\/$/, '');
   const headers = { Title: title, Tags: tags, Priority: String(priority) };
   if (cfg.appUrl) headers.Click = cfg.appUrl;
+  if (attach) headers.Attach = attach;
   const r = await fetch(`${server}/${encodeURIComponent(topic)}`, { method: 'POST', body, headers });
   console.log('ntfy:', r.status);
   if (!r.ok) process.exitCode = 1;
+}
+
+// Location photo shown in the notification (top alert's spot).
+function photoUrl(loc) {
+  if (!loc?.image) return null;
+  if (/^https?:/.test(loc.image)) return loc.image;
+  const repo = process.env.GITHUB_REPOSITORY, branch = process.env.GITHUB_REF_NAME || 'main';
+  return repo ? `https://raw.githubusercontent.com/${repo}/${branch}/${loc.image}` : null;
 }
 
 if (mode === 'digest') {
@@ -55,6 +64,7 @@ if (mode === 'digest') {
       body: E.formatDigest(alerts, now),
       tags: { sunrise: 'sunrise', sunset: 'city_sunset', fog: 'fog', swell: 'ocean', storm: 'zap', milkyway: 'milky_way', aurora: 'star2', wind: 'dash', rainbow: 'rainbow', moon: 'full_moon', snow: 'snowflake' }[top.key] + ',camera',
       priority: top.score >= 85 ? 4 : 3,
+      attach: photoUrl(cfg.locations.find((l) => l.id === top.locId)),
     });
   } else if (settings.quietDigest) {
     await send({ title: `${label}: nothing standout`, body: `No conditions above your thresholds in the next ${settings.hours} h.`, tags: 'zzz', priority: 2 });
