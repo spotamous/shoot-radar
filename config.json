@@ -1,5 +1,5 @@
 {
-  "appUrl": "",
+  "appUrl": "https://spotamous.github.io/shoot-radar/",
   "settings": {
     "morning": true,
     "evening": true,
@@ -10,11 +10,6 @@
   },
   "locations": [
     {
-      "id": "cape-schanck",
-      "name": "Cape Schanck (Pulpit Rock)",
-      "lat": -38.4925,
-      "lon": 144.8855,
-      "notes": "Basalt stacks, south-facing. Great for big swell and southern aurora.",
       "enabled": true,
       "conditions": {
         "sunset": {
@@ -35,15 +30,18 @@
         },
         "wind": {
           "on": true
+        },
+        "sunrise": {
+          "on": true
         }
-      }
+      },
+      "notes": "Basalt stacks, south-facing. Great for big swell and southern aurora.",
+      "id": "cape-schanck",
+      "name": "Cape Schanck (Pulpit Rock)",
+      "lat": -38.4925,
+      "lon": 144.8855
     },
     {
-      "id": "gunnamatta",
-      "name": "Gunnamatta Beach",
-      "lat": -38.448,
-      "lon": 144.853,
-      "notes": "Exposed surf beach. Sunset over the dunes, heavy swell days.",
       "enabled": true,
       "conditions": {
         "sunset": {
@@ -58,15 +56,18 @@
         },
         "rainbow": {
           "on": true
+        },
+        "sunrise": {
+          "on": true
         }
-      }
+      },
+      "notes": "Exposed surf beach. Sunset over the dunes, heavy swell days.",
+      "id": "gunnamatta",
+      "name": "Gunnamatta Beach",
+      "lat": -38.448,
+      "lon": 144.853
     },
     {
-      "id": "flinders-blowhole",
-      "name": "Flinders Blowhole",
-      "lat": -38.487,
-      "lon": 145.017,
-      "notes": "Blowhole fires on big SW swell around mid-high tide. Sunrise over the rock shelf.",
       "enabled": true,
       "conditions": {
         "sunrise": {
@@ -82,14 +83,14 @@
         "moon": {
           "on": true
         }
-      }
+      },
+      "notes": "Blowhole fires on big SW swell around mid-high tide. Sunrise over the rock shelf.",
+      "id": "flinders-blowhole",
+      "name": "Flinders Blowhole",
+      "lat": -38.487,
+      "lon": 145.017
     },
     {
-      "id": "point-nepean",
-      "name": "Point Nepean (Fort Nepean)",
-      "lat": -38.3025,
-      "lon": 144.651,
-      "notes": "Rip entrance and old forts. Sunset to the west, storms over Bass Strait.",
       "enabled": true,
       "conditions": {
         "sunset": {
@@ -107,14 +108,14 @@
         "moon": {
           "on": true
         }
-      }
+      },
+      "notes": "Rip entrance and old forts. Sunset to the west, storms over Bass Strait.",
+      "id": "point-nepean",
+      "name": "Point Nepean (Fort Nepean)",
+      "lat": -38.3025,
+      "lon": 144.651
     },
     {
-      "id": "arthurs-seat",
-      "name": "Arthurs Seat summit",
-      "lat": -38.357,
-      "lon": 144.951,
-      "notes": "300 m lookout over the bay. Fog banks below you on still autumn and winter mornings.",
       "enabled": true,
       "conditions": {
         "fog": {
@@ -129,14 +130,14 @@
         "storm": {
           "on": true
         }
-      }
+      },
+      "notes": "300 m lookout over the bay. Fog banks below you on still autumn and winter mornings.",
+      "id": "arthurs-seat",
+      "name": "Arthurs Seat summit",
+      "lat": -38.357,
+      "lon": 144.951
     },
     {
-      "id": "mornington-pier",
-      "name": "Mornington Pier (Schnapper Point)",
-      "lat": -38.2155,
-      "lon": 145.0335,
-      "notes": "Bay pier and boat sheds. Sunset across the bay, storm cells over the water.",
       "enabled": true,
       "conditions": {
         "sunset": {
@@ -151,14 +152,14 @@
         "moon": {
           "on": true
         }
-      }
+      },
+      "notes": "Bay pier and boat sheds. Sunset across the bay, storm cells over the water.",
+      "id": "mornington-pier",
+      "name": "Mornington Pier (Schnapper Point)",
+      "lat": -38.2155,
+      "lon": 145.0335
     },
     {
-      "id": "cape-woolamai",
-      "name": "Cape Woolamai (The Pinnacles)",
-      "lat": -38.559,
-      "lon": 145.344,
-      "notes": "Granite pinnacles on the east side of Phillip Island. Sunrise, swell, dark southern sky.",
       "enabled": true,
       "conditions": {
         "sunrise": {
@@ -177,14 +178,14 @@
         "wind": {
           "on": true
         }
-      }
+      },
+      "notes": "Granite pinnacles on the east side of Phillip Island. Sunrise, swell, dark southern sky.",
+      "id": "cape-woolamai",
+      "name": "Cape Woolamai (The Pinnacles)",
+      "lat": -38.559,
+      "lon": 145.344
     },
     {
-      "id": "pyramid-rock",
-      "name": "Pyramid Rock, Phillip Island",
-      "lat": -38.5265,
-      "lon": 145.231,
-      "notes": "Faces due south over Bass Strait. One of the darkest easy-access aurora spots near Melbourne.",
       "enabled": true,
       "conditions": {
         "aurora": {
@@ -201,14 +202,14 @@
         "sunset": {
           "on": true
         }
-      }
+      },
+      "notes": "Faces due south over Bass Strait. One of the darkest easy-access aurora spots near Melbourne.",
+      "id": "pyramid-rock",
+      "name": "Pyramid Rock, Phillip Island",
+      "lat": -38.5265,
+      "lon": 145.231
     },
     {
-      "id": "the-nobbies",
-      "name": "The Nobbies, Phillip Island",
-      "lat": -38.518,
-      "lon": 145.105,
-      "notes": "Boardwalk and blowhole at the western tip. Sunset, wild seas, aurora.",
       "enabled": true,
       "conditions": {
         "sunset": {
@@ -227,7 +228,12 @@
         "storm": {
           "on": true
         }
-      }
+      },
+      "notes": "Boardwalk and blowhole at the western tip. Sunset, wild seas, aurora.",
+      "id": "the-nobbies",
+      "name": "The Nobbies, Phillip Island",
+      "lat": -38.518,
+      "lon": 145.105
     }
   ]
 }
