@@ -50,9 +50,6 @@
           "on": true,
           "height": 3
         },
-        "wind": {
-          "on": true
-        },
         "rainbow": {
           "on": true
         },
@@ -64,7 +61,8 @@
       "id": "gunnamatta",
       "name": "Gunnamatta Beach",
       "lat": -38.448,
-      "lon": 144.853
+      "lon": 144.853,
+      "image": "images/gunnamatta-mv9dz4vv.jpg"
     },
     {
       "enabled": true,
@@ -76,10 +74,10 @@
           "on": true,
           "height": 2.5
         },
-        "wind": {
+        "sunset": {
           "on": true
         },
-        "moon": {
+        "milkyway": {
           "on": true
         }
       },
@@ -87,7 +85,8 @@
       "id": "flinders-blowhole",
       "name": "Flinders Blowhole",
       "lat": -38.487,
-      "lon": 145.017
+      "lon": 145.017,
+      "image": "images/flinders-blowhole-mv9dz6wj.jpg"
     },
     {
       "enabled": true,
