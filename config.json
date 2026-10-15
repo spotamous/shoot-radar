@@ -100,10 +100,7 @@
         "storm": {
           "on": true
         },
-        "milkyway": {
-          "on": true
-        },
-        "moon": {
+        "swell": {
           "on": true
         }
       },
@@ -111,7 +108,8 @@
       "id": "point-nepean",
       "name": "Point Nepean (Fort Nepean)",
       "lat": -38.3025,
-      "lon": 144.651
+      "lon": 144.651,
+      "image": "images/point-nepean-mv9e3szx.jpg"
     },
     {
       "enabled": true,
@@ -181,7 +179,9 @@
       "id": "cape-woolamai",
       "name": "Cape Woolamai (The Pinnacles)",
       "lat": -38.559,
-      "lon": 145.344
+      "lon": 145.344,
+      "imagePos": "top",
+      "image": "images/cape-woolamai-mv9e3v09.jpg"
     },
     {
       "enabled": true,
