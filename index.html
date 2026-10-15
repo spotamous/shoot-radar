@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot Radar</title>
+<meta name="theme-color" content="#0b1019">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one column of three bands (alerts, radar grid, locations) on a night-sky ground; dialogs for editing. */
+:root {
+  --bg: #0b1019; --surface: #121a27; --surface-2: #1a2434; --line: #243045;
+  --ink: #e9edf4; --muted: #8d99ad; --accent: #f3a43b; --accent-ink: #1b1204;
+  --hot: #ff6f61; --good: #f3a43b; --maybe: #6f8fc9; --low: #3a465b; --ok: #4fc29b; --bad: #ff6f61;
+  --display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f3f5f8; --surface: #ffffff; --surface-2: #eef1f6; --line: #d9dfe8;
+    --ink: #121923; --muted: #5b6678; --accent: #c87a12; --accent-ink: #ffffff;
+    --hot: #d94a3d; --good: #c87a12; --maybe: #4767a6; --low: #c3cbd8; --ok: #1f8f6a; --bad: #d94a3d; color-scheme: light;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-block: 0 96px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header.top { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top, 0px); }
+header .wrap { display: flex; align-items: center; gap: 12px; padding-block: 12px; flex-wrap: wrap; }
+.brand { font: 700 22px/1 var(--display); letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; margin-right: auto; }
+.brand svg { width: 26px; height: 26px; color: var(--accent); }
+.stamp { font: 12px var(--mono); color: var(--muted); }
+button, .btn { font: 600 14px var(--body); border-radius: 9px; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink); padding: 8px 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+button:hover { border-color: var(--muted); }
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+button.ghost { background: transparent; }
+button.danger { color: var(--bad); }
+button:disabled { opacity: .5; cursor: default; }
+h2 { font: 700 20px/1.2 var(--display); margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+.sec { margin-top: 28px; }
+.sec-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+.sec-head p { margin: 0; color: var(--muted); font-size: 13px; }
+.sec-head .sp { margin-left: auto; }
+
+/* score badge */
+.score { font: 600 13px var(--mono); min-width: 40px; text-align: center; padding: 3px 6px; border-radius: 6px; background: var(--low); color: var(--ink); font-variant-numeric: tabular-nums; }
+.s-hot { background: var(--hot); color: #fff; } .s-good { background: var(--good); color: var(--accent-ink); } .s-maybe { background: var(--maybe); color: #fff; }
+
+/* alerts */
+.alerts { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; align-items: start; }
+.alert { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: grid; gap: 8px; min-width: 0; }
+.alert .row { display: flex; align-items: center; gap: 10px; }
+.alert .cond { font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.alert .cond svg { width: 20px; height: 20px; color: var(--accent); flex: none; }
+.alert .when { margin-left: auto; font: 12px var(--mono); color: var(--muted); text-align: right; }
+.alert .loc { font: 600 16px/1.3 var(--display); }
+.alert .why { color: var(--muted); font-size: 13.5px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 12px; padding: 2px 8px; border-radius: 99px; background: var(--surface-2); border: 1px solid var(--line); color: var(--muted); }
+.empty { border: 1px dashed var(--line); border-radius: 12px; padding: 20px; color: var(--muted); }
+
+/* radar grid */
+.grid-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+table.radar { border-collapse: collapse; width: 100%; min-width: 640px; }
+.radar th, .radar td { border-bottom: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+.radar thead th { font: 600 12px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); background: var(--surface-2); }
+.radar tbody th { font: 600 14px/1.25 var(--body); width: 210px; }
+.radar tbody th small { display: block; font: 400 11px var(--mono); color: var(--muted); margin-top: 2px; }
+.radar tr:last-child th, .radar tr:last-child td { border-bottom: 0; }
+.cell { display: flex; flex-wrap: wrap; gap: 4px; }
+.pip { display: inline-flex; align-items: center; gap: 4px; padding: 2px 6px 2px 4px; border-radius: 6px; background: var(--surface-2); border: 1px solid transparent; font: 600 12px var(--mono); cursor: pointer; color: var(--ink); }
+.pip svg { width: 15px; height: 15px; }
+.pip.s-hot { background: color-mix(in srgb, var(--hot) 22%, transparent); border-color: var(--hot); }
+.pip.s-good { background: color-mix(in srgb, var(--good) 20%, transparent); border-color: var(--good); }
+.pip.s-maybe { background: color-mix(in srgb, var(--maybe) 18%, transparent); border-color: color-mix(in srgb, var(--maybe) 60%, transparent); }
+.pip.s-low { color: var(--muted); }
+.dash { color: var(--low); }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin-top: 8px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+/* locations */
+.locs { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.locard { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: grid; gap: 8px; min-width: 0; }
+.locard.off { opacity: .55; }
+.locard .name { font: 600 16px/1.3 var(--display); }
+.locard .coords { font: 11px var(--mono); color: var(--muted); }
+.locard .notes { font-size: 13px; color: var(--muted); }
+.locard .actions { display: flex; gap: 8px; margin-top: 4px; }
+.ico-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.ico-row span { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; padding: 2px 8px 2px 5px; border-radius: 99px; background: var(--surface-2); }
+.ico-row svg { width: 14px; height: 14px; color: var(--accent); }
+.warn { font-size: 12px; color: var(--bad); }
+
+/* dialogs */
+dialog { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 16px; padding: 0; width: min(640px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); }
+dialog::backdrop { background: rgba(4, 7, 12, .6); }
+.dlg-head { display: flex; align-items: center; gap: 10px; padding: 16px 18px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--surface); z-index: 1; }
+.dlg-head h2 { margin-right: auto; }
+.dlg-body { padding: 16px 18px; display: grid; gap: 16px; }
+.dlg-foot { display: flex; gap: 8px; padding: 14px 18px; border-top: 1px solid var(--line); position: sticky; bottom: 0; background: var(--surface); flex-wrap: wrap; }
+.dlg-foot .sp { margin-left: auto; }
+label.f { display: grid; gap: 5px; font-size: 13px; color: var(--muted); }
+input[type=text], input[type=number], input[type=password], textarea, select { font: 15px var(--body); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; width: 100%; min-width: 0; }
+textarea { resize: vertical; min-height: 60px; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.results { display: grid; gap: 4px; }
+.results button { justify-content: flex-start; text-align: left; font-weight: 500; background: var(--bg); }
+.results button small { color: var(--muted); font-weight: 400; }
+.conds { display: grid; gap: 8px; }
+.cond-row { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; display: grid; gap: 8px; background: var(--bg); }
+.cond-row.on { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+.cond-top { display: flex; align-items: center; gap: 10px; }
+.cond-top svg { width: 20px; height: 20px; color: var(--accent); flex: none; }
+.cond-top .t { font-weight: 600; }
+.cond-top .h { font-size: 12px; color: var(--muted); }
+.cond-top .txt { min-width: 0; margin-right: auto; }
+.cond-cfg { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; font-size: 13px; color: var(--muted); }
+.cond-cfg[hidden] { display: none !important; }
+.cond-cfg label { display: flex; align-items: center; gap: 8px; }
+.cond-cfg input[type=range] { width: 140px; accent-color: var(--accent); }
+.cond-cfg input[type=number] { width: 84px; padding: 5px 8px; font: 13px var(--mono); }
+.cond-cfg output { font: 600 13px var(--mono); color: var(--ink); min-width: 2ch; }
+.switch { position: relative; width: 42px; height: 24px; flex: none; }
+.switch input { opacity: 0; position: absolute; inset: 0; margin: 0; cursor: pointer; z-index: 1; }
+.switch span { position: absolute; inset: 0; background: var(--low); border-radius: 99px; transition: background .15s; }
+.switch span::after { content: ''; position: absolute; width: 18px; height: 18px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: transform .15s; }
+.switch input:checked + span { background: var(--accent); }
+.switch input:checked + span::after { transform: translateX(18px); }
+.switch input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+.line-toggle { display: flex; align-items: center; gap: 12px; justify-content: space-between; font-size: 14px; }
+.line-toggle small { display: block; color: var(--muted); font-size: 12px; }
+details summary { cursor: pointer; color: var(--muted); font-size: 13px; }
+.note { font-size: 12.5px; color: var(--muted); }
+.note code { font: 12px var(--mono); }
+.detail-list { display: grid; gap: 10px; }
+.detail-list .d { display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; align-items: center; }
+.detail-list .d .why { grid-column: 2; color: var(--muted); font-size: 13px; }
+.detail-list .d .lab { display: flex; gap: 8px; align-items: center; font-weight: 600; }
+.detail-list svg { width: 18px; height: 18px; color: var(--accent); }
+
+.savebar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface-2); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.savebar .wrap { display: flex; align-items: center; gap: 10px; padding-block: 12px; flex-wrap: wrap; }
+.savebar .msg { margin-right: auto; font-size: 14px; }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(80px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 10px; font-size: 14px; z-index: 20; max-width: calc(100vw - 32px); }
+.progress { height: 2px; background: var(--accent); width: 0; transition: width .3s; }
+@media (max-width: 520px) {
+  .two { grid-template-columns: 1fr; }
+  .brand { font-size: 19px; }
+  .stamp { width: 100%; order: 3; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12 18.5 5.5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-sunrise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 18h18M6.5 18a5.5 5.5 0 0 1 11 0M12 3v5m-2.5-2.5L12 3l2.5 2.5M4.2 11.2l1.4 1M19.8 11.2l-1.4 1"/></symbol>
+    <symbol id="i-sunset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 18h18M6.5 18a5.5 5.5 0 0 1 11 0M12 3v5m-2.5-2.5L12 8l2.5-2.5M4.2 11.2l1.4 1M19.8 11.2l-1.4 1"/></symbol>
+    <symbol id="i-fog" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8c2-1.3 4-1.3 6 0s4 1.3 6 0 4-1.3 6 0M3 13c2-1.3 4-1.3 6 0s4 1.3 6 0 4-1.3 6 0M5 18h14"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 17c2.5 0 3-2 5-2s2.5 2 5 2 3-2 5-2 2.5 2 5 2M3 12c1-5 6-8 10.5-6.5C17 6.7 17 10 14.5 10.5c-1.8.4-2.4-1.2-1.6-2"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M13 2 5 13.5h6L10 22l8.5-12h-6L13 2Z"/></symbol>
+    <symbol id="i-stars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 20C8 14 15 9 21 4" stroke-dasharray="1 3.2"/><path d="M8 4v4M6 6h4M17 13v4M15 15h4"/><circle cx="5" cy="13" r=".6" fill="currentColor"/><circle cx="13" cy="20" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-aurora" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 19c1-6 2-11 4-13M8 19c.5-5 2-9 5-11M13 19c1-4 3-7 7-8M3 21h18"/></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 9h11a3 3 0 1 0-3-3M3 15h15a3 3 0 1 1-3 3M3 12h7"/></symbol>
+    <symbol id="i-rainbow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 18a10 10 0 0 1 20 0M5.5 18a6.5 6.5 0 0 1 13 0M9 18a3 3 0 0 1 6 0"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="10" r="5.5"/><path d="M3 19h18M6 22h12"/></symbol>
+    <symbol id="i-snow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7M9.5 3.5 12 6l2.5-2.5M9.5 20.5 12 18l2.5 2.5"/></symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><svg><use href="#i-logo"/></svg>Shoot Radar</div>
+    <span class="stamp" id="stamp">Loading forecasts…</span>
+    <button id="refresh" class="ghost" type="button">Refresh</button>
+    <button id="openSettings" type="button">Settings</button>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<main class="wrap">
+  <section class="sec" aria-labelledby="h-alerts">
+    <div class="sec-head">
+      <h2 id="h-alerts">Worth planning</h2>
+      <p id="alertsSub">Conditions above your alert thresholds in the next 3 days. This is what your phone digest will say.</p>
+    </div>
+    <div class="alerts" id="alerts"><div class="empty">Checking the sky over your locations…</div></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-radar">
+    <div class="sec-head">
+      <h2 id="h-radar">Radar</h2>
+      <p>Best scores per spot per day. Tap a score for the reasoning.</p>
+    </div>
+    <div class="grid-scroll"><table class="radar" id="radar"></table></div>
+    <div class="legend">
+      <span><i style="background:var(--hot)"></i>80+ go</span>
+      <span><i style="background:var(--good)"></i>60–79 promising</span>
+      <span><i style="background:var(--maybe)"></i>40–59 maybe</span>
+      <span><i style="background:var(--low)"></i>under 40</span>
+      <span id="moonNote"></span>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-locs">
+    <div class="sec-head">
+      <h2 id="h-locs">Locations</h2>
+      <p id="locCount"></p>
+      <span class="sp"></span>
+      <button class="primary" id="addLoc" type="button">Add location</button>
+    </div>
+    <div class="locs" id="locs"></div>
+  </section>
+</main>
+
+<div class="savebar" id="savebar" hidden>
+  <div class="wrap">
+    <span class="msg" id="saveMsg">You have unsaved changes. Alerts use the saved version.</span>
+    <button class="ghost" id="discard" type="button">Discard</button>
+    <button class="primary" id="save" type="button">Save to GitHub</button>
+  </div>
+</div>
+
+<!-- location editor -->
+<dialog id="locDlg">
+  <form method="dialog" id="locForm">
+    <div class="dlg-head"><h2 id="locTitle">Location</h2><button class="ghost" value="cancel" type="submit" aria-label="Close">Close</button></div>
+    <div class="dlg-body">
+      <label class="f">Find a place
+        <input type="text" id="lSearch" placeholder="e.g. Bells Beach, Mt Buller, Lake Tyrrell" autocomplete="off">
+      </label>
+      <div class="results" id="lResults"></div>
+      <label class="f">Name <input type="text" id="lName" required></label>
+      <div class="two">
+        <label class="f">Latitude <input type="number" id="lLat" step="0.0001" min="-90" max="90" required></label>
+        <label class="f">Longitude <input type="number" id="lLon" step="0.0001" min="-180" max="180" required></label>
+      </div>
+      <div><button type="button" id="lHere">Use my current location</button></div>
+      <label class="f">Notes <textarea id="lNotes" placeholder="Best tide, parking, which way it faces…"></textarea></label>
+      <div class="line-toggle"><div>Include in alerts<small>Switch off to pause a spot without deleting it.</small></div><label class="switch"><input type="checkbox" id="lEnabled"><span></span></label></div>
+      <div>
+        <h2 style="font-size:16px;margin-bottom:4px">What to watch for here</h2>
+        <p class="note" style="margin:0 0 10px">Each condition gets a 0–100 score. You're alerted when it reaches the threshold you set.</p>
+        <div class="conds" id="lConds"></div>
+      </div>
+      <details>
+        <summary>Swell forecast point (advanced)</summary>
+        <p class="note">Swell needs an ocean grid point. If a cliff-top spot shows "no ocean data", set a point a few km offshore. Leave blank to search automatically.</p>
+        <div class="two">
+          <label class="f">Swell latitude <input type="number" id="lSLat" step="0.0001"></label>
+          <label class="f">Swell longitude <input type="number" id="lSLon" step="0.0001"></label>
+        </div>
+      </details>
+    </div>
+    <div class="dlg-foot">
+      <button type="button" class="danger ghost" id="lDelete">Delete</button>
+      <span class="sp"></span>
+      <button value="cancel" type="submit" class="ghost">Cancel</button>
+      <button type="button" class="primary" id="lApply">Done</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- settings -->
+<dialog id="setDlg">
+  <form method="dialog">
+    <div class="dlg-head"><h2>Settings</h2><button class="ghost" value="cancel" type="submit">Close</button></div>
+    <div class="dlg-body">
+      <div>
+        <h2 style="font-size:16px;margin-bottom:8px">Phone digests</h2>
+        <div class="conds">
+          <div class="line-toggle"><div>Morning digest, 6:45am<small>Today's evening, tonight and the next two days.</small></div><label class="switch"><input type="checkbox" id="sMorning"><span></span></label></div>
+          <div class="line-toggle"><div>Evening digest, 6:45pm<small>Plan tomorrow's sunrise the night before.</small></div><label class="switch"><input type="checkbox" id="sEvening"><span></span></label></div>
+          <div class="line-toggle"><div>Live aurora watch<small>Checks real-time Kp every 30 minutes after dark and alerts at high priority.</small></div><label class="switch"><input type="checkbox" id="sLive"><span></span></label></div>
+          <div class="line-toggle"><div>Send a digest even when nothing's on<small>Otherwise quiet days stay quiet.</small></div><label class="switch"><input type="checkbox" id="sQuiet"><span></span></label></div>
+          <div class="two">
+            <label class="f">Look ahead (hours) <input type="number" id="sHours" min="12" max="96" step="12"></label>
+            <label class="f">Max items per digest <input type="number" id="sMax" min="1" max="20"></label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 style="font-size:16px;margin-bottom:8px">GitHub (where your settings are saved)</h2>
+        <div class="conds">
+          <div class="two">
+            <label class="f">Repository <input type="text" id="gRepo" placeholder="your-username/shoot-radar"></label>
+            <label class="f">Branch <input type="text" id="gBranch" placeholder="main"></label>
+          </div>
+          <label class="f">Access token <input type="password" id="gToken" placeholder="github_pat_…" autocomplete="off"></label>
+          <p class="note">Fine-grained token with <b>Contents: Read and write</b> on this repository only. It stays in this browser and is sent only to api.github.com.</p>
+        </div>
+      </div>
+      <div>
+        <h2 style="font-size:16px;margin-bottom:8px">Test a notification</h2>
+        <div class="conds">
+          <label class="f">ntfy topic <input type="text" id="nTopic" placeholder="same as your NTFY_TOPIC secret" autocomplete="off"></label>
+          <div><button type="button" id="nTest">Send test to my phone</button></div>
+          <p class="note">Stored in this browser only, for the test button. The alert engine reads the topic from the repository secret.</p>
+        </div>
+      </div>
+      <div>
+        <h2 style="font-size:16px;margin-bottom:8px">Backup</h2>
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" id="exportBtn">Copy config JSON</button><button type="button" id="importBtn">Paste config JSON</button></div>
+        <textarea id="importBox" hidden placeholder="Paste config JSON here, then press Load" style="margin-top:8px;font:12px var(--mono);min-height:120px"></textarea>
+        <div id="importRow" hidden style="margin-top:8px"><button type="button" id="importLoad" class="primary">Load</button></div>
+      </div>
+    </div>
+    <div class="dlg-foot"><span class="sp"></span><button type="button" class="primary" id="sApply">Done</button></div>
+  </form>
+</dialog>
+
+<!-- day detail -->
+<dialog id="detDlg">
+  <form method="dialog">
+    <div class="dlg-head"><h2 id="detTitle">Detail</h2><button class="ghost" value="cancel" type="submit">Close</button></div>
+    <div class="dlg-body"><div class="detail-list" id="detList"></div></div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" hidden></div>
+
+<script type="module">
+import * as E from './engine.js';
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const icon = (key) => `<svg aria-hidden="true"><use href="#i-${E.CONDITIONS[key].icon}"/></svg>`;
+const band = (s) => (s >= 80 ? 's-hot' : s >= 60 ? 's-good' : s >= 40 ? 's-maybe' : 's-low');
+const store = {
+  get(k, d = null) { try { const v = localStorage.getItem('sr.' + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem('sr.' + k, JSON.stringify(v)); } catch {} },
+  del(k) { try { localStorage.removeItem('sr.' + k); } catch {} },
+};
+function toast(msg, ms = 3200) { const t = $('toast'); t.textContent = msg; t.hidden = false; clearTimeout(toast.h); toast.h = setTimeout(() => (t.hidden = true), ms); }
+
+let saved = null;   // config as last loaded/saved
+let config = null;  // working copy
+let sha = null;     // GitHub blob sha of config.json
+let run = null;
+const gh = () => ({ repo: store.get('ghRepo', ''), branch: store.get('ghBranch', 'main') || 'main', token: store.get('ghToken', '') });
+const DEFAULT_SETTINGS = { morning: true, evening: true, hours: 72, maxItems: 8, quietDigest: false, liveAurora: true };
+
+const b64enc = (s) => btoa(String.fromCharCode(...new TextEncoder().encode(s)));
+const b64dec = (s) => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\s/g, '')), (c) => c.charCodeAt(0)));
+
+async function loadConfig() {
+  const g = gh();
+  if (g.repo && g.token) {
+    try {
+      const r = await fetch(`https://api.github.com/repos/${g.repo}/contents/config.json?ref=${encodeURIComponent(g.branch)}`, { headers: { Authorization: `Bearer ${g.token}`, Accept: 'application/vnd.github+json' }, cache: 'no-store' });
+      if (!r.ok) throw new Error(r.status === 401 ? 'token rejected' : r.status === 404 ? 'repo or config.json not found' : 'HTTP ' + r.status);
+      const j = await r.json(); sha = j.sha; return JSON.parse(b64dec(j.content));
+    } catch (e) { toast('GitHub: ' + e.message + '. Showing the published copy.', 5000); }
+  }
+  const r = await fetch('./config.json', { cache: 'no-store' });
+  return r.json();
+}
+function normalise(c) {
+  c.settings = { ...DEFAULT_SETTINGS, ...(c.settings || {}) };
+  c.locations = (c.locations || []).map((l) => ({ enabled: true, conditions: {}, notes: '', ...l }));
+  return c;
+}
+const dirty = () => JSON.stringify(config) !== JSON.stringify(saved);
+function markDirty() {
+  store.set('draft', dirty() ? config : null);
+  $('savebar').hidden = !dirty();
+}
+
+async function init() {
+  saved = normalise(await loadConfig());
+  const draft = store.get('draft');
+  config = draft ? normalise(draft) : structuredClone(saved);
+  markDirty();
+  renderLocs();
+  refresh();
+}
+
+async function refresh() {
+  $('refresh').disabled = true; $('stamp').textContent = 'Loading forecasts…';
+  const n = config.locations.filter((l) => l.enabled !== false).length || 1;
+  $('progress').style.width = '4%';
+  try {
+    run = await E.runAll(config, { onProgress: (k) => ($('progress').style.width = Math.round((k / n) * 100) + '%') });
+    $('stamp').textContent = `Updated ${E.fmtTime(run.now)} · Melbourne time`;
+  } catch (e) {
+    $('stamp').textContent = 'Forecast fetch failed: ' + e.message;
+  }
+  setTimeout(() => ($('progress').style.width = '0'), 400);
+  $('refresh').disabled = false;
+  renderAlerts(); renderRadar(); renderLocs();
+}
+
+function renderAlerts() {
+  if (!run) return;
+  const s = config.settings;
+  const alerts = E.pickAlerts(run, { hours: s.hours, max: s.maxItems });
+  $('alertsSub').textContent = `Conditions above your alert thresholds in the next ${s.hours} hours. This is what your phone digest would say right now.`;
+  $('alerts').innerHTML = alerts.length ? alerts.map((e) => `
+    <article class="alert">
+      <div class="row"><span class="score ${band(e.score)}">${e.score}</span><span class="cond">${icon(e.key)}${esc(E.CONDITIONS[e.key].label)}</span><span class="when">${esc(E.fmtDay(e.t, run.now))}<br>${esc(E.fmtTime(e.t))}</span></div>
+      <div class="loc">${esc(e.loc)}</div>
+      <div class="why">${esc(e.why)}</div>
+      ${e.also.length ? `<div class="chips">${e.also.map((a) => `<span class="chip">${esc(a.loc)} · ${a.score}</span>`).join('')}</div>` : ''}
+    </article>`).join('')
+    : `<div class="empty">Nothing above your thresholds in the next ${s.hours} hours. The radar below shows near misses; lower a threshold on a location if you want to hear about them.</div>`;
+  const ph = E.moonPhase(run.now);
+  $('moonNote').textContent = `Moon tonight: ${E.moonPhaseName(run.now)}, ${Math.round(ph.illum * 100)}% lit`;
+}
+
+function dayKeys() {
+  const out = []; for (let d = 0; d < 4; d++) { const t = run.now + d * 86400e3; out.push({ key: E.localParts(t).key, label: E.fmtDay(t, run.now) }); } return out;
+}
+function renderRadar() {
+  if (!run) return;
+  const days = dayKeys();
+  let html = `<thead><tr><th>Location</th>${days.map((d) => `<th>${esc(d.label)}</th>`).join('')}</tr></thead><tbody>`;
+  for (const r of run.results) {
+    html += `<tr><th>${esc(r.loc.name)}${r.errors.length ? `<small class="warn">${esc(r.errors[0])}</small>` : ''}</th>`;
+    for (const d of days) {
+      const evs = r.events.filter((e) => E.localParts(e.t).key === d.key);
+      const best = {}; for (const e of evs) if (!best[e.key] || e.score > best[e.key].score) best[e.key] = e;
+      const top = Object.values(best).filter((e) => e.score >= 25).sort((a, b) => b.score - a.score).slice(0, 4);
+      html += `<td>${top.length ? `<div class="cell">${top.map((e) => `<button type="button" class="pip ${band(e.score)}" data-loc="${esc(r.loc.id)}" data-day="${d.key}" title="${esc(E.CONDITIONS[e.key].label)}: ${esc(e.why)}">${icon(e.key)}${e.score}</button>`).join('')}</div>` : '<span class="dash">–</span>'}</td>`;
+    }
+    html += '</tr>';
+  }
+  if (!run.results.length) html += `<tr><td colspan="5" class="empty">Add a location to start.</td></tr>`;
+  $('radar').innerHTML = html + '</tbody>';
+}
+$('radar').addEventListener('click', (ev) => {
+  const b = ev.target.closest('.pip'); if (!b) return;
+  const r = run.results.find((x) => x.loc.id === b.dataset.loc);
+  const evs = r.events.filter((e) => E.localParts(e.t).key === b.dataset.day).sort((a, b2) => b2.score - a.score);
+  $('detTitle').textContent = `${r.loc.name} · ${E.fmtDay(evs[0].t, run.now)}`;
+  $('detList').innerHTML = evs.map((e) => `<div class="d"><span class="score ${band(e.score)}">${e.score}</span><span class="lab">${icon(e.key)}${esc(E.CONDITIONS[e.key].label)} · ${esc(E.fmtTime(e.t))}${e.alert ? ' <span class="chip">alerts</span>' : ` <span class="chip">alert at ${e.min}</span>`}</span><span class="why">${esc(e.why)}</span></div>`).join('');
+  $('detDlg').showModal();
+});
+
+function renderLocs() {
+  const ls = config.locations;
+  $('locCount').textContent = `${ls.filter((l) => l.enabled !== false).length} active of ${ls.length}`;
+  $('locs').innerHTML = ls.map((l, i) => {
+    const on = Object.keys(E.CONDITIONS).filter((k) => l.conditions?.[k]?.on);
+    const err = run?.results.find((r) => r.loc.id === l.id)?.errors || [];
+    return `<article class="locard ${l.enabled === false ? 'off' : ''}">
+      <div class="name">${esc(l.name)}</div>
+      <div class="coords">${(+l.lat).toFixed(4)}, ${(+l.lon).toFixed(4)}${l.enabled === false ? ' · paused' : ''}</div>
+      ${l.notes ? `<div class="notes">${esc(l.notes)}</div>` : ''}
+      <div class="ico-row">${on.length ? on.map((k) => `<span>${icon(k)}${esc(E.CONDITIONS[k].label)} ≥${E.condSettings(l, k).min}</span>`).join('') : '<span>No conditions selected</span>'}</div>
+      ${err.length ? `<div class="warn">${esc(err.join('; '))}</div>` : ''}
+      <div class="actions"><button type="button" data-edit="${i}">Edit</button><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=${l.lat},${l.lon}" target="_blank" rel="noopener">Map</a></div>
+    </article>`;
+  }).join('') || '<div class="empty">No locations yet. Add your first spot.</div>';
+}
+$('locs').addEventListener('click', (ev) => { const b = ev.target.closest('[data-edit]'); if (b) openLoc(+b.dataset.edit); });
+
+// ---------- location editor
+let editIdx = -1, draftLoc = null;
+function slug(s) { return (s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'spot') + '-' + Math.random().toString(36).slice(2, 6); }
+function openLoc(i) {
+  editIdx = i;
+  draftLoc = i >= 0 ? structuredClone(config.locations[i]) : { id: '', name: '', lat: '', lon: '', notes: '', enabled: true, conditions: { sunrise: { on: true }, sunset: { on: true } } };
+  $('locTitle').textContent = i >= 0 ? 'Edit location' : 'New location';
+  $('lSearch').value = ''; $('lResults').innerHTML = '';
+  $('lName').value = draftLoc.name; $('lLat').value = draftLoc.lat; $('lLon').value = draftLoc.lon;
+  $('lNotes').value = draftLoc.notes || ''; $('lEnabled').checked = draftLoc.enabled !== false;
+  $('lSLat').value = draftLoc.swellLat ?? ''; $('lSLon').value = draftLoc.swellLon ?? '';
+  $('lDelete').hidden = i < 0;
+  renderConds();
+  $('locDlg').showModal();
+}
+function renderConds() {
+  $('lConds').innerHTML = Object.entries(E.CONDITIONS).map(([k, def]) => {
+    const st = E.condSettings(draftLoc, k);
+    return `<div class="cond-row ${st.on ? 'on' : ''}" data-k="${k}">
+      <div class="cond-top">${icon(k)}<div class="txt"><div class="t">${esc(def.label)}</div><div class="h">${esc(def.help)}</div></div>
+        <label class="switch"><input type="checkbox" id="c-${k}-on" data-f="on" ${st.on ? 'checked' : ''} aria-label="Watch for ${esc(def.label)}"><span></span></label></div>
+      <div class="cond-cfg" ${st.on ? '' : 'hidden'}>
+        <label>Alert at <input type="range" id="c-${k}-min" data-f="min" min="20" max="95" step="5" value="${st.min}"><output>${st.min}</output></label>
+        ${Object.entries(def.params).map(([p, spec]) => `<label>${esc(spec.label)} <input type="number" id="c-${k}-${p}" data-f="${p}" min="${spec.min}" max="${spec.max}" step="${spec.step}" value="${st[p]}"></label>`).join('')}
+      </div></div>`;
+  }).join('');
+}
+$('lConds').addEventListener('input', (ev) => {
+  const inp = ev.target, row = inp.closest('.cond-row'); if (!row) return;
+  const k = row.dataset.k, f = inp.dataset.f;
+  const c = (draftLoc.conditions[k] ||= {});
+  if (f === 'on') { c.on = inp.checked; row.classList.toggle('on', inp.checked); row.querySelector('.cond-cfg').hidden = !inp.checked; }
+  else { const v = parseFloat(inp.value); if (isFinite(v)) c[f] = v; if (f === 'min') inp.nextElementSibling.textContent = inp.value; }
+});
+let searchT;
+$('lSearch').addEventListener('input', () => {
+  clearTimeout(searchT); const q = $('lSearch').value.trim();
+  if (q.length < 3) { $('lResults').innerHTML = ''; return; }
+  searchT = setTimeout(async () => {
+    try {
+      const r = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(q)}&count=6&countryCode=AU&language=en`);
+      const j = await r.json();
+      const res = j.results || [];
+      $('lResults').innerHTML = res.length ? res.map((p, i) => `<button type="button" data-i="${i}">${esc(p.name)} <small>${esc([p.admin2, p.admin1].filter(Boolean).join(', '))} · ${p.latitude.toFixed(3)}, ${p.longitude.toFixed(3)}</small></button>`).join('') : '<p class="note">No matches. You can type coordinates directly, or drop a pin in Google Maps and copy them.</p>';
+      $('lResults').onclick = (ev) => { const b = ev.target.closest('button'); if (!b) return; const p = res[+b.dataset.i]; $('lName').value ||= p.name; $('lLat').value = p.latitude.toFixed(4); $('lLon').value = p.longitude.toFixed(4); $('lResults').innerHTML = ''; };
+    } catch { $('lResults').innerHTML = '<p class="note">Place search is unavailable right now. Enter coordinates directly.</p>'; }
+  }, 350);
+});
+$('lHere').addEventListener('click', () => {
+  if (!navigator.geolocation) return toast('Location is not available in this browser.');
+  navigator.geolocation.getCurrentPosition((p) => { $('lLat').value = p.coords.latitude.toFixed(4); $('lLon').value = p.coords.longitude.toFixed(4); toast('Coordinates set from your current position.'); },
+    () => toast('Could not get your position. Check location permission for this site.'), { enableHighAccuracy: true, timeout: 10000 });
+});
+$('lApply').addEventListener('click', () => {
+  const name = $('lName').value.trim(), lat = parseFloat($('lLat').value), lon = parseFloat($('lLon').value);
+  if (!name) return toast('Give the location a name.');
+  if (!isFinite(lat) || !isFinite(lon) || Math.abs(lat) > 90 || Math.abs(lon) > 180) return toast('Latitude and longitude need valid numbers, e.g. -38.49 and 144.88.');
+  Object.assign(draftLoc, { name, lat: +lat.toFixed(4), lon: +lon.toFixed(4), notes: $('lNotes').value.trim(), enabled: $('lEnabled').checked });
+  const sl = parseFloat($('lSLat').value), so = parseFloat($('lSLon').value);
+  if (isFinite(sl) && isFinite(so)) { draftLoc.swellLat = sl; draftLoc.swellLon = so; } else { delete draftLoc.swellLat; delete draftLoc.swellLon; }
+  for (const k of Object.keys(draftLoc.conditions)) if (!draftLoc.conditions[k].on) delete draftLoc.conditions[k];
+  if (editIdx >= 0) config.locations[editIdx] = draftLoc; else { draftLoc.id = slug(name); config.locations.push(draftLoc); }
+  $('locDlg').close(); markDirty(); renderLocs(); refresh();
+});
+let delArm = false;
+$('lDelete').addEventListener('click', () => {
+  if (!delArm) { delArm = true; $('lDelete').textContent = 'Tap again to delete'; setTimeout(() => { delArm = false; $('lDelete').textContent = 'Delete'; }, 3000); return; }
+  delArm = false; $('lDelete').textContent = 'Delete';
+  config.locations.splice(editIdx, 1); $('locDlg').close(); markDirty(); renderLocs(); refresh();
+});
+$('addLoc').addEventListener('click', () => openLoc(-1));
+
+// ---------- settings
+$('openSettings').addEventListener('click', () => {
+  const s = config.settings, g = gh();
+  $('sMorning').checked = s.morning; $('sEvening').checked = s.evening; $('sLive').checked = s.liveAurora; $('sQuiet').checked = s.quietDigest;
+  $('sHours').value = s.hours; $('sMax').value = s.maxItems;
+  $('gRepo').value = g.repo; $('gBranch').value = g.branch; $('gToken').value = g.token; $('nTopic').value = store.get('ntfyTopic', '');
+  $('importBox').hidden = $('importRow').hidden = true;
+  $('setDlg').showModal();
+});
+$('sApply').addEventListener('click', async () => {
+  const s = config.settings;
+  Object.assign(s, { morning: $('sMorning').checked, evening: $('sEvening').checked, liveAurora: $('sLive').checked, quietDigest: $('sQuiet').checked,
+    hours: Math.min(96, Math.max(12, +$('sHours').value || 72)), maxItems: Math.min(20, Math.max(1, +$('sMax').value || 8)) });
+  const before = JSON.stringify(gh());
+  store.set('ghRepo', $('gRepo').value.trim().replace(/^https?:\/\/github\.com\//, '').replace(/\/$/, ''));
+  store.set('ghBranch', $('gBranch').value.trim() || 'main'); store.set('ghToken', $('gToken').value.trim()); store.set('ntfyTopic', $('nTopic').value.trim());
+  $('setDlg').close();
+  if (JSON.stringify(gh()) !== before && gh().repo && gh().token) { saved = normalise(await loadConfig()); toast('Connected to GitHub.'); }
+  markDirty(); renderAlerts();
+});
+$('nTest').addEventListener('click', async () => {
+  const topic = $('nTopic').value.trim(); if (!topic) return toast('Enter your ntfy topic first.');
+  try {
+    const r = await fetch(`https://ntfy.sh/${encodeURIComponent(topic)}`, { method: 'POST', body: 'If you can read this, Shoot Radar can reach your phone.', headers: { Title: 'Shoot Radar test', Tags: 'camera' } });
+    toast(r.ok ? 'Sent. Check your phone.' : 'ntfy refused the message (HTTP ' + r.status + ').');
+  } catch { toast('Could not reach ntfy.sh from this browser.'); }
+});
+$('exportBtn').addEventListener('click', async () => {
+  const txt = JSON.stringify(config, null, 2);
+  try { await navigator.clipboard.writeText(txt); toast('Config copied to the clipboard.'); }
+  catch { $('importBox').hidden = false; $('importBox').value = txt; $('importBox').select(); toast('Select-all and copy from the box.'); }
+});
+$('importBtn').addEventListener('click', () => { $('importBox').hidden = false; $('importRow').hidden = false; $('importBox').value = ''; $('importBox').focus(); });
+$('importLoad').addEventListener('click', () => {
+  try { const c = normalise(JSON.parse($('importBox').value)); if (!Array.isArray(c.locations)) throw 0; config = c; markDirty(); renderLocs(); refresh(); $('setDlg').close(); toast('Config loaded. Save to GitHub to make it live.'); }
+  catch { toast('That is not a valid Shoot Radar config.'); }
+});
+
+// ---------- save
+$('discard').addEventListener('click', () => { config = structuredClone(saved); markDirty(); renderLocs(); refresh(); toast('Changes discarded.'); });
+$('save').addEventListener('click', async () => {
+  const g = gh();
+  if (!g.repo || !g.token) { toast('Add your repository and token in Settings first.', 4500); $('openSettings').click(); return; }
+  $('save').disabled = true; $('saveMsg').textContent = 'Saving…';
+  try {
+    if (!config.appUrl && location.protocol === 'https:') config.appUrl = location.origin + location.pathname;
+    if (!sha) { const r0 = await fetch(`https://api.github.com/repos/${g.repo}/contents/config.json?ref=${encodeURIComponent(g.branch)}`, { headers: { Authorization: `Bearer ${g.token}` }, cache: 'no-store' }); if (r0.ok) sha = (await r0.json()).sha; }
+    const r = await fetch(`https://api.github.com/repos/${g.repo}/contents/config.json`, {
+      method: 'PUT', headers: { Authorization: `Bearer ${g.token}`, Accept: 'application/vnd.github+json' },
+      body: JSON.stringify({ message: 'Update Shoot Radar locations', content: b64enc(JSON.stringify(config, null, 2) + '\n'), sha: sha || undefined, branch: g.branch }),
+    });
+    if (r.status === 409 || r.status === 422) throw new Error('the file changed on GitHub since you loaded it. Refresh the page and redo your edit.');
+    if (!r.ok) throw new Error(r.status === 401 || r.status === 403 ? 'the token cannot write to this repository.' : 'HTTP ' + r.status);
+    sha = (await r.json()).content.sha; saved = structuredClone(config); markDirty(); toast('Saved. Your next phone digest uses these settings.');
+  } catch (e) { toast('Not saved: ' + e.message, 6000); }
+  $('save').disabled = false; $('saveMsg').textContent = 'You have unsaved changes. Alerts use the saved version.';
+});
+$('refresh').addEventListener('click', refresh);
+init();
+</script>
+</body>
+</html>

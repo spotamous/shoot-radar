@@ -1,0 +1,233 @@
+{
+  "appUrl": "",
+  "settings": {
+    "morning": true,
+    "evening": true,
+    "hours": 72,
+    "maxItems": 8,
+    "quietDigest": false,
+    "liveAurora": true
+  },
+  "locations": [
+    {
+      "id": "cape-schanck",
+      "name": "Cape Schanck (Pulpit Rock)",
+      "lat": -38.4925,
+      "lon": 144.8855,
+      "notes": "Basalt stacks, south-facing. Great for big swell and southern aurora.",
+      "enabled": true,
+      "conditions": {
+        "sunset": {
+          "on": true
+        },
+        "swell": {
+          "on": true,
+          "height": 3
+        },
+        "storm": {
+          "on": true
+        },
+        "milkyway": {
+          "on": true
+        },
+        "aurora": {
+          "on": true
+        },
+        "wind": {
+          "on": true
+        }
+      }
+    },
+    {
+      "id": "gunnamatta",
+      "name": "Gunnamatta Beach",
+      "lat": -38.448,
+      "lon": 144.853,
+      "notes": "Exposed surf beach. Sunset over the dunes, heavy swell days.",
+      "enabled": true,
+      "conditions": {
+        "sunset": {
+          "on": true
+        },
+        "swell": {
+          "on": true,
+          "height": 3
+        },
+        "wind": {
+          "on": true
+        },
+        "rainbow": {
+          "on": true
+        }
+      }
+    },
+    {
+      "id": "flinders-blowhole",
+      "name": "Flinders Blowhole",
+      "lat": -38.487,
+      "lon": 145.017,
+      "notes": "Blowhole fires on big SW swell around mid-high tide. Sunrise over the rock shelf.",
+      "enabled": true,
+      "conditions": {
+        "sunrise": {
+          "on": true
+        },
+        "swell": {
+          "on": true,
+          "height": 2.5
+        },
+        "wind": {
+          "on": true
+        },
+        "moon": {
+          "on": true
+        }
+      }
+    },
+    {
+      "id": "point-nepean",
+      "name": "Point Nepean (Fort Nepean)",
+      "lat": -38.3025,
+      "lon": 144.651,
+      "notes": "Rip entrance and old forts. Sunset to the west, storms over Bass Strait.",
+      "enabled": true,
+      "conditions": {
+        "sunset": {
+          "on": true
+        },
+        "sunrise": {
+          "on": true
+        },
+        "storm": {
+          "on": true
+        },
+        "milkyway": {
+          "on": true
+        },
+        "moon": {
+          "on": true
+        }
+      }
+    },
+    {
+      "id": "arthurs-seat",
+      "name": "Arthurs Seat summit",
+      "lat": -38.357,
+      "lon": 144.951,
+      "notes": "300 m lookout over the bay. Fog banks below you on still autumn and winter mornings.",
+      "enabled": true,
+      "conditions": {
+        "fog": {
+          "on": true
+        },
+        "sunrise": {
+          "on": true
+        },
+        "sunset": {
+          "on": true
+        },
+        "storm": {
+          "on": true
+        }
+      }
+    },
+    {
+      "id": "mornington-pier",
+      "name": "Mornington Pier (Schnapper Point)",
+      "lat": -38.2155,
+      "lon": 145.0335,
+      "notes": "Bay pier and boat sheds. Sunset across the bay, storm cells over the water.",
+      "enabled": true,
+      "conditions": {
+        "sunset": {
+          "on": true
+        },
+        "storm": {
+          "on": true
+        },
+        "rainbow": {
+          "on": true
+        },
+        "moon": {
+          "on": true
+        }
+      }
+    },
+    {
+      "id": "cape-woolamai",
+      "name": "Cape Woolamai (The Pinnacles)",
+      "lat": -38.559,
+      "lon": 145.344,
+      "notes": "Granite pinnacles on the east side of Phillip Island. Sunrise, swell, dark southern sky.",
+      "enabled": true,
+      "conditions": {
+        "sunrise": {
+          "on": true
+        },
+        "swell": {
+          "on": true,
+          "height": 3
+        },
+        "milkyway": {
+          "on": true
+        },
+        "aurora": {
+          "on": true
+        },
+        "wind": {
+          "on": true
+        }
+      }
+    },
+    {
+      "id": "pyramid-rock",
+      "name": "Pyramid Rock, Phillip Island",
+      "lat": -38.5265,
+      "lon": 145.231,
+      "notes": "Faces due south over Bass Strait. One of the darkest easy-access aurora spots near Melbourne.",
+      "enabled": true,
+      "conditions": {
+        "aurora": {
+          "on": true,
+          "kp": 5
+        },
+        "milkyway": {
+          "on": true
+        },
+        "swell": {
+          "on": true,
+          "height": 3
+        },
+        "sunset": {
+          "on": true
+        }
+      }
+    },
+    {
+      "id": "the-nobbies",
+      "name": "The Nobbies, Phillip Island",
+      "lat": -38.518,
+      "lon": 145.105,
+      "notes": "Boardwalk and blowhole at the western tip. Sunset, wild seas, aurora.",
+      "enabled": true,
+      "conditions": {
+        "sunset": {
+          "on": true
+        },
+        "swell": {
+          "on": true,
+          "height": 3
+        },
+        "aurora": {
+          "on": true
+        },
+        "wind": {
+          "on": true
+        },
+        "storm": {
+          "on": true
+        }
+      }
+    }
+  ]
+}
