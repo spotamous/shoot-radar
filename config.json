@@ -183,6 +183,58 @@
         }
       },
       "image": "images/mount-donna-buang-m1qv-mvas6rdt.jpg"
+    },
+    {
+      "id": "cathedral-range-brom",
+      "name": "Cathedral Range",
+      "lat": -37.4,
+      "lon": 145.75,
+      "notes": "",
+      "enabled": true,
+      "conditions": {
+        "sunrise": {
+          "on": true
+        },
+        "sunset": {
+          "on": true
+        },
+        "fog": {
+          "on": true
+        },
+        "snow": {
+          "on": true
+        }
+      },
+      "imagePos": "top",
+      "image": "images/cathedral-range-brom-mvas8wbs.jpg"
+    },
+    {
+      "id": "arawata-4iua",
+      "name": "Arawata",
+      "lat": -38.4,
+      "lon": 145.8667,
+      "notes": "Foggy sunrises over the green rolling hills.",
+      "enabled": true,
+      "conditions": {
+        "sunrise": {
+          "on": true
+        },
+        "sunset": {
+          "on": true
+        },
+        "fog": {
+          "on": true
+        },
+        "storm": {
+          "on": true
+        },
+        "lightning": {
+          "on": true,
+          "radius": 60
+        }
+      },
+      "imagePos": "top",
+      "image": "images/arawata-4iua-mvas90ft.jpg"
     }
   ]
 }
