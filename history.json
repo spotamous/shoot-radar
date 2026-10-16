@@ -1,6 +1,16 @@
 {
   "entries": [
     {
+      "id": "arawata-4iua|sunrise|2026-10-20",
+      "t": 1792437860000,
+      "key": "sunrise",
+      "locId": "arawata-4iua",
+      "loc": "Arawata",
+      "score": 72,
+      "why": "Mid/high cloud 81%, low cloud 0% here / 0% on the horizon",
+      "sent": 1792180978348
+    },
+    {
       "id": "gunnamatta|sunset|2026-10-19",
       "t": 1792399328000,
       "key": "sunset",
@@ -17,7 +27,7 @@
       "locId": "cape-schanck",
       "loc": "Cape Schanck (Pulpit Rock)",
       "score": 100,
-      "why": "Mid/high cloud 60%, low cloud 0% here / 0% on the horizon",
+      "why": "Mid/high cloud 48%, low cloud 0% here / 0% on the horizon",
       "sent": 1792142643541
     },
     {
@@ -29,6 +39,36 @@
       "score": 100,
       "why": "Mid/high cloud 42%, low cloud 0% here / 0% on the horizon",
       "sent": 1792142643541
+    },
+    {
+      "id": "cape-woolamai|fog|2026-10-18",
+      "t": 1792265323000,
+      "key": "fog",
+      "locId": "cape-woolamai",
+      "loc": "Cape Woolamai (The Pinnacles)",
+      "score": 60,
+      "why": "Visibility 1.6 km, humidity 96%, wind 9 km/h around 7:28am",
+      "sent": 1792180978348
+    },
+    {
+      "id": "cathedral-range-brom|sunrise|2026-10-17",
+      "t": 1792178999000,
+      "key": "sunrise",
+      "locId": "cathedral-range-brom",
+      "loc": "Cathedral Range",
+      "score": 100,
+      "why": "Mid/high cloud 67%, low cloud 0% here / 0% on the horizon",
+      "sent": 1792180978348
+    },
+    {
+      "id": "arawata-4iua|sunrise|2026-10-17",
+      "t": 1792178914000,
+      "key": "sunrise",
+      "locId": "arawata-4iua",
+      "loc": "Arawata",
+      "score": 100,
+      "why": "Mid/high cloud 33%, low cloud 0% here / 0% on the horizon",
+      "sent": 1792180978348
     }
   ],
   "keepalive": 1792142643541
