@@ -1,3 +1,35 @@
 {
-  "entries": []
+  "entries": [
+    {
+      "id": "gunnamatta|sunset|2026-10-19",
+      "t": 1792399328000,
+      "key": "sunset",
+      "locId": "gunnamatta",
+      "loc": "Gunnamatta Beach",
+      "score": 65,
+      "why": "Mid/high cloud 84%, low cloud 0% here / 0% on the horizon",
+      "sent": 1792142643541
+    },
+    {
+      "id": "cape-schanck|sunset|2026-10-19",
+      "t": 1792399316000,
+      "key": "sunset",
+      "locId": "cape-schanck",
+      "loc": "Cape Schanck (Pulpit Rock)",
+      "score": 100,
+      "why": "Mid/high cloud 60%, low cloud 0% here / 0% on the horizon",
+      "sent": 1792142643541
+    },
+    {
+      "id": "arthurs-seat|sunset|2026-10-19",
+      "t": 1792399299000,
+      "key": "sunset",
+      "locId": "arthurs-seat",
+      "loc": "Arthurs Seat summit",
+      "score": 100,
+      "why": "Mid/high cloud 42%, low cloud 0% here / 0% on the horizon",
+      "sent": 1792142643541
+    }
+  ],
+  "keepalive": 1792142643541
 }
