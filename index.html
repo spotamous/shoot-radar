@@ -161,6 +161,26 @@ button.cover-ph svg { width: 18px; height: 18px; }
 .photo-edit img { width: 100%; max-width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); }
 .photo-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .photo-row select { width: auto; }
+/* shoot log */
+.log { display: grid; gap: 8px; }
+.logrow { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+.logrow.rated { opacity: .8; }
+.logrow .thumb { width: 56px; height: 56px; border-radius: 8px; object-fit: cover; background: var(--surface-2); display: flex; align-items: center; justify-content: center; color: var(--accent); }
+.logrow .thumb svg { width: 22px; height: 22px; }
+.logrow .t1 { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-weight: 600; }
+.logrow .t2 { font-size: 13px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rates { display: flex; gap: 6px; }
+.rates button { padding: 6px 10px; font-size: 13px; }
+.rates button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.rates button.dud[aria-pressed="true"] { background: var(--low); color: var(--ink); border-color: var(--muted); }
+.learned-note { font-size: 12px; color: var(--accent); }
+.tides { font: 12.5px var(--mono); color: var(--muted); padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; }
+@media (max-width: 560px) {
+  .logrow { grid-template-columns: 48px minmax(0, 1fr); }
+  .logrow .thumb { width: 48px; height: 48px; }
+  .rates { grid-column: 1 / -1; }
+  .rates button { flex: 1; justify-content: center; }
+}
 .savebar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface-2); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); }
 .savebar .wrap { display: flex; align-items: center; gap: 10px; padding-block: 12px; flex-wrap: wrap; }
 .savebar .msg { margin-right: auto; font-size: 14px; }
@@ -188,6 +208,7 @@ button.cover-ph svg { width: 18px; height: 18px; }
     <symbol id="i-wind" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 9h11a3 3 0 1 0-3-3M3 15h15a3 3 0 1 1-3 3M3 12h7"/></symbol>
     <symbol id="i-rainbow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 18a10 10 0 0 1 20 0M5.5 18a6.5 6.5 0 0 1 13 0M9 18a3 3 0 0 1 6 0"/></symbol>
     <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="10" r="5.5"/><path d="M3 19h18M6 22h12"/></symbol>
+    <symbol id="i-strike" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9a5 5 0 0 1 8.6-3.5A4 4 0 1 1 18 11H6.5"/><path d="m12 11-2.5 5h4L11 21"/></symbol>
     <symbol id="i-snow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7M9.5 3.5 12 6l2.5-2.5M9.5 20.5 12 18l2.5 2.5"/></symbol>
   </defs>
 </svg>
@@ -224,6 +245,15 @@ button.cover-ph svg { width: 18px; height: 18px; }
       <span><i style="background:var(--low)"></i>under 40</span>
       <span id="moonNote"></span>
     </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-log">
+    <div class="sec-head">
+      <h2 id="h-log">Shoot log</h2>
+      <p>Rate how alerted shoots turned out. After 3 ratings for a spot and condition, its alert threshold tunes itself.</p>
+    </div>
+    <div class="log" id="log"></div>
+    <div class="chips" id="learned" style="margin-top:10px"></div>
   </section>
 
   <section class="sec" aria-labelledby="h-locs">
@@ -282,8 +312,8 @@ button.cover-ph svg { width: 18px; height: 18px; }
         <div class="conds" id="lConds"></div>
       </div>
       <details>
-        <summary>Swell forecast point (advanced)</summary>
-        <p class="note">Swell needs an ocean grid point. If a cliff-top spot shows "no ocean data", set a point a few km offshore. Leave blank to search automatically.</p>
+        <summary>Sea point for swell and tides (advanced)</summary>
+        <p class="note">Swell and tide need an ocean grid point. If a spot shows "no ocean data", set a point a few km offshore. Leave blank to search automatically. Tides are modelled; check BoM tide tables for exact times.</p>
         <div class="two">
           <label class="f">Swell latitude <input type="number" id="lSLat" step="0.0001"></label>
           <label class="f">Swell longitude <input type="number" id="lSLon" step="0.0001"></label>
@@ -309,7 +339,9 @@ button.cover-ph svg { width: 18px; height: 18px; }
         <div class="conds">
           <div class="line-toggle"><div>Morning digest, 6:45am<small>Today's evening, tonight and the next two days.</small></div><label class="switch"><input type="checkbox" id="sMorning"><span></span></label></div>
           <div class="line-toggle"><div>Evening digest, 6:45pm<small>Plan tomorrow's sunrise the night before.</small></div><label class="switch"><input type="checkbox" id="sEvening"><span></span></label></div>
-          <div class="line-toggle"><div>Live aurora watch<small>Checks real-time Kp every 30 minutes after dark and alerts at high priority.</small></div><label class="switch"><input type="checkbox" id="sLive"><span></span></label></div>
+          <div class="line-toggle"><div>Live aurora watch<small>Checks real-time Kp every 15 minutes after dark and alerts at high priority.</small></div><label class="switch"><input type="checkbox" id="sLive"><span></span></label></div>
+          <div class="line-toggle"><div>Live lightning watch<small>Listens for strikes every 15 minutes near spots with Live lightning switched on.</small></div><label class="switch"><input type="checkbox" id="sBolt"><span></span></label></div>
+          <div class="line-toggle"><div>Tune thresholds from my ratings<small>Off: ratings are kept and shown as suggestions only.</small></div><label class="switch"><input type="checkbox" id="sTune"><span></span></label></div>
           <div class="line-toggle"><div>Send a digest even when nothing's on<small>Otherwise quiet days stay quiet.</small></div><label class="switch"><input type="checkbox" id="sQuiet"><span></span></label></div>
           <div class="two">
             <label class="f">Look ahead (hours) <input type="number" id="sHours" min="12" max="96" step="12"></label>
@@ -406,11 +438,26 @@ let config = null;  // working copy
 let sha = null;     // GitHub blob sha of config.json
 let run = null;
 const gh = () => ({ repo: store.get('ghRepo', ''), branch: store.get('ghBranch', 'main') || 'main', token: store.get('ghToken', '') });
-const DEFAULT_SETTINGS = { morning: true, evening: true, hours: 72, maxItems: 8, quietDigest: false, liveAurora: true };
+const DEFAULT_SETTINGS = { morning: true, evening: true, hours: 72, maxItems: 8, quietDigest: false, liveAurora: true, liveLightning: true, autoTune: true };
+let history = { entries: [] }, ratingsDoc = { ratings: {}, tracked: [] }, learned = null;
 
 const b64enc = (s) => btoa(String.fromCharCode(...new TextEncoder().encode(s)));
 const b64dec = (s) => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\s/g, '')), (c) => c.charCodeAt(0)));
 
+async function ghGet(path) {
+  const g = gh();
+  const r = await fetch(`https://api.github.com/repos/${g.repo}/contents/${path}?ref=${encodeURIComponent(g.branch)}`, { headers: { Authorization: `Bearer ${g.token}`, Accept: 'application/vnd.github+json' }, cache: 'no-store' });
+  if (r.status === 404) return { json: null, sha: null };
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  const j = await r.json(); return { json: JSON.parse(b64dec(j.content)), sha: j.sha };
+}
+async function loadData(path, fallback) {
+  const g = gh();
+  try {
+    if (g.repo && g.token) return (await ghGet(path)).json || fallback;
+    const r = await fetch('./' + path, { cache: 'no-store' }); return r.ok ? await r.json() : fallback;
+  } catch { return fallback; }
+}
 async function loadConfig() {
   const g = gh();
   if (g.repo && g.token) {
@@ -438,6 +485,8 @@ async function init() {
   saved = normalise(await loadConfig());
   const draft = store.get('draft');
   config = draft ? normalise(draft) : structuredClone(saved);
+  [history, ratingsDoc] = await Promise.all([loadData('history.json', { entries: [] }), loadData('ratings.json', { ratings: {}, tracked: [] })]);
+  history.entries ||= []; ratingsDoc.ratings ||= {}; ratingsDoc.tracked ||= [];
   markDirty();
   renderLocs();
   refresh();
@@ -448,14 +497,15 @@ async function refresh() {
   const n = config.locations.filter((l) => l.enabled !== false).length || 1;
   $('progress').style.width = '4%';
   try {
-    run = await E.runAll(config, { onProgress: (k) => ($('progress').style.width = Math.round((k / n) * 100) + '%') });
+    learned = E.learnThresholds(ratingsDoc.ratings, config);
+    run = await E.runAll(config, { learned: config.settings.autoTune ? learned : null, onProgress: (k) => ($('progress').style.width = Math.round((k / n) * 100) + '%') });
     $('stamp').textContent = `Updated ${E.fmtTime(run.now)} · Melbourne time`;
   } catch (e) {
     $('stamp').textContent = 'Forecast fetch failed: ' + e.message;
   }
   setTimeout(() => ($('progress').style.width = '0'), 400);
   $('refresh').disabled = false;
-  renderAlerts(); renderRadar(); renderLocs();
+  renderAlerts(); renderRadar(); renderLocs(); renderLog();
 }
 
 function renderAlerts() {
@@ -497,12 +547,28 @@ function renderRadar() {
   if (!run.results.length) html += `<tr><td colspan="5" class="empty">Add a location to start.</td></tr>`;
   $('radar').innerHTML = html + '</tbody>';
 }
+let detailEvs = [];
+const isTracked = (e) => { const id = E.eventId(e); return history.entries.some((h) => h.id === id) || ratingsDoc.tracked.some((h) => h.id === id); };
+$('detList').addEventListener('click', async (ev) => {
+  const b = ev.target.closest('[data-track]'); if (!b) return;
+  const e = detailEvs[+b.dataset.track], id = E.eventId(e);
+  const entry = { id, t: e.t, key: e.key, locId: e.locId, loc: e.loc, score: e.score, why: e.why, tracked: Date.now() };
+  b.disabled = true; b.textContent = 'Saving…';
+  const ok = await saveRatings((doc) => { if (!doc.tracked.some((h) => h.id === id)) doc.tracked.push(entry); });
+  b.textContent = ok ? 'In shoot log' : 'Track'; b.disabled = ok;
+  if (ok) toast('Added to your shoot log. Rate it after you have been.');
+});
 $('radar').addEventListener('click', (ev) => {
   const b = ev.target.closest('.pip'); if (!b) return;
   const r = run.results.find((x) => x.loc.id === b.dataset.loc);
   const evs = r.events.filter((e) => E.localParts(e.t).key === b.dataset.day).sort((a, b2) => b2.score - a.score);
   $('detTitle').textContent = `${r.loc.name} · ${E.fmtDay(evs[0].t, run.now)}`;
-  $('detList').innerHTML = evs.map((e) => `<div class="d"><span class="score ${band(e.score)}">${e.score}</span><span class="lab">${icon(e.key)}${esc(E.CONDITIONS[e.key].label)} · ${esc(E.fmtTime(e.t))}${e.alert ? ' <span class="chip">alerts</span>' : ` <span class="chip">alert at ${e.min}</span>`}</span><span class="why">${esc(e.why)}</span></div>`).join('');
+  detailEvs = evs;
+  const tides = (r.tides || []).filter((x) => E.localParts(x.t).key === b.dataset.day);
+  $('detList').innerHTML = (tides.length ? `<div class="tides">Tides (modelled): ${tides.map((x) => `${x.type === 'high' ? 'High' : 'Low'} ${esc(E.fmtTime(x.t))} (${x.level >= 0 ? '+' : ''}${x.level.toFixed(1)} m)`).join(' · ')}</div>` : '')
+    + evs.map((e, i) => { const tracked = isTracked(e);
+      return `<div class="d"><span class="score ${band(e.score)}">${e.score}</span><span class="lab">${icon(e.key)}${esc(E.CONDITIONS[e.key].label)} · ${esc(E.fmtTime(e.t))}${e.alert ? ' <span class="chip">alerts</span>' : ` <span class="chip">alert at ${e.min}</span>`}
+      <button type="button" class="ghost" style="margin-left:auto;padding:4px 10px;font-size:12px" data-track="${i}" ${tracked ? 'disabled' : ''}>${tracked ? 'In shoot log' : 'Track'}</button></span><span class="why">${esc(e.why)}</span></div>`; }).join('');
   $('detDlg').showModal();
 });
 
@@ -518,7 +584,7 @@ function renderLocs() {
       <div class="name">${esc(l.name)}</div>
       <div class="coords">${(+l.lat).toFixed(4)}, ${(+l.lon).toFixed(4)}${l.enabled === false ? ' · paused' : ''}</div>
       ${l.notes ? `<div class="notes">${esc(l.notes)}</div>` : ''}
-      <div class="ico-row">${on.length ? on.map((k) => `<span>${icon(k)}${esc(E.CONDITIONS[k].label)} ≥${E.condSettings(l, k).min}</span>`).join('') : '<span>No conditions selected</span>'}</div>
+      <div class="ico-row">${on.length ? on.map((k) => { const st = E.condSettings(l, k, config.settings.autoTune ? learned : null); return `<span>${icon(k)}${esc(E.CONDITIONS[k].label)} ${E.CONDITIONS[k].live ? `≤${st.radius} km` : `≥${st.min}${st.min !== st.baseMin ? ' tuned' : ''}`}</span>`; }).join('') : '<span>No conditions selected</span>'}</div>
       ${err.length ? `<div class="warn">${esc(err.join('; '))}</div>` : ''}
       <div class="actions"><button type="button" data-edit="${i}">Edit</button><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=${l.lat},${l.lon}" target="_blank" rel="noopener">Map</a></div>
       </div>
@@ -526,6 +592,74 @@ function renderLocs() {
   }).join('') || '<div class="empty">No locations yet. Add your first spot.</div>';
 }
 $('locs').addEventListener('click', (ev) => { const b = ev.target.closest('[data-edit]'); if (b) openLoc(+b.dataset.edit); });
+
+// ---------- shoot log
+let logLimit = 8;
+const RATES = [['epic', 'Epic'], ['ok', 'OK'], ['dud', 'Dud']];
+function logEntries() {
+  const m = new Map();
+  for (const h of [...ratingsDoc.tracked, ...history.entries]) m.set(h.id, { ...m.get(h.id), ...h });
+  const now = Date.now();
+  return [...m.values()].filter((h) => now - h.t < 45 * 86400e3).sort((a, b) => b.t - a.t);
+}
+function renderLog() {
+  const now = Date.now(), all = logEntries();
+  const planned = all.filter((h) => h.t > now).reverse(), past = all.filter((h) => h.t <= now);
+  const row = (h) => {
+    const l = config.locations.find((x) => x.id === h.locId), r = ratingsDoc.ratings[h.id]?.rating, cond = E.CONDITIONS[h.key];
+    if (!cond) return '';
+    return `<div class="logrow ${r ? 'rated' : ''}">
+      ${imgSrc(l) ? img(l, 'thumb', '') : `<span class="thumb">${icon(h.key)}</span>`}
+      <div style="min-width:0"><div class="t1"><span class="score ${band(h.score)}">${h.score}</span>${esc(cond.label)} · ${esc(h.loc)}</div>
+        <div class="t2">${esc(E.fmtWhen(h.t, now))}${h.tracked && !history.entries.some((x) => x.id === h.id) ? ' · tracked by you' : ''} · ${esc(h.why)}</div></div>
+      ${h.t > now ? '<div class="rates"><span class="chip">Planned</span></div>' : `<div class="rates" role="group" aria-label="How did it go?">${RATES.map(([v, t]) => `<button type="button" class="${v}" data-rate="${esc(h.id)}" data-v="${v}" aria-pressed="${r === v}">${t}</button>`).join('')}</div>`}
+    </div>`;
+  };
+  const shown = past.slice(0, logLimit);
+  $('log').innerHTML = (planned.map(row).join('') + shown.map(row).join(''))
+    || '<div class="empty">Alerts from your phone digests land here once they have been sent. You can also open any score on the radar and press Track.</div>';
+  if (past.length > logLimit) $('log').insertAdjacentHTML('beforeend', `<div><button type="button" class="ghost" id="logMore">Show ${Math.min(10, past.length - logLimit)} more</button></div>`);
+  const L = Object.entries(learned || {}).map(([k, v]) => {
+    const [locId, key] = k.split('|'), l = config.locations.find((x) => x.id === locId); if (!l) return '';
+    const name = `${esc(l.name)} · ${esc(E.CONDITIONS[key].label)}`;
+    if (v.min == null) return `<span class="chip">${name}: ${v.n} of 3 ratings</span>`;
+    if (v.min === v.base) return `<span class="chip">${name}: ${v.base} confirmed by ${v.n} ratings</span>`;
+    return `<span class="chip">${name}: ${config.settings.autoTune ? 'alerting' : 'suggest'} at ${v.min} instead of ${v.base} (${v.good} good, ${v.dud} dud)</span>`;
+  }).join('');
+  $('learned').innerHTML = L;
+}
+$('log').addEventListener('click', async (ev) => {
+  if (ev.target.id === 'logMore') { logLimit += 10; return renderLog(); }
+  const b = ev.target.closest('[data-rate]'); if (!b) return;
+  const id = b.dataset.rate, v = b.dataset.v, h = logEntries().find((x) => x.id === id); if (!h) return;
+  const cur = ratingsDoc.ratings[id]?.rating;
+  const ok = await saveRatings((doc) => {
+    if (cur === v) delete doc.ratings[id];
+    else doc.ratings[id] = { rating: v, score: h.score, key: h.key, locId: h.locId, t: h.t, at: Date.now() };
+  });
+  if (ok) { learned = E.learnThresholds(ratingsDoc.ratings, config); toast(cur === v ? 'Rating removed.' : 'Rated. Thanks, the radar will learn from it.'); refresh(); }
+});
+// Ratings live in ratings.json, written only by this app, so the alert engine never conflicts with it.
+async function saveRatings(mutate) {
+  const g = gh();
+  if (!g.repo || !g.token) { toast('Connect GitHub in Settings to save ratings.', 4500); return false; }
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const cur = await ghGet('ratings.json');
+      const doc = cur.json || { ratings: {}, tracked: [] }; doc.ratings ||= {}; doc.tracked ||= [];
+      mutate(doc);
+      doc.tracked = doc.tracked.filter((h) => Date.now() - h.t < 120 * 86400e3);
+      const r = await fetch(`https://api.github.com/repos/${g.repo}/contents/ratings.json`, {
+        method: 'PUT', headers: { Authorization: `Bearer ${g.token}`, Accept: 'application/vnd.github+json' },
+        body: JSON.stringify({ message: 'Update shoot ratings', content: b64enc(JSON.stringify(doc, null, 2) + '\n'), sha: cur.sha || undefined, branch: g.branch }),
+      });
+      if (r.status === 409 || r.status === 422) continue;
+      if (!r.ok) throw new Error(r.status === 401 || r.status === 403 ? 'the token cannot write to this repository' : 'HTTP ' + r.status);
+      ratingsDoc = doc; renderLog(); return true;
+    } catch (e) { toast('Rating not saved: ' + e.message, 5000); return false; }
+  }
+  toast('Rating not saved: GitHub kept changing underneath. Try again.'); return false;
+}
 
 // ---------- location editor
 let editIdx = -1, draftLoc = null;
@@ -543,15 +677,24 @@ function openLoc(i) {
   renderConds();
   $('locDlg').showModal();
 }
+function paramInput(k, p, spec, val) {
+  const id = `c-${k}-${p}`;
+  if (spec.type === 'select') return `<label>${esc(spec.label)} <select id="${id}" data-f="${p}" data-type="str">${Object.entries(spec.options).map(([v, t]) => `<option value="${v}" ${v === val ? 'selected' : ''}>${esc(t)}</option>`).join('')}</select></label>`;
+  if (spec.type === 'compass') return `<label>${esc(spec.label)} <select id="${id}" data-f="${p}"><option value="-1">Any direction</option>${E.COMPASS.map((n, i) => `<option value="${i * 22.5}" ${+val >= 0 && Math.abs(((+val - i * 22.5 + 540) % 360) - 180) < 11.25 ? 'selected' : ''}>${n} (${i * 22.5}°)</option>`).join('')}</select></label>`;
+  return `<label>${esc(spec.label)} <input type="number" id="${id}" data-f="${p}" min="${spec.min}" max="${spec.max}" step="${spec.step}" value="${val}"></label>`;
+}
 function renderConds() {
   $('lConds').innerHTML = Object.entries(E.CONDITIONS).map(([k, def]) => {
-    const st = E.condSettings(draftLoc, k);
+    const st = E.condSettings(draftLoc, k, learned);
+    const L = st.learned;
+    const note = def.live ? '' : L?.min != null ? `<span class="learned-note">Learned from ${L.n} ratings: ${L.min}${config.settings.autoTune ? ' (in use)' : ' (suggested; tuning is off)'}</span>` : L ? `<span class="learned-note">${L.n} of 3 ratings to tune</span>` : '';
     return `<div class="cond-row ${st.on ? 'on' : ''}" data-k="${k}">
       <div class="cond-top">${icon(k)}<div class="txt"><div class="t">${esc(def.label)}</div><div class="h">${esc(def.help)}</div></div>
         <label class="switch"><input type="checkbox" id="c-${k}-on" data-f="on" ${st.on ? 'checked' : ''} aria-label="Watch for ${esc(def.label)}"><span></span></label></div>
       <div class="cond-cfg" ${st.on ? '' : 'hidden'}>
-        <label>Alert at <input type="range" id="c-${k}-min" data-f="min" min="20" max="95" step="5" value="${st.min}"><output>${st.min}</output></label>
-        ${Object.entries(def.params).map(([p, spec]) => `<label>${esc(spec.label)} <input type="number" id="c-${k}-${p}" data-f="${p}" min="${spec.min}" max="${spec.max}" step="${spec.step}" value="${st[p]}"></label>`).join('')}
+        ${def.live ? '' : `<label>Alert at <input type="range" id="c-${k}-min" data-f="min" min="20" max="95" step="5" value="${st.baseMin}"><output>${st.baseMin}</output></label>`}
+        ${Object.entries(def.params).map(([p, spec]) => paramInput(k, p, spec, st[p])).join('')}
+        ${note}
       </div></div>`;
   }).join('');
 }
@@ -560,6 +703,7 @@ $('lConds').addEventListener('input', (ev) => {
   const k = row.dataset.k, f = inp.dataset.f;
   const c = (draftLoc.conditions[k] ||= {});
   if (f === 'on') { c.on = inp.checked; row.classList.toggle('on', inp.checked); row.querySelector('.cond-cfg').hidden = !inp.checked; }
+  else if (inp.dataset.type === 'str') c[f] = inp.value;
   else { const v = parseFloat(inp.value); if (isFinite(v)) c[f] = v; if (f === 'min') inp.nextElementSibling.textContent = inp.value; }
 });
 let searchT;
@@ -622,7 +766,7 @@ $('addLoc').addEventListener('click', () => openLoc(-1));
 // ---------- settings
 $('openSettings').addEventListener('click', () => {
   const s = config.settings, g = gh();
-  $('sMorning').checked = s.morning; $('sEvening').checked = s.evening; $('sLive').checked = s.liveAurora; $('sQuiet').checked = s.quietDigest;
+  $('sMorning').checked = s.morning; $('sEvening').checked = s.evening; $('sLive').checked = s.liveAurora; $('sQuiet').checked = s.quietDigest; $('sBolt').checked = s.liveLightning; $('sTune').checked = s.autoTune;
   $('sHours').value = s.hours; $('sMax').value = s.maxItems;
   $('gRepo').value = g.repo; $('gBranch').value = g.branch; $('gToken').value = g.token; $('nTopic').value = store.get('ntfyTopic', '');
   $('importBox').hidden = $('importRow').hidden = true;
@@ -630,14 +774,19 @@ $('openSettings').addEventListener('click', () => {
 });
 $('sApply').addEventListener('click', async () => {
   const s = config.settings;
-  Object.assign(s, { morning: $('sMorning').checked, evening: $('sEvening').checked, liveAurora: $('sLive').checked, quietDigest: $('sQuiet').checked,
+  Object.assign(s, { morning: $('sMorning').checked, evening: $('sEvening').checked, liveAurora: $('sLive').checked, quietDigest: $('sQuiet').checked, liveLightning: $('sBolt').checked, autoTune: $('sTune').checked,
     hours: Math.min(96, Math.max(12, +$('sHours').value || 72)), maxItems: Math.min(20, Math.max(1, +$('sMax').value || 8)) });
   const before = JSON.stringify(gh());
   store.set('ghRepo', $('gRepo').value.trim().replace(/^https?:\/\/github\.com\//, '').replace(/\/$/, ''));
   store.set('ghBranch', $('gBranch').value.trim() || 'main'); store.set('ghToken', $('gToken').value.trim()); store.set('ntfyTopic', $('nTopic').value.trim());
   $('setDlg').close();
-  if (JSON.stringify(gh()) !== before && gh().repo && gh().token) { saved = normalise(await loadConfig()); toast('Connected to GitHub.'); }
-  markDirty(); renderAlerts();
+  if (JSON.stringify(gh()) !== before && gh().repo && gh().token) {
+    saved = normalise(await loadConfig());
+    [history, ratingsDoc] = await Promise.all([loadData('history.json', { entries: [] }), loadData('ratings.json', { ratings: {}, tracked: [] })]);
+    history.entries ||= []; ratingsDoc.ratings ||= {}; ratingsDoc.tracked ||= [];
+    toast('Connected to GitHub.');
+  }
+  markDirty(); refresh();
 });
 $('nTest').addEventListener('click', async () => {
   const topic = $('nTopic').value.trim(); if (!topic) return toast('Enter your ntfy topic first.');

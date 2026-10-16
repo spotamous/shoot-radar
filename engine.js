@@ -11,42 +11,78 @@ const lerp = (a, b, t) => a + (b - a) * clamp(t);
 
 // ---------------------------------------------------------------- conditions
 // `min` = score (0-100) at or above which the condition triggers an alert.
+export const COMPASS = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
+export const compassName = (deg) => COMPASS[Math.round(norm360(deg) / 22.5) % 16];
+const TIDE = { label: 'Tide', type: 'select', options: { any: 'Any tide', low: 'Low tide', mid: 'Mid tide', high: 'High tide' }, value: 'any' };
+
 export const CONDITIONS = {
-  sunrise:  { label: 'Sunrise colour',   icon: 'sunrise', min: 60, params: {},
+  sunrise:  { label: 'Sunrise colour',   icon: 'sunrise', min: 60, params: { tide: TIDE },
               help: 'Mid/high cloud to light up, clear low horizon to the east.' },
-  sunset:   { label: 'Sunset colour',    icon: 'sunset',  min: 60, params: {},
+  sunset:   { label: 'Sunset colour',    icon: 'sunset',  min: 60, params: { tide: TIDE },
               help: 'Mid/high cloud to light up, clear low horizon to the west.' },
-  fog:      { label: 'Foggy sunrise',    icon: 'fog',     min: 55, params: {},
+  fog:      { label: 'Foggy sunrise',    icon: 'fog',     min: 55, params: { tide: TIDE },
               help: 'Low visibility, saturated air and light wind around dawn.' },
   swell:    { label: 'Big swell',        icon: 'wave',    min: 55,
-              params: { height: { label: 'Swell height (m)', value: 3, step: 0.5, min: 0.5, max: 10 } },
-              help: 'Swell height and period during daylight; bonus in golden hour.' },
-  storm:    { label: 'Electrical storm', icon: 'bolt',    min: 50, params: {},
-              help: 'Thunderstorm codes and instability (CAPE); bonus after dark.' },
+              params: { height: { label: 'Swell height (m)', value: 3, step: 0.5, min: 0.5, max: 10 },
+                        dir: { label: 'Exposed to swell from', type: 'compass', value: -1 },
+                        spread: { label: '± degrees', value: 60, step: 15, min: 15, max: 180 },
+                        tide: TIDE },
+              help: 'Swell height, period and direction during daylight; bonus in golden hour.' },
+  storm:    { label: 'Electrical storm', icon: 'bolt',    min: 50, params: { tide: TIDE },
+              help: 'Forecast thunderstorms and instability (CAPE); bonus after dark.' },
+  lightning:{ label: 'Live lightning',   icon: 'strike',  min: 0, live: true,
+              params: { radius: { label: 'Within (km)', value: 40, step: 5, min: 5, max: 150 },
+                        strikes: { label: 'Min strikes', value: 3, step: 1, min: 1, max: 50 } },
+              help: 'Real-time strikes near this spot (Blitzortung network), pushed as it happens.' },
   milkyway: { label: 'Milky Way night',  icon: 'stars',   min: 55,
-              params: { maxCloud: { label: 'Max cloud (%)', value: 20, step: 5, min: 0, max: 60 } },
+              params: { maxCloud: { label: 'Max cloud (%)', value: 20, step: 5, min: 0, max: 60 }, tide: TIDE },
               help: 'Astronomical darkness, moon down, clear sky; bonus when the core is up.' },
   aurora:   { label: 'Aurora australis', icon: 'aurora',  min: 40,
-              params: { kp: { label: 'Min Kp', value: 5, step: 0.5, min: 3, max: 9 } },
+              params: { kp: { label: 'Min Kp', value: 5, step: 0.5, min: 3, max: 9 }, tide: TIDE },
               help: 'NOAA Kp forecast during darkness, clear sky to the south.' },
   wind:     { label: 'Wild wind',        icon: 'wind',    min: 50,
-              params: { gust: { label: 'Gusts (km/h)', value: 75, step: 5, min: 30, max: 150 } },
+              params: { gust: { label: 'Gusts (km/h)', value: 75, step: 5, min: 30, max: 150 }, tide: TIDE },
               help: 'Damaging-strength gusts: wild seas, spray, moving cloud.' },
-  rainbow:  { label: 'Rainbow chance',   icon: 'rainbow', min: 55, params: {},
+  rainbow:  { label: 'Rainbow chance',   icon: 'rainbow', min: 55, params: { tide: TIDE },
               help: 'Showers with low sun (morning or late afternoon) and broken cloud.' },
-  moon:     { label: 'Full moonrise',    icon: 'moon',    min: 55, params: {},
+  moon:     { label: 'Full moonrise',    icon: 'moon',    min: 55, params: { tide: TIDE },
               help: 'Near-full moon rising within an hour of sunset (or setting near sunrise).' },
   snow:     { label: 'Snowfall',         icon: 'snow',    min: 50,
               params: { cm: { label: 'Snow (cm/day)', value: 2, step: 1, min: 1, max: 50 } },
               help: 'Fresh snow forecast. Mostly useful for alpine and high spots.' },
 };
 
-export function condSettings(loc, key) {
+// `learned` (optional) = output of learnThresholds(); its min replaces the manual one.
+export function condSettings(loc, key, learned) {
   const def = CONDITIONS[key];
   const c = (loc.conditions && loc.conditions[key]) || {};
   const params = {};
   for (const [p, spec] of Object.entries(def.params)) params[p] = c[p] ?? spec.value;
-  return { on: !!c.on, min: c.min ?? def.min, ...params };
+  const base = c.min ?? def.min, L = learned?.[`${loc.id}|${key}`];
+  return { on: !!c.on, min: L?.min ?? base, baseMin: base, learned: L || null, ...params };
+}
+
+// ---------------------------------------------------------------- learning from ratings
+// ratings: {id: {rating: 'epic'|'ok'|'dud', score, key, locId}}. Needs 3+ ratings per spot+condition.
+// Picks the threshold that best separates good shoots (epic/ok) from duds, within ±15 of the manual one.
+export function learnThresholds(ratings, config) {
+  const groups = {}, out = {};
+  for (const r of Object.values(ratings || {})) if (r && r.rating && r.locId && r.key && isFinite(r.score)) (groups[`${r.locId}|${r.key}`] ||= []).push(r);
+  for (const [k, rs] of Object.entries(groups)) {
+    const [locId, key] = k.split('|');
+    const loc = config.locations.find((l) => l.id === locId); if (!loc || !CONDITIONS[key] || CONDITIONS[key].live) continue;
+    const base = condSettings(loc, key).baseMin;
+    const good = rs.filter((r) => r.rating !== 'dud').length, dud = rs.length - good;
+    if (rs.length < 3) { out[k] = { n: rs.length, good, dud, base }; continue; }
+    let best = base, bestFit = -1;
+    for (let t = 20; t <= 95; t += 5) {
+      const fit = rs.reduce((s, r) => s + (((r.rating !== 'dud') === (r.score >= t)) ? (r.rating === 'epic' ? 1.5 : 1) : 0), 0);
+      if (fit > bestFit || (fit === bestFit && Math.abs(t - base) < Math.abs(best - base))) { bestFit = fit; best = t; }
+    }
+    best = Math.round(Math.max(base - 15, Math.min(base + 15, best)) / 5) * 5;
+    out[k] = { n: rs.length, good, dud, base, min: best };
+  }
+  return out;
 }
 
 // ---------------------------------------------------------------- astronomy
@@ -119,6 +155,17 @@ export function offsetPoint(lat, lon, az, km) {
   return { lat: +(lat + dLat).toFixed(4), lon: +(lon + dLon).toFixed(4) };
 }
 
+export function distanceKm(a, b) {
+  const dLat = (b.lat - a.lat) * D2R, dLon = (b.lon - a.lon) * D2R;
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * D2R) * Math.cos(b.lat * D2R) * Math.sin(dLon / 2) ** 2;
+  return 12742 * Math.asin(Math.sqrt(h));
+}
+export function bearing(a, b) {
+  const y = Math.sin((b.lon - a.lon) * D2R) * Math.cos(b.lat * D2R);
+  const x = Math.cos(a.lat * D2R) * Math.sin(b.lat * D2R) - Math.sin(a.lat * D2R) * Math.cos(b.lat * D2R) * Math.cos((b.lon - a.lon) * D2R);
+  return norm360(Math.atan2(y, x) * R2D);
+}
+
 // ---------------------------------------------------------------- time helpers
 const fmtCache = {};
 function fmt(opts) { const k = JSON.stringify(opts); return fmtCache[k] ||= new Intl.DateTimeFormat('en-AU', { timeZone: TZ, ...opts }); }
@@ -139,7 +186,7 @@ export const fmtWhen = (ms, now) => `${fmtDay(ms, now)} ${fmtTime(ms)}`;
 
 // ---------------------------------------------------------------- fetching
 const HOURLY = 'temperature_2m,relative_humidity_2m,dew_point_2m,precipitation_probability,precipitation,weather_code,cloud_cover,cloud_cover_low,cloud_cover_mid,cloud_cover_high,visibility,wind_speed_10m,wind_gusts_10m,cape,snowfall,is_day';
-const MARINE = 'wave_height,wave_period,swell_wave_height,swell_wave_period,swell_wave_direction';
+const MARINE = 'wave_height,wave_period,wave_direction,swell_wave_height,swell_wave_period,swell_wave_direction,sea_level_height_msl';
 const DAYS = 5;
 
 async function getJSON(url, fetchImpl) {
@@ -163,7 +210,7 @@ export async function fetchLocation(loc, fetchImpl = fetch, now = Date.now()) {
   } catch (e) { errors.push('weather: ' + e.message); }
 
   let marine = null;
-  const wantsSea = ['swell'].some((k) => loc.conditions?.[k]?.on);
+  const wantsSea = Object.entries(loc.conditions || {}).some(([k, c]) => c?.on && (k === 'swell' || (c.tide && c.tide !== 'any')));
   if (wantsSea) {
     const tries = loc.swellLat != null ? [{ lat: loc.swellLat, lon: loc.swellLon }]
       : [{ lat: loc.lat, lon: loc.lon }, { lat: loc.lat - 0.06, lon: loc.lon }, { lat: loc.lat - 0.15, lon: loc.lon }];
@@ -171,9 +218,9 @@ export async function fetchLocation(loc, fetchImpl = fetch, now = Date.now()) {
       try {
         const m = await getJSON(`https://marine-api.open-meteo.com/v1/marine?latitude=${p.lat}&longitude=${p.lon}&hourly=${MARINE}&timezone=${encodeURIComponent(TZ)}&timeformat=unixtime&forecast_days=${DAYS}&past_days=1`, fetchImpl);
         if (m.hourly && m.hourly.wave_height?.some((v) => v != null)) { marine = m; marine.point = p; break; }
-      } catch (e) { errors.push('marine: ' + e.message); break; }
+      } catch (e) { errors.push('sea: ' + e.message); break; }
     }
-    if (!marine && !errors.some((e) => e.startsWith('marine'))) errors.push('marine: no ocean data near this point (set a swell point offshore)');
+    if (!marine && !errors.some((e) => e.startsWith('marine'))) errors.push('sea: no ocean data near this point (set a sea point offshore in the editor)');
   }
   return { wx, east, west, south, marine, errors };
 }
@@ -236,18 +283,57 @@ function fogLikelihood(S, i) {
   return { f, vis, rh, wind };
 }
 
+// ---------------------------------------------------------------- tides (Open-Meteo sea level incl. tide + surge)
+function tideAt(M, t) {
+  if (!M || !M.h.sea_level_height_msl) return null;
+  const lv = (ms) => { const x = (ms - M.t[0]) / HOUR, i = Math.floor(x); const a = M.h.sea_level_height_msl[i], b = M.h.sea_level_height_msl[i + 1]; return a == null || b == null ? (a ?? b ?? null) : a + (b - a) * (x - i); };
+  const level = lv(t); if (level == null) return null;
+  let lo = Infinity, hi = -Infinity;
+  for (let k = -7; k <= 7; k++) { const v = lv(t + k * HOUR); if (v != null) { lo = Math.min(lo, v); hi = Math.max(hi, v); } }
+  if (!(hi - lo > 0.05)) return null;
+  const frac = (level - lo) / (hi - lo), next = lv(t + 0.5 * HOUR);
+  return { frac, level, rising: next != null && next > level };
+}
+function tideMatch(pref, frac) {
+  if (pref === 'high') return clamp((frac - 0.35) / 0.45);
+  if (pref === 'low') return clamp((0.65 - frac) / 0.45);
+  if (pref === 'mid') return clamp(1 - Math.abs(frac - 0.5) / 0.35);
+  return 1;
+}
+const tideWord = (f) => (f >= 0.75 ? 'high' : f <= 0.25 ? 'low' : 'mid');
+export function tideExtremes(api) {
+  const S = series(api); if (!S || !S.h.sea_level_height_msl) return [];
+  const v = S.h.sea_level_height_msl, out = [];
+  for (let i = 1; i < v.length - 1; i++) {
+    if (v[i] == null || v[i - 1] == null || v[i + 1] == null) continue;
+    const isHi = v[i] >= v[i - 1] && v[i] > v[i + 1], isLo = v[i] <= v[i - 1] && v[i] < v[i + 1];
+    if (!isHi && !isLo) continue;
+    const den = v[i - 1] - 2 * v[i] + v[i + 1]; const off = den ? clamp(0.5 * (v[i - 1] - v[i + 1]) / den, -0.5, 0.5) : 0; // parabolic peak
+    out.push({ t: S.t[i] + off * HOUR, type: isHi ? 'high' : 'low', level: v[i] - 0.25 * (v[i - 1] - v[i + 1]) * off });
+  }
+  return out;
+}
+
 // Returns a flat list of events for one location (all scores, alert flag set by threshold).
-export function evaluateLocation(loc, data, kp, now = Date.now()) {
+export function evaluateLocation(loc, data, kp, now = Date.now(), learned = null) {
   const out = [];
   const S = series(data.wx); if (!S) return out;
   const E = series(data.east), W = series(data.west), So = series(data.south), M = series(data.marine);
   const daily = data.wx.daily || { time: [], sunrise: [], sunset: [] };
   const rises = daily.sunrise.map((x) => x * 1000), sets = daily.sunset.map((x) => x * 1000);
   const horizonEnd = now + 4 * 86400e3;
+  const tideFactor = (key, t) => {
+    const pref = condSettings(loc, key).tide; if (!pref || pref === 'any') return { m: 1, note: '' };
+    const td = tideAt(M, t); if (!td) return { m: 1, note: '; tide unknown' };
+    const m = 0.3 + 0.7 * tideMatch(pref, td.frac);
+    return { m, note: `; ${tideWord(td.frac)} tide ${td.rising ? 'rising' : 'falling'} (${pref} wanted)` };
+  };
   const push = (key, t, r, extra = {}) => {
-    const st = condSettings(loc, key);
+    const st = condSettings(loc, key, learned);
     if (!st.on || t < now - HOUR || t > horizonEnd || !isFinite(r.score)) return;
-    out.push({ key, locId: loc.id, loc: loc.name, t, score: r.score, why: r.why, alert: r.score >= st.min, min: st.min, ...extra });
+    let score = r.score, why = r.why;
+    if (key !== 'swell' && score > 0) { const tf = tideFactor(key, t); score = Math.round(score * tf.m); why += tf.note; }
+    out.push({ key, locId: loc.id, loc: loc.name, t, score, why, alert: score >= st.min, min: st.min, ...extra });
   };
 
   for (let d = 0; d < rises.length; d++) {
@@ -269,15 +355,20 @@ export function evaluateLocation(loc, data, kp, now = Date.now()) {
       for (let t = sr; t <= ss; t += HOUR) {
         const i = M.at(t); if (i < 0) continue;
         const h = M.v('swell_wave_height', i) ?? M.v('wave_height', i); const p = M.v('swell_wave_period', i) ?? M.v('wave_period', i) ?? 8;
+        const dir = M.v('swell_wave_direction', i) ?? M.v('wave_direction', i);
         if (h == null) continue;
         const hf = h / st.height;
         let s = 0.6 * Math.pow(hf, 1.5) * (0.6 + 0.4 * clamp((p - 9) / 5));
+        let dirF = 1;
+        if (st.dir >= 0 && dir != null) { const diff = Math.abs(((dir - st.dir + 540) % 360) - 180); dirF = diff <= st.spread ? 1 : 0.2 + 0.8 * clamp(1 - (diff - st.spread) / 30); }
+        const tf = tideFactor('swell', t);
         const golden = Math.min(Math.abs(t - sr), Math.abs(t - ss)) <= 1.5 * HOUR;
         if (golden && hf >= 0.9) s += 0.1;
         const g = S.v('wind_gusts_10m', S.at(t)) ?? 0; if (g >= 60) s += 0.08;
-        if (!best || s > best.s) best = { s, t, h, p, golden, g };
+        s = clamp(s) * dirF * tf.m; // direction and tide scale the final score
+        if (!best || s > best.s) best = { s, t, h, p, golden, g, dir, dirF, tide: tf.note };
       }
-      if (best) push('swell', best.t, { score: Math.round(100 * clamp(best.s)), why: `Swell ${best.h.toFixed(1)} m @ ${Math.round(best.p)} s around ${fmtTime(best.t)}` + (best.golden ? ' (golden hour)' : '') + (best.g >= 60 ? `, gusts ${Math.round(best.g)} km/h` : '') });
+      if (best) push('swell', best.t, { score: Math.round(100 * clamp(best.s)), why: `Swell ${best.h.toFixed(1)} m @ ${Math.round(best.p)} s` + (best.dir != null ? ` from ${compassName(best.dir)}` : '') + ` around ${fmtTime(best.t)}` + (best.golden ? ' (golden hour)' : '') + (best.g >= 60 ? `, gusts ${Math.round(best.g)} km/h` : '') + (best.dirF < 1 ? `; wrong direction for this spot (wants ${compassName(st.dir)})` : '') + best.tide });
     }
   }
 
@@ -353,17 +444,20 @@ export function evaluateLocation(loc, data, kp, now = Date.now()) {
   return out;
 }
 
-export async function runAll(config, { fetchImpl = fetch, now = Date.now(), onProgress } = {}) {
+export async function runAll(config, { fetchImpl = fetch, now = Date.now(), onProgress, learned = null } = {}) {
   const kp = await fetchKp(fetchImpl);
   const results = [];
   for (const loc of config.locations.filter((l) => l.enabled !== false)) {
     const data = await fetchLocation(loc, fetchImpl, now);
-    const events = evaluateLocation(loc, data, kp, now);
-    results.push({ loc, events, errors: data.errors, marinePoint: data.marine?.point });
+    const events = evaluateLocation(loc, data, kp, now, learned);
+    results.push({ loc, events, errors: data.errors, marinePoint: data.marine?.point, tides: tideExtremes(data.marine) });
     onProgress?.(results.length);
   }
   return { results, kp, now };
 }
+
+// Stable id for one condition at one spot on one local day (used by history and ratings).
+export const eventId = (e) => `${e.locId}|${e.key}|${localParts(e.t).key}`;
 
 // Alerts above threshold, grouped so one condition on one day across many spots is one item.
 export function pickAlerts(run, { hours = 72, max = 8 } = {}) {
@@ -372,7 +466,7 @@ export function pickAlerts(run, { hours = 72, max = 8 } = {}) {
   const groups = {};
   for (const e of all.sort((a, b) => b.score - a.score)) {
     const g = (groups[`${e.key}|${localParts(e.t).key}`] ||= { ...e, also: [] });
-    if (g !== e && g.locId !== e.locId) g.also.push({ loc: e.loc, score: e.score });
+    if (g !== e && g.locId !== e.locId) g.also.push(e);
   }
   return Object.values(groups).sort((a, b) => b.score - a.score).slice(0, max).sort((a, b) => a.t - b.t);
 }
