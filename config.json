@@ -5,7 +5,7 @@
     "evening": true,
     "hours": 72,
     "maxItems": 8,
-    "quietDigest": false,
+    "quietDigest": true,
     "liveAurora": true,
     "liveLightning": true,
     "autoTune": true
