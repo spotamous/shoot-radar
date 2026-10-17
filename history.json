@@ -1,6 +1,46 @@
 {
   "entries": [
     {
+      "id": "cape-woolamai|sunrise|2026-10-21",
+      "t": 1792524270000,
+      "key": "sunrise",
+      "locId": "cape-woolamai",
+      "loc": "Cape Woolamai (The Pinnacles)",
+      "score": 95,
+      "why": "Mid/high cloud 63%, low cloud 0% here / 0% on the horizon",
+      "sent": 1792267163496
+    },
+    {
+      "id": "arawata-4iua|sunrise|2026-10-21",
+      "t": 1792524176000,
+      "key": "sunrise",
+      "locId": "arawata-4iua",
+      "loc": "Arawata",
+      "score": 80,
+      "why": "Mid/high cloud 29%, low cloud 0% here / 0% on the horizon",
+      "sent": 1792267163496
+    },
+    {
+      "id": "mount-donna-buang-m1qv|sunset|2026-10-20",
+      "t": 1792485537000,
+      "key": "sunset",
+      "locId": "mount-donna-buang-m1qv",
+      "loc": "Mount Donna Buang",
+      "score": 92,
+      "why": "Mid/high cloud 35%, low cloud 0% here / 3% on the horizon",
+      "sent": 1792267163496
+    },
+    {
+      "id": "cathedral-range-brom|sunset|2026-10-20",
+      "t": 1792485501000,
+      "key": "sunset",
+      "locId": "cathedral-range-brom",
+      "loc": "Cathedral Range",
+      "score": 66,
+      "why": "Mid/high cloud 24%, low cloud 0% here / 2% on the horizon",
+      "sent": 1792267163496
+    },
+    {
       "id": "cape-woolamai|sunrise|2026-10-20",
       "t": 1792437953000,
       "key": "sunrise",
@@ -16,9 +56,19 @@
       "key": "sunrise",
       "locId": "cathedral-range-brom",
       "loc": "Cathedral Range",
-      "score": 100,
-      "why": "Mid/high cloud 34%, low cloud 0% here / 0% on the horizon",
+      "score": 85,
+      "why": "Mid/high cloud 76%, low cloud 0% here / 0% on the horizon",
       "sent": 1792224234747
+    },
+    {
+      "id": "mount-donna-buang-m1qv|sunrise|2026-10-20",
+      "t": 1792437946000,
+      "key": "sunrise",
+      "locId": "mount-donna-buang-m1qv",
+      "loc": "Mount Donna Buang",
+      "score": 100,
+      "why": "Mid/high cloud 68%, low cloud 0% here / 0% on the horizon",
+      "sent": 1792267163496
     },
     {
       "id": "arawata-4iua|sunrise|2026-10-20",
@@ -26,8 +76,8 @@
       "key": "sunrise",
       "locId": "arawata-4iua",
       "loc": "Arawata",
-      "score": 70,
-      "why": "Mid/high cloud 82%, low cloud 0% here / 0% on the horizon",
+      "score": 67,
+      "why": "Mid/high cloud 83%, low cloud 0% here / 0% on the horizon",
       "sent": 1792180978348
     },
     {
@@ -47,7 +97,7 @@
       "locId": "cape-schanck",
       "loc": "Cape Schanck (Pulpit Rock)",
       "score": 100,
-      "why": "Mid/high cloud 48%, low cloud 0% here / 0% on the horizon",
+      "why": "Mid/high cloud 57%, low cloud 0% here / 0% on the horizon",
       "sent": 1792142643541
     },
     {
@@ -67,8 +117,18 @@
       "locId": "cape-woolamai",
       "loc": "Cape Woolamai (The Pinnacles)",
       "score": 100,
-      "why": "Mid/high cloud 65%, low cloud 0% here / 0% on the horizon",
+      "why": "Mid/high cloud 31%, low cloud 0% here / 0% on the horizon",
       "sent": 1792224234747
+    },
+    {
+      "id": "arawata-4iua|sunset|2026-10-19",
+      "t": 1792399094000,
+      "key": "sunset",
+      "locId": "arawata-4iua",
+      "loc": "Arawata",
+      "score": 100,
+      "why": "Mid/high cloud 39%, low cloud 0% here / 0% on the horizon",
+      "sent": 1792267163496
     },
     {
       "id": "cape-woolamai|fog|2026-10-18",
@@ -77,7 +137,7 @@
       "locId": "cape-woolamai",
       "loc": "Cape Woolamai (The Pinnacles)",
       "score": 60,
-      "why": "Visibility 1.6 km, humidity 96%, wind 8 km/h around 7:28am",
+      "why": "Visibility 2.0 km, humidity 89%, wind 10 km/h around 7:28am",
       "sent": 1792180978348
     },
     {
