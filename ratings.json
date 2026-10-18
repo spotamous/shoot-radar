@@ -10,6 +10,16 @@
       "score": 75,
       "why": "Thunderstorm forecast around 5:00pm, 29% rain chance",
       "tracked": 1792299755133
+    },
+    {
+      "id": "rowville-xpvw|sunset|2026-10-18",
+      "t": 1792312753000,
+      "key": "sunset",
+      "locId": "rowville-xpvw",
+      "loc": "Rowville",
+      "score": 25,
+      "why": "Mid/high cloud 5%, low cloud 1% here / 0% on the horizon",
+      "tracked": 1792304357780
     }
   ]
 }
