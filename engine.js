@@ -200,7 +200,8 @@ export async function fetchLocation(loc, fetchImpl = fetch, now = Date.now()) {
   const errors = [];
   const day0 = now - (now % 86400e3) - 14 * HOUR; // roughly local midnight-ish, start of scan window
   const eAz = sunEventAz(loc.lat, loc.lon, day0, true), wAz = sunEventAz(loc.lat, loc.lon, day0, false);
-  const pts = [{ lat: loc.lat, lon: loc.lon }, offsetPoint(loc.lat, loc.lon, eAz, 50), offsetPoint(loc.lat, loc.lon, wAz, 50), offsetPoint(loc.lat, loc.lon, 180, 60)];
+  const r5 = (a) => Math.round(a / 5) * 5; // rounded so request URLs stay stable day to day (offline cache)
+  const pts = [{ lat: loc.lat, lon: loc.lon }, offsetPoint(loc.lat, loc.lon, r5(eAz), 50), offsetPoint(loc.lat, loc.lon, r5(wAz), 50), offsetPoint(loc.lat, loc.lon, 180, 60)];
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${pts.map((p) => p.lat).join(',')}&longitude=${pts.map((p) => p.lon).join(',')}`
     + `&hourly=${HOURLY}&daily=sunrise,sunset&timezone=${encodeURIComponent(TZ)}&timeformat=unixtime&forecast_days=${DAYS}&past_days=1`;
   let wx = null, east = null, west = null, south = null;
@@ -469,6 +470,14 @@ export function pickAlerts(run, { hours = 72, max = 8 } = {}) {
     if (g !== e && g.locId !== e.locId) g.also.push(e);
   }
   return Object.values(groups).sort((a, b) => b.score - a.score).slice(0, max).sort((a, b) => a.t - b.t);
+}
+
+// Compact version for the app notification (a lock screen shows about 4 lines).
+export function formatShort(alerts, now, lines = 4) {
+  const out = alerts.slice().sort((a, b) => b.score - a.score).slice(0, lines).sort((a, b) => a.t - b.t)
+    .map((e) => `${CONDITIONS[e.key].label} ${e.score} · ${fmtWhen(e.t, now)} · ${e.loc}${e.also?.length ? ` +${e.also.length}` : ''}`);
+  if (alerts.length > lines) out.push(`+${alerts.length - lines} more in the app`);
+  return out.join('\n');
 }
 
 export function formatDigest(alerts, now) {

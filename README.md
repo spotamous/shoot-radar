@@ -2,34 +2,38 @@
 
 Daily phone alerts for photogenic weather around Victoria: sunrise and sunset colour, foggy dawns, big swell, electrical storms, Milky Way nights, aurora, wild wind, rainbows, full moonrises and snow, plus live lightning and aurora alerts. Each location has its own conditions, tide and swell-direction preferences, and alert thresholds that tune themselves from your shoot ratings.
 
-- **Web app** (`index.html`): live 4-day radar for every spot, plus the tools to add and edit locations. Hosted free on GitHub Pages.
-- **Alert engine** (`alert.js` + `.github/workflows/alerts.yml`): runs on GitHub Actions at 6:45am and 6:45pm Melbourne time and pushes a digest to your phone through the free **ntfy** app. Every 15 minutes it also checks for live lightning near your spots and real-time aurora activity after dark.
+- **The app** (`index.html`): installs on your iPhone's Home Screen with its own icon, opens full-screen with tabs (Today, Radar, Log, Spots), sends its own notifications, and shows the last forecast when you have no signal. Hosted free on GitHub Pages.
+- **Alert engine** (`alert.js` + `.github/workflows/alerts.yml`): runs on GitHub Actions at 6:45am and 6:45pm Melbourne time and pushes a digest to the app. Every 15 minutes it also checks for live lightning near your spots and real-time aurora activity after dark.
 - **Data**: Open-Meteo forecast and marine APIs (swell and modelled tides), NOAA SWPC for the Kp index, and the Blitzortung.org community network for live lightning. No API keys needed. Sun, moon and Milky Way positions are calculated locally.
 
-## Setup (about 10 minutes, once)
+## Setup (about 15 minutes, once)
 
-### 1. Phone: install ntfy
-1. Install **ntfy** from the App Store or Google Play.
-2. Tap **+** and subscribe to a topic name nobody will guess, e.g. `shootradar-tyson-7k2p9q`. Anyone who knows the name can read or send to it, so treat it like a password.
-
-### 2. GitHub: create the repository
+### 1. GitHub: create the repository
 1. Sign in at github.com (a free account is fine) and create a **new public repository** called `shoot-radar`.
-2. Upload every file from this folder, keeping the `.github/workflows` folder structure. (On the repo page: **Add file → Upload files** and drag in the whole folder contents.)
-3. **Settings → Secrets and variables → Actions → New repository secret**: name `NTFY_TOPIC`, value your topic from step 1.
-4. **Settings → Actions → General → Workflow permissions**: choose **Read and write permissions**, then Save. (This lets the engine keep its alert log and avoid repeat lightning and aurora alerts.)
-5. **Settings → Pages**: Source **Deploy from a branch**, branch `main`, folder `/ (root)`. After a minute the app is live at `https://YOUR-USERNAME.github.io/shoot-radar/`.
+2. Upload every file from this folder, keeping the `.github/workflows` and `icons` folders. (On the repo page: **Add file → Upload files** and drag in the folder contents. If `.github` doesn't come across, use **Add file → Create new file**, type `.github/workflows/alerts.yml` as the name and paste the file in.)
+3. **Settings → Actions → General → Workflow permissions**: choose **Read and write permissions**, then Save.
+4. **Settings → Pages**: Source **Deploy from a branch**, branch `main`, folder `/ (root)`. After a minute the app is live at `https://YOUR-USERNAME.github.io/shoot-radar/`.
 
-### 3. Test it
-1. **Actions** tab → **Shoot Radar alerts** → **Run workflow** → mode `digest`. Within a minute you should get a notification. (If nothing is above threshold you'll see "No alerts above thresholds" in the log. Turn on "Send a digest even when nothing's on" in the app to always get one.)
-2. Open the web app on your phone and use **Share → Add to Home Screen** so it opens like an app. Tapping a notification opens it too.
-
-### 4. Let the app save your locations
-The app edits `config.json` in your repository.
+### 2. Make an access token for the app
 1. github.com → your avatar → **Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token**.
-2. Repository access: **Only select repositories** → `shoot-radar`. Permissions: **Contents → Read and write**. Set an expiry you're happy with.
-3. In the app: **Settings** → Repository `YOUR-USERNAME/shoot-radar`, branch `main`, paste the token. It stays in that browser only.
+2. Repository access: **Only select repositories** → `shoot-radar`.
+3. Permissions: **Contents → Read and write** and **Actions → Read and write**. Set an expiry you're happy with, generate, and copy the token.
 
-Now add or edit spots, choose what to watch at each, and press **Save to GitHub**. The next digest uses the new settings.
+### 3. Install the app on your iPhone
+1. Open `https://YOUR-USERNAME.github.io/shoot-radar/` in **Safari**.
+2. Tap **Share → Add to Home Screen → Add**.
+3. Open **Shoot Radar from the Home Screen icon**. From here on, always use the icon; notifications only work in the installed app.
+4. Tap **Settings**, fill in Repository (`YOUR-USERNAME/shoot-radar`), branch `main` and your token, then **Done**.
+
+### 4. Turn on notifications
+In the app, **Settings → Phone notifications**:
+1. **Create notification keys.** The app saves the public key to your repository and shows a private key. Copy it. In GitHub go to **Settings → Secrets and variables → Actions → New repository secret**, name it `VAPID_PRIVATE_KEY` and paste the key as the value.
+2. **Turn on notifications here** and tap **Allow** when the iPhone asks.
+3. **Send a test notification.** It should arrive within a minute or two.
+
+Repeat step 2 on any other device you want alerts on (an iPad, or a desktop browser). Each device appears in the list, where you can remove it.
+
+If you used ntfy before, you can delete the `NTFY_TOPIC` secret. If you keep it, ntfy still gets a copy of every alert.
 
 ## Location photos
 In the location editor, use **Choose photo** (or paste an https image link) and pick how it crops. Photos are resized to 1600 px in your browser and uploaded to the repository's `images/` folder when you press **Save to GitHub**. They appear on the location cards, the radar and the alert cards, and the top spot's photo is attached to your phone digest. The repository is public, so anyone with the link can see them. Removing a photo doesn't delete the old file; delete it from `images/` on GitHub if you want it gone.
@@ -74,7 +78,14 @@ Live aurora alerts fire (top priority, at most once every 3 hours) when the real
 ## Changing the alert times
 Times are in `.github/workflows/alerts.yml` as UTC cron lines, two per digest (one for daylight saving, one for standard time). `alert.js` runs whichever matches the current Melbourne offset, so you never get doubles. To move the evening digest to 5:45pm, change `45 7` → `45 6` and `45 8` → `45 7`, and update the `CRONS` table at the top of `alert.js` to match.
 
+## Using the app
+- On a phone the app uses tabs. **Today** shows what's worth planning, **Radar** has every spot's scores, **Log** is for rating past shoots (a red dot means some are waiting), and **Spots** is where you add and edit locations. On a computer it's one long page with Log and Spots folded away.
+- Notifications open the relevant tab. The app icon shows a badge with the number of shoots in the latest digest; it clears when you open the app.
+- When you come back to the app it refreshes if the forecast is more than 30 minutes old. With no signal it shows the last forecast it saved and says when that was.
+- Edits to spots and settings are saved to GitHub with **Save to GitHub**; the next digest uses them.
+
 ## Notes
+- Notifications come from your own repository: the engine signs each one with your private key, and Apple delivers it to the installed app. `devices.json` lists the devices that turned notifications on. It holds delivery addresses only, and they can't be used without your private key.
 - `package.json` installs one small library (`ws`) for the lightning feed; the workflow installs it automatically.
 - Each part of the repo has one writer: the app writes `config.json` and `ratings.json`, the engine writes `history.json` and `state.json`. That keeps saves from clashing.
 - GitHub can start scheduled runs 5–20 minutes late at busy times.

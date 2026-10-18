@@ -1,17 +1,22 @@
 {
-  "appUrl": "https://spotamous.github.io/shoot-radar/",
+  "appUrl": "",
   "settings": {
     "morning": true,
     "evening": true,
     "hours": 72,
     "maxItems": 8,
-    "quietDigest": true,
+    "quietDigest": false,
     "liveAurora": true,
     "liveLightning": true,
     "autoTune": true
   },
   "locations": [
     {
+      "id": "cape-schanck",
+      "name": "Cape Schanck (Pulpit Rock)",
+      "lat": -38.4925,
+      "lon": 144.8855,
+      "notes": "Basalt stacks, south-facing. Great for big swell and southern aurora.",
       "enabled": true,
       "conditions": {
         "sunset": {
@@ -20,7 +25,7 @@
         "swell": {
           "on": true,
           "height": 3,
-          "dir": 225,
+          "dir": 225.0,
           "spread": 60,
           "tide": "any"
         },
@@ -40,20 +45,15 @@
           "on": true,
           "radius": 40,
           "strikes": 3
-        },
-        "sunrise": {
-          "on": true
         }
-      },
-      "notes": "Basalt stacks, south-facing. Great for big swell and southern aurora.",
-      "id": "cape-schanck",
-      "name": "Cape Schanck (Pulpit Rock)",
-      "lat": -38.4925,
-      "lon": 144.8855,
-      "imagePos": "top",
-      "image": "images/cape-schanck-mvas6k5i.jpg"
+      }
     },
     {
+      "id": "gunnamatta",
+      "name": "Gunnamatta Beach",
+      "lat": -38.448,
+      "lon": 144.853,
+      "notes": "Exposed surf beach. Sunset over the dunes, heavy swell days.",
       "enabled": true,
       "conditions": {
         "sunset": {
@@ -62,7 +62,7 @@
         "swell": {
           "on": true,
           "height": 3,
-          "dir": 225,
+          "dir": 225.0,
           "spread": 60,
           "tide": "any"
         },
@@ -71,25 +71,15 @@
         },
         "rainbow": {
           "on": true
-        },
-        "sunrise": {
-          "on": true
-        },
-        "storm": {
-          "on": true
-        },
-        "lightning": {
-          "on": true
         }
-      },
-      "notes": "Exposed surf beach. Sunset over the dunes, heavy swell days.",
-      "id": "gunnamatta",
-      "name": "Gunnamatta Beach",
-      "lat": -38.448,
-      "lon": 144.853,
-      "image": "images/gunnamatta-mvas6m04.jpg"
+      }
     },
     {
+      "id": "flinders-blowhole",
+      "name": "Flinders Blowhole",
+      "lat": -38.487,
+      "lon": 145.017,
+      "notes": "Blowhole fires on big SW swell around mid to high tide. Low-tide sunrise for the rock shelf and pools.",
       "enabled": true,
       "conditions": {
         "sunrise": {
@@ -99,7 +89,7 @@
         "swell": {
           "on": true,
           "height": 2.5,
-          "dir": 225,
+          "dir": 225.0,
           "spread": 50,
           "tide": "high"
         },
@@ -109,15 +99,98 @@
         "moon": {
           "on": true
         }
-      },
-      "notes": "Blowhole fires on big SW swell around mid to high tide. Low-tide sunrise for the rock shelf and pools.",
-      "id": "flinders-blowhole",
-      "name": "Flinders Blowhole",
-      "lat": -38.487,
-      "lon": 145.017,
-      "image": "images/flinders-blowhole-mvas6nob.jpg"
+      }
     },
     {
+      "id": "point-nepean",
+      "name": "Point Nepean (Fort Nepean)",
+      "lat": -38.3025,
+      "lon": 144.651,
+      "notes": "Rip entrance and old forts. Sunset to the west, storms over Bass Strait.",
+      "enabled": true,
+      "conditions": {
+        "sunset": {
+          "on": true
+        },
+        "sunrise": {
+          "on": true
+        },
+        "storm": {
+          "on": true
+        },
+        "milkyway": {
+          "on": true
+        },
+        "moon": {
+          "on": true
+        },
+        "lightning": {
+          "on": true,
+          "radius": 40,
+          "strikes": 3
+        }
+      }
+    },
+    {
+      "id": "arthurs-seat",
+      "name": "Arthurs Seat summit",
+      "lat": -38.357,
+      "lon": 144.951,
+      "notes": "300 m lookout over the bay. Fog banks below you on still autumn and winter mornings.",
+      "enabled": true,
+      "conditions": {
+        "fog": {
+          "on": true
+        },
+        "sunrise": {
+          "on": true
+        },
+        "sunset": {
+          "on": true
+        },
+        "storm": {
+          "on": true
+        },
+        "lightning": {
+          "on": true,
+          "radius": 60,
+          "strikes": 3
+        }
+      }
+    },
+    {
+      "id": "mornington-pier",
+      "name": "Mornington Pier (Schnapper Point)",
+      "lat": -38.2155,
+      "lon": 145.0335,
+      "notes": "Bay pier and boat sheds. Sunset across the bay, storm cells over the water.",
+      "enabled": true,
+      "conditions": {
+        "sunset": {
+          "on": true
+        },
+        "storm": {
+          "on": true
+        },
+        "rainbow": {
+          "on": true
+        },
+        "moon": {
+          "on": true
+        },
+        "lightning": {
+          "on": true,
+          "radius": 40,
+          "strikes": 3
+        }
+      }
+    },
+    {
+      "id": "cape-woolamai",
+      "name": "Cape Woolamai (The Pinnacles)",
+      "lat": -38.559,
+      "lon": 145.344,
+      "notes": "Granite pinnacles on the east side of Phillip Island. Sunrise, swell, dark southern sky.",
       "enabled": true,
       "conditions": {
         "sunrise": {
@@ -126,7 +199,7 @@
         "swell": {
           "on": true,
           "height": 3,
-          "dir": 180,
+          "dir": 180.0,
           "spread": 60,
           "tide": "any"
         },
@@ -138,11 +211,58 @@
         },
         "wind": {
           "on": true
+        }
+      }
+    },
+    {
+      "id": "pyramid-rock",
+      "name": "Pyramid Rock, Phillip Island",
+      "lat": -38.5265,
+      "lon": 145.231,
+      "notes": "Faces due south over Bass Strait. One of the darkest easy-access aurora spots near Melbourne.",
+      "enabled": true,
+      "conditions": {
+        "aurora": {
+          "on": true,
+          "kp": 5
+        },
+        "milkyway": {
+          "on": true
+        },
+        "swell": {
+          "on": true,
+          "height": 3,
+          "dir": 202.5,
+          "spread": 60,
+          "tide": "any"
         },
         "sunset": {
           "on": true
+        }
+      }
+    },
+    {
+      "id": "the-nobbies",
+      "name": "The Nobbies, Phillip Island",
+      "lat": -38.518,
+      "lon": 145.105,
+      "notes": "Boardwalk and blowhole at the western tip. Sunset, wild seas, aurora.",
+      "enabled": true,
+      "conditions": {
+        "sunset": {
+          "on": true
         },
-        "fog": {
+        "swell": {
+          "on": true,
+          "height": 3,
+          "dir": 225.0,
+          "spread": 60,
+          "tide": "any"
+        },
+        "aurora": {
+          "on": true
+        },
+        "wind": {
           "on": true
         },
         "storm": {
@@ -150,91 +270,10 @@
         },
         "lightning": {
           "on": true,
-          "radius": 65
+          "radius": 40,
+          "strikes": 3
         }
-      },
-      "notes": "Granite pinnacles on the east side of Phillip Island. Sunrise, swell, dark southern sky.",
-      "id": "cape-woolamai",
-      "name": "Cape Woolamai (The Pinnacles)",
-      "lat": -38.559,
-      "lon": 145.344,
-      "imagePos": "top",
-      "image": "images/cape-woolamai-mvas6pl0.jpg"
-    },
-    {
-      "id": "mount-donna-buang-m1qv",
-      "name": "Mount Donna Buang",
-      "lat": -37.7068,
-      "lon": 145.6807,
-      "notes": "Tall Ash forests, best covered in snow or fog",
-      "enabled": true,
-      "conditions": {
-        "sunrise": {
-          "on": true
-        },
-        "sunset": {
-          "on": true
-        },
-        "fog": {
-          "on": true
-        },
-        "snow": {
-          "on": true
-        }
-      },
-      "image": "images/mount-donna-buang-m1qv-mvas6rdt.jpg"
-    },
-    {
-      "id": "cathedral-range-brom",
-      "name": "Cathedral Range",
-      "lat": -37.4,
-      "lon": 145.75,
-      "notes": "",
-      "enabled": true,
-      "conditions": {
-        "sunrise": {
-          "on": true
-        },
-        "sunset": {
-          "on": true
-        },
-        "fog": {
-          "on": true
-        },
-        "snow": {
-          "on": true
-        }
-      },
-      "imagePos": "top",
-      "image": "images/cathedral-range-brom-mvas8wbs.jpg"
-    },
-    {
-      "id": "arawata-4iua",
-      "name": "Arawata",
-      "lat": -38.4,
-      "lon": 145.8667,
-      "notes": "Foggy sunrises over the green rolling hills.",
-      "enabled": true,
-      "conditions": {
-        "sunrise": {
-          "on": true
-        },
-        "sunset": {
-          "on": true
-        },
-        "fog": {
-          "on": true
-        },
-        "storm": {
-          "on": true
-        },
-        "lightning": {
-          "on": true,
-          "radius": 60
-        }
-      },
-      "imagePos": "top",
-      "image": "images/arawata-4iua-mvas90ft.jpg"
+      }
     }
   ]
 }

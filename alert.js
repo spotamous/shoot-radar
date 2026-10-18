@@ -1,7 +1,7 @@
 // Shoot Radar alert runner (GitHub Actions, Node 22+).
 //   node alert.js                     -> decides mode from the cron that fired
 //   MODE=digest|live node alert.js    -> force a mode (manual runs)
-// Env: NTFY_TOPIC (required to send), NTFY_SERVER (default https://ntfy.sh),
+// Env: VAPID_PRIVATE_KEY (push to the installed app), NTFY_TOPIC (optional ntfy copy), NTFY_SERVER,
 //      SCHEDULE (github.event.schedule), EVENT (github.event_name), DRY_RUN=1 to print only,
 //      LISTEN_SECONDS (lightning listen window, default 90).
 // Files: config.json (app writes), ratings.json (app writes), history.json (digest writes), state.json (live writes).
@@ -35,17 +35,41 @@ if (!manual && mode === 'digest') {
   if (!settings[slot]) { console.log(`${slot} digest disabled in settings`); process.exit(0); }
 }
 
-async function send({ title, body, tags = 'camera', priority = 3, attach = null }) {
+const devices = (await readJSON('devices.json', { devices: [] })).devices || [];
+
+// Delivers to every iPhone/browser that enabled notifications in the app, plus ntfy if configured.
+// `short` is the compact text for the app notification; `body` the full text for ntfy and logs.
+async function send({ title, body, short, tags = 'camera', priority = 3, attach = null, tag = 'shoot-radar', url = '', badge }) {
   console.log(`\n=== ${title} ===\n${body}\n`);
+  if (process.env.DRY_RUN) { console.log('(dry run, not sent)'); return; }
+  let delivered = 0;
+  const priv = process.env.VAPID_PRIVATE_KEY, pub = cfg.vapidPublicKey;
+  if (priv && pub && devices.length) {
+    const { sendPush } = await import('./push.js');
+    const subject = /^https:/.test(cfg.appUrl || '') ? cfg.appUrl : 'mailto:shoot-radar@users.noreply.github.com';
+    for (const d of devices) {
+      try {
+        const r = await sendPush(d.sub, { title, body: short || body, tag, url: (cfg.appUrl || '') + url, badge }, { publicKey: pub, privateKey: priv, subject, urgency: priority >= 4 ? 'high' : 'normal' });
+        console.log(`push -> ${d.name}: ${r.status}${r.gone ? ' (this device has unsubscribed; remove it in the app)' : ''}${r.text ? ' ' + r.text.slice(0, 200) : ''}`);
+        if (r.ok) delivered++;
+      } catch (e) { console.log(`push -> ${d.name} failed: ${e.message}`); }
+    }
+  } else if (devices.length || pub) console.log('Push not sent: add the VAPID_PRIVATE_KEY secret (Settings → Phone notifications in the app).');
   const topic = process.env.NTFY_TOPIC;
-  if (!topic || process.env.DRY_RUN) { console.log(topic ? '(dry run, not sent)' : 'NTFY_TOPIC not set, not sent'); return; }
-  const server = (process.env.NTFY_SERVER || 'https://ntfy.sh').replace(/\/$/, '');
-  const headers = { Title: title, Tags: tags, Priority: String(priority) };
-  if (cfg.appUrl) headers.Click = cfg.appUrl;
-  if (attach) headers.Attach = attach;
-  const r = await fetch(`${server}/${encodeURIComponent(topic)}`, { method: 'POST', body, headers });
-  console.log('ntfy:', r.status);
-  if (!r.ok) process.exitCode = 1;
+  if (topic) {
+    const server = (process.env.NTFY_SERVER || 'https://ntfy.sh').replace(/\/$/, '');
+    const headers = { Title: title, Tags: tags, Priority: String(priority) };
+    if (cfg.appUrl) headers.Click = cfg.appUrl + url;
+    if (attach) headers.Attach = attach;
+    const r = await fetch(`${server}/${encodeURIComponent(topic)}`, { method: 'POST', body, headers });
+    console.log('ntfy:', r.status); if (r.ok) delivered++;
+  }
+  if (!delivered) { console.log('Nothing was delivered. Enable notifications in the app (or set NTFY_TOPIC).'); process.exitCode = 1; }
+}
+
+if (mode === 'test') {
+  await send({ title: 'Shoot Radar test', body: `Notifications are working. ${devices.length} device${devices.length === 1 ? '' : 's'} registered. Sent ${E.fmtWhen(now, now)}.`, tag: 'test', badge: 0 });
+  process.exit();
 }
 
 // Location photo shown in the notification.
@@ -70,6 +94,7 @@ if (mode === 'digest') {
     await send({
       title: `${label}: ${alerts.length} shoot${alerts.length > 1 ? 's' : ''} worth planning`,
       body: E.formatDigest(alerts, now),
+      short: E.formatShort(alerts, now), tag: 'digest-' + slot, url: '#today', badge: alerts.length,
       tags: { sunrise: 'sunrise', sunset: 'city_sunset', fog: 'fog', swell: 'ocean', storm: 'zap', milkyway: 'milky_way', aurora: 'star2', wind: 'dash', rainbow: 'rainbow', moon: 'full_moon', snow: 'snowflake' }[top.key] + ',camera',
       priority: top.score >= 85 ? 4 : 3,
       attach: photoUrl(cfg.locations.find((l) => l.id === top.locId)),
@@ -118,7 +143,8 @@ if (mode === 'live') {
       await send({
         title: `Aurora alert: Kp ${est.toFixed(1)} right now`,
         body: `Estimated Kp ${est.toFixed(1)}${bz != null ? `, Bz ${bz.toFixed(1)} nT (${bz < 0 ? 'southward, good' : 'northward'})` : ''}. ${E.moonPhaseName(now)}.\nFace south from: ${dark.map((l) => l.name).join(', ')}.\nShoot long exposures; the camera sees it before your eyes do.`,
-        tags: 'star2,rotating_light', priority: 5, attach: photoUrl(dark[0]),
+        tags: 'star2,rotating_light', priority: 5, attach: photoUrl(dark[0]), tag: 'aurora', url: '#today',
+        short: `Kp ${est.toFixed(1)}${bz != null ? `, Bz ${bz.toFixed(1)}` : ''}. Face south from ${dark.map((l) => l.name).slice(0, 3).join(', ')}.`,
       });
       state.lastAurora = now;
     }
@@ -155,7 +181,8 @@ if (mode === 'live') {
           title: `Lightning ${Math.round(hits[0].nearest)} km from ${hits[0].l.name}`,
           body: hits.map((h) => `${h.l.name}: ${h.n} strikes in ${secs} s, activity ~${Math.round(h.dist)} km ${h.dir} (nearest ${Math.round(h.nearest)} km)`).join('\n')
             + `\n${dark ? 'After dark: long exposures, 10–30 s, f/8, ISO 100–400.' : 'Daylight: try a lightning trigger or fast burst.'} Stay well back from the cell; if you can hear thunder you are in range.`,
-          tags: 'zap,rotating_light', priority: 4, attach: photoUrl(hits[0].l),
+          tags: 'zap,rotating_light', priority: 4, attach: photoUrl(hits[0].l), tag: 'lightning', url: '#radar',
+          short: hits.slice(0, 3).map((h) => `${h.l.name}: ${h.n} strikes ~${Math.round(h.dist)} km ${h.dir}`).join('\n'),
         });
       }
     }

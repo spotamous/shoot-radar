@@ -5,10 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shoot Radar</title>
 <meta name="theme-color" content="#0b1019">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Shoot Radar">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
-/* Layout: one column of three bands (alerts, radar grid, locations) on a night-sky ground; dialogs for editing. */
+/* Layout: one column (desktop) or four tabs (phone / installed app) on a night-sky ground; dialogs for editing. */
 :root {
   --bg: #0b1019; --surface: #121a27; --surface-2: #1a2434; --line: #243045;
   --ink: #e9edf4; --muted: #8d99ad; --accent: #f3a43b; --accent-ink: #1b1204;
@@ -26,6 +34,7 @@
   }
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html, body { margin: 0; }
 body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--body); -webkit-font-smoothing: antialiased; }
 .wrap { max-width: 1080px; margin: 0 auto; padding-block: 0 96px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -181,6 +190,54 @@ button.cover-ph svg { width: 18px; height: 18px; }
   .rates { grid-column: 1 / -1; }
   .rates button { flex: 1; justify-content: center; }
 }
+/* collapsible sections */
+details.fold { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+details.fold > summary { list-style: none; display: flex; align-items: center; gap: 10px; padding: 14px 16px; cursor: pointer; border-radius: 14px; flex-wrap: wrap; }
+details.fold > summary::-webkit-details-marker { display: none; }
+details.fold > summary:hover { background: var(--surface-2); }
+details.fold > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+details.fold .chev { width: 18px; height: 18px; color: var(--muted); flex: none; transition: transform .15s; }
+details.fold[open] .chev { transform: rotate(90deg); }
+details.fold[open] > summary { border-bottom: 1px solid var(--line); border-radius: 14px 14px 0 0; }
+.fold-hint { color: var(--muted); font-size: 13px; margin-left: auto; }
+.badge { font: 600 12px var(--mono); padding: 2px 8px; border-radius: 99px; background: var(--accent); color: var(--accent-ink); }
+.badge.muted { background: var(--surface-2); color: var(--muted); border: 1px solid var(--line); }
+.fold-body { padding: 16px; display: grid; gap: 12px; }
+details.fold .logrow, details.fold .locard { background: var(--bg); }
+@media (max-width: 560px) { .fold-hint { display: none; } }
+/* app shell */
+html { -webkit-tap-highlight-color: transparent; }
+button, .tabbar, summary { -webkit-user-select: none; user-select: none; touch-action: manipulation; }
+.install { margin-top: 16px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: space-between; background: color-mix(in srgb, var(--accent) 14%, var(--surface)); border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--line)); border-radius: 12px; padding: 12px 14px; font-size: 14px; }
+.install > div:first-child { min-width: 0; flex: 1 1 260px; }
+.install-actions { display: flex; gap: 8px; }
+.tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 7; display: grid; grid-template-columns: repeat(4, 1fr); background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px); }
+.tabbar button { position: relative; flex-direction: column; gap: 3px; border: 0; border-radius: 0; background: none; padding: 9px 0 7px; font: 600 11px var(--body); color: var(--muted); }
+.tabbar button svg { width: 24px; height: 24px; }
+.tabbar button.active { color: var(--accent); }
+.tabbar .dot { position: absolute; top: 7px; left: calc(50% + 9px); width: 9px; height: 9px; border-radius: 50%; background: var(--hot); border: 2px solid var(--surface); }
+body.tabbed [data-panel]:not(.active) { display: none; }
+body.tabbed main.wrap { padding-bottom: calc(150px + env(safe-area-inset-bottom, 0px)); }
+body.tabbed details.fold > summary { pointer-events: none; }
+body.tabbed details.fold .chev { display: none; }
+body.tabbed .savebar { bottom: calc(60px + env(safe-area-inset-bottom, 0px)); padding-bottom: 0; }
+body.tabbed .toast { bottom: calc(140px + env(safe-area-inset-bottom, 0px)); }
+body.tabbed .stamp { order: 3; width: 100%; }
+@media (display-mode: standalone) and (prefers-color-scheme: light) {
+  header.top::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: env(safe-area-inset-top, 0px); background: #0b1019; }
+  header.top { position: sticky; }
+}
+@media (display-mode: standalone) { body { overscroll-behavior-y: none; } }
+.step { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; display: grid; gap: 8px; background: var(--bg); }
+.step-h { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.step-h .num { width: 22px; height: 22px; border-radius: 50%; background: var(--surface-2); display: inline-flex; align-items: center; justify-content: center; font: 600 12px var(--mono); }
+.step-h .ok { margin-left: auto; font: 600 12px var(--mono); color: var(--ok); }
+.copyrow { display: flex; gap: 8px; }
+.copyrow input { font: 12px var(--mono) !important; }
+.devlist { display: grid; gap: 6px; }
+.devlist .dev { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--muted); }
+.devlist .dev b { color: var(--ink); font-weight: 600; }
+.devlist .dev button { margin-left: auto; padding: 4px 10px; font-size: 12px; }
 .savebar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface-2); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); }
 .savebar .wrap { display: flex; align-items: center; gap: 10px; padding-block: 12px; flex-wrap: wrap; }
 .savebar .msg { margin-right: auto; font-size: 14px; }
@@ -209,6 +266,9 @@ button.cover-ph svg { width: 18px; height: 18px; }
     <symbol id="i-rainbow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 18a10 10 0 0 1 20 0M5.5 18a6.5 6.5 0 0 1 13 0M9 18a3 3 0 0 1 6 0"/></symbol>
     <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="10" r="5.5"/><path d="M3 19h18M6 22h12"/></symbol>
     <symbol id="i-strike" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9a5 5 0 0 1 8.6-3.5A4 4 0 1 1 18 11H6.5"/><path d="m12 11-2.5 5h4L11 21"/></symbol>
+    <symbol id="i-log" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 8h8M8 12h8M8 16h5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+    <symbol id="i-today" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2M5.6 5.6l1.4 1.4M3 12h2M19 12h2M17 7l1.4-1.4"/><path d="M7.5 15a4.5 4.5 0 0 1 9 0"/><path d="M3 19h18"/></symbol>
     <symbol id="i-snow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7M9.5 3.5 12 6l2.5-2.5M9.5 20.5 12 18l2.5 2.5"/></symbol>
   </defs>
 </svg>
@@ -224,7 +284,11 @@ button.cover-ph svg { width: 18px; height: 18px; }
 </header>
 
 <main class="wrap">
-  <section class="sec" aria-labelledby="h-alerts">
+  <div class="install" id="install" hidden>
+    <div><b>Install Shoot Radar on your iPhone</b><br>In Safari, tap <b>Share</b> then <b>Add to Home Screen</b>. Open it from the Home Screen icon to get full-screen and notifications.</div>
+    <div class="install-actions"><button type="button" class="primary" id="installBtn" hidden>Install app</button><button type="button" class="ghost" id="installDismiss">Got it</button></div>
+  </div>
+  <section class="sec" aria-labelledby="h-alerts" data-panel="today">
     <div class="sec-head">
       <h2 id="h-alerts">Worth planning</h2>
       <p id="alertsSub">Conditions above your alert thresholds in the next 3 days. This is what your phone digest will say.</p>
@@ -232,7 +296,7 @@ button.cover-ph svg { width: 18px; height: 18px; }
     <div class="alerts" id="alerts"><div class="empty">Checking the sky over your locations…</div></div>
   </section>
 
-  <section class="sec" aria-labelledby="h-radar">
+  <section class="sec" aria-labelledby="h-radar" data-panel="radar">
     <div class="sec-head">
       <h2 id="h-radar">Radar</h2>
       <p>Best scores per spot per day. Tap a score for the reasoning.</p>
@@ -247,25 +311,40 @@ button.cover-ph svg { width: 18px; height: 18px; }
     </div>
   </section>
 
-  <section class="sec" aria-labelledby="h-log">
-    <div class="sec-head">
+  <details class="sec fold" id="foldLog" data-panel="log">
+    <summary>
+      <svg class="chev" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <h2 id="h-log">Shoot log</h2>
-      <p>Rate how alerted shoots turned out. After 3 ratings for a spot and condition, its alert threshold tunes itself.</p>
+      <span class="badge" id="logBadge" hidden></span>
+      <span class="fold-hint">Rate past shoots so thresholds tune themselves</span>
+    </summary>
+    <div class="fold-body">
+      <p class="note" style="margin:0">Rate how alerted shoots turned out. After 3 ratings for a spot and condition, its alert threshold tunes itself.</p>
+      <div class="log" id="log"></div>
+      <div class="chips" id="learned"></div>
     </div>
-    <div class="log" id="log"></div>
-    <div class="chips" id="learned" style="margin-top:10px"></div>
-  </section>
+  </details>
 
-  <section class="sec" aria-labelledby="h-locs">
-    <div class="sec-head">
+  <details class="sec fold" id="foldLocs" data-panel="spots">
+    <summary>
+      <svg class="chev" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <h2 id="h-locs">Locations</h2>
-      <p id="locCount"></p>
-      <span class="sp"></span>
-      <button class="primary" id="addLoc" type="button">Add location</button>
+      <span class="badge muted" id="locCount"></span>
+      <span class="fold-hint">Add spots, photos and what to watch for</span>
+    </summary>
+    <div class="fold-body">
+      <div><button class="primary" id="addLoc" type="button">Add location</button></div>
+      <div class="locs" id="locs"></div>
     </div>
-    <div class="locs" id="locs"></div>
-  </section>
+  </details>
 </main>
+
+<nav class="tabbar" id="tabbar" hidden aria-label="Sections">
+  <button type="button" data-tab="today"><svg aria-hidden="true"><use href="#i-today"/></svg><span>Today</span></button>
+  <button type="button" data-tab="radar"><svg aria-hidden="true"><use href="#i-logo"/></svg><span>Radar</span></button>
+  <button type="button" data-tab="log"><svg aria-hidden="true"><use href="#i-log"/></svg><span>Log</span><i class="dot" id="logDot" hidden></i></button>
+  <button type="button" data-tab="spots"><svg aria-hidden="true"><use href="#i-pin"/></svg><span>Spots</span></button>
+</nav>
 
 <div class="savebar" id="savebar" hidden>
   <div class="wrap">
@@ -357,15 +436,39 @@ button.cover-ph svg { width: 18px; height: 18px; }
             <label class="f">Branch <input type="text" id="gBranch" placeholder="main"></label>
           </div>
           <label class="f">Access token <input type="password" id="gToken" placeholder="github_pat_…" autocomplete="off"></label>
-          <p class="note">Fine-grained token with <b>Contents: Read and write</b> on this repository only. It stays in this browser and is sent only to api.github.com.</p>
+          <p class="note">Fine-grained token for this repository only, with <b>Contents: Read and write</b> and <b>Actions: Read and write</b> (for the test button). It stays on this device and is sent only to api.github.com.</p>
         </div>
       </div>
       <div>
-        <h2 style="font-size:16px;margin-bottom:8px">Test a notification</h2>
+        <h2 style="font-size:16px;margin-bottom:8px">Phone notifications</h2>
         <div class="conds">
-          <label class="f">ntfy topic <input type="text" id="nTopic" placeholder="same as your NTFY_TOPIC secret" autocomplete="off"></label>
-          <div><button type="button" id="nTest">Send test to my phone</button></div>
-          <p class="note">Stored in this browser only, for the test button. The alert engine reads the topic from the repository secret.</p>
+          <p class="note" id="pStatus" style="margin:0"></p>
+          <div class="step" id="pStep1">
+            <div class="step-h"><span class="num">1</span>Notification keys <span class="ok" id="pKeysOk" hidden>Done</span></div>
+            <div id="pKeysNew">
+              <p class="note">Creates a key pair. The public half is saved with your settings; the private half goes into a GitHub secret so only your repository can send to your phone.</p>
+              <button type="button" id="pMakeKeys">Create notification keys</button>
+            </div>
+            <div id="pKeysShow" hidden>
+              <p class="note">Copy this private key now. In GitHub open your repository → <b>Settings → Secrets and variables → Actions → New repository secret</b>. Name it <code>VAPID_PRIVATE_KEY</code> and paste the key as the value. It is shown only once.</p>
+              <div class="copyrow"><input type="text" id="pPriv" readonly><button type="button" id="pCopy">Copy</button></div>
+            </div>
+            <button type="button" class="ghost danger" id="pReplace" hidden>Replace keys</button>
+          </div>
+          <div class="step">
+            <div class="step-h"><span class="num">2</span>This device <span class="ok" id="pDevOk" hidden>On</span></div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="primary" id="pEnable">Turn on notifications here</button><button type="button" class="ghost" id="pDisable" hidden>Turn off here</button></div>
+          </div>
+          <div class="step">
+            <div class="step-h"><span class="num">3</span>Test</div>
+            <p class="note">Asks GitHub to send a test notification to every device that's turned on. It arrives in about a minute. Your access token needs <b>Actions: Read and write</b> for this button.</p>
+            <div><button type="button" id="pTest">Send a test notification</button></div>
+          </div>
+          <div id="pDevices" class="devlist"></div>
+          <details>
+            <summary>ntfy (optional extra)</summary>
+            <p class="note">If you still want copies in the ntfy app, keep the <code>NTFY_TOPIC</code> secret in GitHub. Otherwise you can delete it.</p>
+          </details>
         </div>
       </div>
       <div>
@@ -465,7 +568,7 @@ async function loadConfig() {
       const r = await fetch(`https://api.github.com/repos/${g.repo}/contents/config.json?ref=${encodeURIComponent(g.branch)}`, { headers: { Authorization: `Bearer ${g.token}`, Accept: 'application/vnd.github+json' }, cache: 'no-store' });
       if (!r.ok) throw new Error(r.status === 401 ? 'token rejected' : r.status === 404 ? 'repo or config.json not found' : 'HTTP ' + r.status);
       const j = await r.json(); sha = j.sha; return JSON.parse(b64dec(j.content));
-    } catch (e) { toast('GitHub: ' + e.message + '. Showing the published copy.', 5000); }
+    } catch (e) { if (navigator.onLine) toast('GitHub: ' + e.message + '. Showing the published copy.', 5000); }
   }
   const r = await fetch('./config.json', { cache: 'no-store' });
   return r.json();
@@ -498,8 +601,10 @@ async function refresh() {
   $('progress').style.width = '4%';
   try {
     learned = E.learnThresholds(ratingsDoc.ratings, config);
-    run = await E.runAll(config, { learned: config.settings.autoTune ? learned : null, onProgress: (k) => ($('progress').style.width = Math.round((k / n) * 100) + '%') });
-    $('stamp').textContent = `Updated ${E.fmtTime(run.now)} · Melbourne time`;
+    let cachedAt = null;
+    const fetchTracked = async (u, o) => { const r = await fetch(u, o); const c = r.headers.get('x-sr-cached'); if (c) cachedAt = Math.min(cachedAt ?? Infinity, +c || Date.now()); return r; };
+    run = await E.runAll(config, { fetchImpl: fetchTracked, learned: config.settings.autoTune ? learned : null, onProgress: (k) => ($('progress').style.width = Math.round((k / n) * 100) + '%') });
+    $('stamp').textContent = cachedAt ? `No signal · showing forecast saved ${E.fmtWhen(cachedAt, Date.now())}` : `Updated ${E.fmtTime(run.now)} · Melbourne time`;
   } catch (e) {
     $('stamp').textContent = 'Forecast fetch failed: ' + e.message;
   }
@@ -574,7 +679,7 @@ $('radar').addEventListener('click', (ev) => {
 
 function renderLocs() {
   const ls = config.locations;
-  $('locCount').textContent = `${ls.filter((l) => l.enabled !== false).length} active of ${ls.length}`;
+  $('locCount').textContent = `${ls.filter((l) => l.enabled !== false).length} active`;
   $('locs').innerHTML = ls.map((l, i) => {
     const on = Object.keys(E.CONDITIONS).filter((k) => l.conditions?.[k]?.on);
     const err = run?.results.find((r) => r.loc.id === l.id)?.errors || [];
@@ -615,6 +720,8 @@ function renderLog() {
       ${h.t > now ? '<div class="rates"><span class="chip">Planned</span></div>' : `<div class="rates" role="group" aria-label="How did it go?">${RATES.map(([v, t]) => `<button type="button" class="${v}" data-rate="${esc(h.id)}" data-v="${v}" aria-pressed="${r === v}">${t}</button>`).join('')}</div>`}
     </div>`;
   };
+  const toRate = past.filter((h) => !ratingsDoc.ratings[h.id]?.rating && E.CONDITIONS[h.key]).length;
+  $('logBadge').hidden = !toRate; $('logBadge').textContent = `${toRate} to rate`; $('logDot').hidden = !toRate;
   const shown = past.slice(0, logLimit);
   $('log').innerHTML = (planned.map(row).join('') + shown.map(row).join(''))
     || '<div class="empty">Alerts from your phone digests land here once they have been sent. You can also open any score on the radar and press Track.</div>';
@@ -639,26 +746,32 @@ $('log').addEventListener('click', async (ev) => {
   });
   if (ok) { learned = E.learnThresholds(ratingsDoc.ratings, config); toast(cur === v ? 'Rating removed.' : 'Rated. Thanks, the radar will learn from it.'); refresh(); }
 });
-// Ratings live in ratings.json, written only by this app, so the alert engine never conflicts with it.
-async function saveRatings(mutate) {
+// Read-modify-write one JSON file in the repo, retrying if it changed underneath. Returns the new doc or null.
+async function ghUpdate(path, mutate, message, empty, what) {
   const g = gh();
-  if (!g.repo || !g.token) { toast('Connect GitHub in Settings to save ratings.', 4500); return false; }
+  if (!g.repo || !g.token) { toast(`Connect GitHub in Settings to save ${what}.`, 4500); return null; }
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
-      const cur = await ghGet('ratings.json');
-      const doc = cur.json || { ratings: {}, tracked: [] }; doc.ratings ||= {}; doc.tracked ||= [];
+      const cur = await ghGet(path);
+      const doc = cur.json || structuredClone(empty);
       mutate(doc);
-      doc.tracked = doc.tracked.filter((h) => Date.now() - h.t < 120 * 86400e3);
-      const r = await fetch(`https://api.github.com/repos/${g.repo}/contents/ratings.json`, {
+      const r = await fetch(`https://api.github.com/repos/${g.repo}/contents/${path}`, {
         method: 'PUT', headers: { Authorization: `Bearer ${g.token}`, Accept: 'application/vnd.github+json' },
-        body: JSON.stringify({ message: 'Update shoot ratings', content: b64enc(JSON.stringify(doc, null, 2) + '\n'), sha: cur.sha || undefined, branch: g.branch }),
+        body: JSON.stringify({ message, content: b64enc(JSON.stringify(doc, null, 2) + '\n'), sha: cur.sha || undefined, branch: g.branch }),
       });
       if (r.status === 409 || r.status === 422) continue;
       if (!r.ok) throw new Error(r.status === 401 || r.status === 403 ? 'the token cannot write to this repository' : 'HTTP ' + r.status);
-      ratingsDoc = doc; renderLog(); return true;
-    } catch (e) { toast('Rating not saved: ' + e.message, 5000); return false; }
+      return doc;
+    } catch (e) { toast(`Could not save ${what}: ${e.message}`, 5000); return null; }
   }
-  toast('Rating not saved: GitHub kept changing underneath. Try again.'); return false;
+  toast(`Could not save ${what}: GitHub kept changing underneath. Try again.`); return null;
+}
+// Ratings live in ratings.json, written only by this app, so the alert engine never conflicts with it.
+async function saveRatings(mutate) {
+  const doc = await ghUpdate('ratings.json', (d) => { d.ratings ||= {}; d.tracked ||= []; mutate(d); d.tracked = d.tracked.filter((h) => Date.now() - h.t < 120 * 86400e3); },
+    'Update shoot ratings', { ratings: {}, tracked: [] }, 'ratings');
+  if (!doc) return false;
+  ratingsDoc = doc; renderLog(); return true;
 }
 
 // ---------- location editor
@@ -762,13 +875,144 @@ $('lDelete').addEventListener('click', () => {
   config.locations.splice(editIdx, 1); $('locDlg').close(); markDirty(); renderLocs(); refresh();
 });
 $('addLoc').addEventListener('click', () => openLoc(-1));
+// Collapsed by default; remember what each viewer left open.
+let forcingOpen = false;
+for (const id of ['foldLog', 'foldLocs']) {
+  const d = $(id); d.open = !!store.get('open.' + id, false);
+  d.addEventListener('toggle', () => { if (!forcingOpen && !document.body.classList.contains('tabbed')) store.set('open.' + id, d.open); });
+}
+
+// ---------- app shell: tabs on phones and when installed
+const TABS = ['today', 'radar', 'log', 'spots'];
+const tabQuery = matchMedia('(max-width: 760px), (display-mode: standalone)');
+const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+function showTab(tab, scroll = true) {
+  if (!TABS.includes(tab)) tab = 'today';
+  document.querySelectorAll('[data-panel]').forEach((el) => el.classList.toggle('active', el.dataset.panel === tab));
+  document.querySelectorAll('.tabbar [data-tab]').forEach((b) => { b.classList.toggle('active', b.dataset.tab === tab); b.setAttribute('aria-current', b.dataset.tab === tab ? 'page' : 'false'); });
+  store.set('tab', tab);
+  if (location.hash !== '#' + tab) window.history.replaceState(null, '', '#' + tab); // (`history` is our shoot log)
+  if (scroll) window.scrollTo({ top: 0 });
+}
+function applyLayout() {
+  const tabbed = tabQuery.matches;
+  document.body.classList.toggle('tabbed', tabbed); $('tabbar').hidden = !tabbed;
+  forcingOpen = true;
+  for (const id of ['foldLog', 'foldLocs']) $(id).open = tabbed ? true : !!store.get('open.' + id, false);
+  setTimeout(() => (forcingOpen = false));
+  if (tabbed) showTab(location.hash.slice(1) || store.get('tab', 'today'), false);
+}
+tabQuery.addEventListener('change', applyLayout);
+$('tabbar').addEventListener('click', (ev) => { const b = ev.target.closest('[data-tab]'); if (b) showTab(b.dataset.tab); });
+window.addEventListener('hashchange', () => { if (document.body.classList.contains('tabbed')) showTab(location.hash.slice(1), false); });
+applyLayout();
+
+// Install hint: iPhone Safari needs Share → Add to Home Screen; Chrome/Android offers a prompt.
+let installEvt = null;
+const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+if (!standalone && isIOS && !store.get('installDismissed')) $('install').hidden = false;
+window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); installEvt = e; if (!store.get('installDismissed')) { $('install').hidden = false; $('installBtn').hidden = false; } });
+$('installBtn').addEventListener('click', async () => { if (!installEvt) return; installEvt.prompt(); await installEvt.userChoice; installEvt = null; $('install').hidden = true; });
+$('installDismiss').addEventListener('click', () => { $('install').hidden = true; store.set('installDismissed', true); });
+
+// Service worker: offline use and notifications.
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+  navigator.serviceWorker.addEventListener('message', (e) => { if (e.data?.type === 'open') { const h = new URL(e.data.url).hash.slice(1); if (h) showTab(h); } });
+}
+const clearBadge = () => { try { navigator.clearAppBadge?.(); } catch {} };
+clearBadge();
+// Coming back to the app: refresh if the forecast is more than 30 minutes old.
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState !== 'visible') return;
+  clearBadge();
+  if (!run || Date.now() - run.now > 30 * 60e3) refresh();
+});
+
+// ---------- phone notifications (Web Push)
+const b64u = (bytes) => btoa(String.fromCharCode(...new Uint8Array(bytes))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+const fromB64u = (s) => Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/') + '==='.slice((s.length + 3) % 4)), (c) => c.charCodeAt(0));
+const pushSupported = () => 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
+let devicesDoc = { devices: [] };
+function deviceName() {
+  const ua = navigator.userAgent, kind = /iPhone/.test(ua) ? 'iPhone' : /iPad|Macintosh.*Mobile/.test(ua) || (isIOS && !/iPhone/.test(ua)) ? 'iPad' : /Android/.test(ua) ? 'Android' : /Mac/.test(ua) ? 'Mac' : /Windows/.test(ua) ? 'Windows PC' : 'Browser';
+  return `${kind} · added ${new Intl.DateTimeFormat('en-AU', { day: 'numeric', month: 'short' }).format(new Date())}`;
+}
+async function renderPush() {
+  const hasKeys = !!config.vapidPublicKey, mine = store.get('deviceId'), g = gh();
+  $('pKeysOk').hidden = !hasKeys; $('pKeysNew').hidden = hasKeys; $('pReplace').hidden = !hasKeys || !$('pKeysShow').hidden;
+  let status;
+  if (!g.repo || !g.token) status = 'Connect GitHub below first. Notifications are set up through your repository.';
+  else if (!pushSupported()) status = isIOS && !standalone ? 'On iPhone, notifications work only in the installed app. Add Shoot Radar to your Home Screen, open it from there, and come back here.' : 'This browser does not support notifications.';
+  else if (Notification.permission === 'denied') status = 'Notifications are blocked for Shoot Radar. Turn them on in iPhone Settings → Notifications → Shoot Radar.';
+  else status = hasKeys ? 'Turn notifications on for each phone or computer you want alerts on.' : 'Start with step 1.';
+  $('pStatus').textContent = status;
+  const on = !!mine && devicesDoc.devices.some((d) => d.id === mine);
+  $('pDevOk').hidden = !on; $('pDisable').hidden = !on; $('pEnable').hidden = on;
+  $('pEnable').disabled = !hasKeys || !pushSupported() || !g.token;
+  $('pDevices').innerHTML = devicesDoc.devices.length ? `<p class="note" style="margin:0">Devices receiving alerts</p>` + devicesDoc.devices.map((d) => `<div class="dev"><b>${esc(d.name)}</b>${d.id === mine ? ' (this one)' : ''}<button type="button" class="ghost" data-rmdev="${esc(d.id)}">Remove</button></div>`).join('') : '';
+}
+async function loadDevices() { devicesDoc = await loadData('devices.json', { devices: [] }); devicesDoc.devices ||= []; }
+$('openSettings').addEventListener('click', async () => { await loadDevices(); renderPush(); });
+$('pMakeKeys').addEventListener('click', async () => {
+  try {
+    const kp = await crypto.subtle.generateKey({ name: 'ECDSA', namedCurve: 'P-256' }, true, ['sign', 'verify']);
+    const jwk = await crypto.subtle.exportKey('jwk', kp.privateKey);
+    config.vapidPublicKey = b64u(await crypto.subtle.exportKey('raw', kp.publicKey));
+    $('pPriv').value = jwk.d; $('pKeysShow').hidden = false;
+    markDirty(); renderPush();
+    $('save').click(); // keys must be saved before any device turns notifications on
+  } catch (e) { toast('Could not create keys: ' + e.message); }
+});
+$('pCopy').addEventListener('click', async () => {
+  try { await navigator.clipboard.writeText($('pPriv').value); toast('Private key copied. Paste it into the VAPID_PRIVATE_KEY secret.'); }
+  catch { $('pPriv').select(); toast('Select the key and copy it.'); }
+});
+let replaceArm = false;
+$('pReplace').addEventListener('click', () => {
+  if (!replaceArm) { replaceArm = true; $('pReplace').textContent = 'Tap again: every device must turn notifications on again'; setTimeout(() => { replaceArm = false; $('pReplace').textContent = 'Replace keys'; }, 4000); return; }
+  replaceArm = false; $('pReplace').textContent = 'Replace keys'; delete config.vapidPublicKey; $('pMakeKeys').click();
+});
+$('pEnable').addEventListener('click', async () => {
+  const perm = await Notification.requestPermission(); // must be the first await inside the tap
+  if (perm !== 'granted') { toast('Notifications were not allowed. You can change this in iPhone Settings → Notifications.'); return renderPush(); }
+  if (saved.vapidPublicKey !== config.vapidPublicKey) return toast('Save to GitHub first so the alert engine has your new keys.', 5000);
+  try {
+    const reg = await navigator.serviceWorker.ready;
+    let sub = await reg.pushManager.getSubscription();
+    if (sub && b64u(sub.options.applicationServerKey) !== config.vapidPublicKey) { await sub.unsubscribe(); sub = null; }
+    sub ||= await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: fromB64u(config.vapidPublicKey) });
+    const j = sub.toJSON(), id = store.get('deviceId') || Math.random().toString(36).slice(2, 10);
+    const doc = await ghUpdate('devices.json', (d) => { d.devices = (d.devices || []).filter((x) => x.id !== id && x.sub?.endpoint !== j.endpoint); d.devices.push({ id, name: deviceName(), sub: { endpoint: j.endpoint, keys: j.keys }, added: Date.now() }); },
+      'Add notification device', { devices: [] }, 'this device');
+    if (!doc) return;
+    store.set('deviceId', id); devicesDoc = doc; renderPush(); toast('Notifications are on for this device. Send a test to check.');
+  } catch (e) { toast('Could not turn on notifications: ' + e.message, 6000); }
+});
+async function removeDevice(id) {
+  const doc = await ghUpdate('devices.json', (d) => { d.devices = (d.devices || []).filter((x) => x.id !== id); }, 'Remove notification device', { devices: [] }, 'devices');
+  if (!doc) return; devicesDoc = doc;
+  if (id === store.get('deviceId')) { store.del('deviceId'); try { (await (await navigator.serviceWorker.ready).pushManager.getSubscription())?.unsubscribe(); } catch {} }
+  renderPush(); toast('Device removed.');
+}
+$('pDisable').addEventListener('click', () => removeDevice(store.get('deviceId')));
+$('pDevices').addEventListener('click', (ev) => { const b = ev.target.closest('[data-rmdev]'); if (b) removeDevice(b.dataset.rmdev); });
+$('pTest').addEventListener('click', async () => {
+  const g = gh(); if (!g.repo || !g.token) return toast('Connect GitHub first.');
+  $('pTest').disabled = true;
+  try {
+    const r = await fetch(`https://api.github.com/repos/${g.repo}/actions/workflows/alerts.yml/dispatches`, { method: 'POST', headers: { Authorization: `Bearer ${g.token}`, Accept: 'application/vnd.github+json' }, body: JSON.stringify({ ref: g.branch, inputs: { mode: 'test' } }) });
+    toast(r.status === 204 ? 'Test requested. It should arrive within a minute or two.' : r.status === 403 || r.status === 404 ? 'GitHub refused: give your token Actions: Read and write, or run the workflow in GitHub with mode "test".' : 'GitHub said HTTP ' + r.status, 6000);
+  } catch (e) { toast('Could not reach GitHub: ' + e.message); }
+  $('pTest').disabled = false;
+});
 
 // ---------- settings
 $('openSettings').addEventListener('click', () => {
   const s = config.settings, g = gh();
   $('sMorning').checked = s.morning; $('sEvening').checked = s.evening; $('sLive').checked = s.liveAurora; $('sQuiet').checked = s.quietDigest; $('sBolt').checked = s.liveLightning; $('sTune').checked = s.autoTune;
   $('sHours').value = s.hours; $('sMax').value = s.maxItems;
-  $('gRepo').value = g.repo; $('gBranch').value = g.branch; $('gToken').value = g.token; $('nTopic').value = store.get('ntfyTopic', '');
+  $('gRepo').value = g.repo; $('gBranch').value = g.branch; $('gToken').value = g.token; $('pKeysShow').hidden = true;
   $('importBox').hidden = $('importRow').hidden = true;
   $('setDlg').showModal();
 });
@@ -778,7 +1022,7 @@ $('sApply').addEventListener('click', async () => {
     hours: Math.min(96, Math.max(12, +$('sHours').value || 72)), maxItems: Math.min(20, Math.max(1, +$('sMax').value || 8)) });
   const before = JSON.stringify(gh());
   store.set('ghRepo', $('gRepo').value.trim().replace(/^https?:\/\/github\.com\//, '').replace(/\/$/, ''));
-  store.set('ghBranch', $('gBranch').value.trim() || 'main'); store.set('ghToken', $('gToken').value.trim()); store.set('ntfyTopic', $('nTopic').value.trim());
+  store.set('ghBranch', $('gBranch').value.trim() || 'main'); store.set('ghToken', $('gToken').value.trim());
   $('setDlg').close();
   if (JSON.stringify(gh()) !== before && gh().repo && gh().token) {
     saved = normalise(await loadConfig());
@@ -787,13 +1031,6 @@ $('sApply').addEventListener('click', async () => {
     toast('Connected to GitHub.');
   }
   markDirty(); refresh();
-});
-$('nTest').addEventListener('click', async () => {
-  const topic = $('nTopic').value.trim(); if (!topic) return toast('Enter your ntfy topic first.');
-  try {
-    const r = await fetch(`https://ntfy.sh/${encodeURIComponent(topic)}`, { method: 'POST', body: 'If you can read this, Shoot Radar can reach your phone.', headers: { Title: 'Shoot Radar test', Tags: 'camera' } });
-    toast(r.ok ? 'Sent. Check your phone.' : 'ntfy refused the message (HTTP ' + r.status + ').');
-  } catch { toast('Could not reach ntfy.sh from this browser.'); }
 });
 $('exportBtn').addEventListener('click', async () => {
   const txt = JSON.stringify(config, null, 2);
