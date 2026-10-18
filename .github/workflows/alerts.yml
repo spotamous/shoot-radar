@@ -15,7 +15,7 @@ on:
       mode:
         description: 'What to run'
         type: choice
-        options: [digest, live]
+        options: [digest, live, test]
         default: digest
 
 permissions:
@@ -40,6 +40,7 @@ jobs:
       - name: Check conditions and notify
         run: node alert.js
         env:
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           NTFY_SERVER: ${{ vars.NTFY_SERVER }}
           SCHEDULE: ${{ github.event.schedule }}
