@@ -1,1 +1,16 @@
-{"devices":[]}
+{
+  "devices": [
+    {
+      "id": "ff4vr79e",
+      "name": "Windows PC · added 18 Oct",
+      "sub": {
+        "endpoint": "https://fcm.googleapis.com/fcm/send/dfWen5HcSro:APA91bH3_mq5ABuNkS8-y6lYPxx9j463topl2RYNZu9-HHrkWrUybv9sWj4jFaklRyhHbeJWtqqeqed1bvq0Bq2DDsc7DpvIOAcCpByHxLycv1P9KKVpTt2xAtWkJBJJMUJcI4dmhUiY",
+        "keys": {
+          "p256dh": "BIvT9LNeP8p0w_ptTPpSITzV6T3nHf2zQdtrPFPE_Yoqb2tAbD0y0vqxMM18XlzxGuiRvMfSobloiKC516KuCII",
+          "auth": "j3wXesQvd0py3QORYFdr1Q"
+        }
+      },
+      "added": 1792297259495
+    }
+  ]
+}
