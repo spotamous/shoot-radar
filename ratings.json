@@ -1,4 +1,15 @@
 {
   "ratings": {},
-  "tracked": []
+  "tracked": [
+    {
+      "id": "port-campbell-national-park-3e78|storm|2026-10-19",
+      "t": 1792389600000,
+      "key": "storm",
+      "locId": "port-campbell-national-park-3e78",
+      "loc": "Port Campbell National Park",
+      "score": 75,
+      "why": "Thunderstorm forecast around 5:00pm, 29% rain chance",
+      "tracked": 1792299755133
+    }
+  ]
 }
