@@ -1,5 +1,14 @@
 {
-  "ratings": {},
+  "ratings": {
+    "rowville-xpvw|sunset|2026-10-18": {
+      "rating": "ok",
+      "score": 25,
+      "key": "sunset",
+      "locId": "rowville-xpvw",
+      "t": 1792312753000,
+      "at": 1792313249713
+    }
+  },
   "tracked": [
     {
       "id": "port-campbell-national-park-3e78|storm|2026-10-19",
