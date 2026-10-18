@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shoot Radar</title>
-<meta name="theme-color" content="#0b1019">
+<meta name="theme-color" content="#121212">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
@@ -14,23 +14,28 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="format-detection" content="telephone=no">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Anonymous+Pro:wght@400;700&display=swap">
 <style>
-/* Layout: one column (desktop) or four tabs (phone / installed app) on a night-sky ground; dialogs for editing. */
+/* Theme: matches tysonwaldron.com. Photo-led, near-black #121212 ground, pale green-white #EFF5EF type,
+   Inter at regular weight, grey pill buttons, 10px image corners, brand red #C70000 for the strongest scores.
+   Layout: one column (desktop) or four tabs (phone / installed app); dialogs for editing. */
 :root {
-  --bg: #0b1019; --surface: #121a27; --surface-2: #1a2434; --line: #243045;
-  --ink: #e9edf4; --muted: #8d99ad; --accent: #f3a43b; --accent-ink: #1b1204;
-  --hot: #ff6f61; --good: #f3a43b; --maybe: #6f8fc9; --low: #3a465b; --ok: #4fc29b; --bad: #ff6f61;
-  --display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
-  --body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --bg: #121212; --surface: #1a1a1a; --surface-2: #242524; --line: #2e302e;
+  --ink: #eff5ef; --muted: #9da59d; --accent: #eff5ef; --accent-ink: #061406;
+  --pill: #ababab; --pill-ink: #061406;
+  --hot: #c70000; --good: #d6a24a; --maybe: #5f6f80; --low: #2c2e2c; --ok: #7fc79a; --bad: #ff5a4f;
+  --hdr: #121212; --hdr-ink: #eff5ef;
+  --display: 'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
+  --body: 'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
+  --mono: 'Anonymous Pro', ui-monospace, 'SF Mono', Menlo, monospace;
   color-scheme: dark;
 }
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-    --bg: #f3f5f8; --surface: #ffffff; --surface-2: #eef1f6; --line: #d9dfe8;
-    --ink: #121923; --muted: #5b6678; --accent: #c87a12; --accent-ink: #ffffff;
-    --hot: #d94a3d; --good: #c87a12; --maybe: #4767a6; --low: #c3cbd8; --ok: #1f8f6a; --bad: #d94a3d; color-scheme: light;
+    --bg: #ffffff; --surface: #f5f7f5; --surface-2: #eaeeea; --line: #dde3dd;
+    --ink: #061406; --muted: #5a645a; --accent: #061406; --accent-ink: #ffffff;
+    --pill: #ababab; --pill-ink: #061406;
+    --hot: #c70000; --good: #b07a1c; --maybe: #56677a; --low: #dfe4df; --ok: #2f7d4f; --bad: #c70000; color-scheme: light;
   }
 }
 * { box-sizing: border-box; }
@@ -224,7 +229,7 @@ body.tabbed .savebar { bottom: calc(60px + env(safe-area-inset-bottom, 0px)); pa
 body.tabbed .toast { bottom: calc(140px + env(safe-area-inset-bottom, 0px)); }
 body.tabbed .stamp { order: 3; width: 100%; }
 @media (display-mode: standalone) and (prefers-color-scheme: light) {
-  header.top::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: env(safe-area-inset-top, 0px); background: #0b1019; }
+  header.top::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: env(safe-area-inset-top, 0px); background: var(--hdr); }
   header.top { position: sticky; }
 }
 @media (display-mode: standalone) { body { overscroll-behavior-y: none; } }
@@ -249,6 +254,62 @@ body.tabbed .stamp { order: 3; width: 100%; }
   .stamp { width: 100%; order: 3; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+/* ---------- tysonwaldron.com theme ---------- */
+body { font: 400 15px/1.55 var(--body); letter-spacing: -0.005em; }
+header.top { background: var(--hdr); color: var(--hdr-ink); border-bottom-color: rgba(239, 245, 239, .08); backdrop-filter: none; }
+header.top button { color: var(--hdr-ink); border-color: rgba(239, 245, 239, .22); background: transparent; }
+header.top .stamp { color: rgba(239, 245, 239, .62); }
+.brand { gap: 12px; font: 400 13px var(--body); }
+.brand .sig { height: 34px; width: auto; display: block; }
+.brand .app-name { text-transform: uppercase; letter-spacing: .28em; font-size: 11px; color: rgba(239, 245, 239, .7); padding-left: 12px; border-left: 1px solid rgba(239, 245, 239, .25); }
+.progress { background: var(--hdr-ink); }
+h2 { font: 400 26px/1.15 var(--display); letter-spacing: -0.02em; }
+.sec-head p, .note { font-size: 13.5px; }
+button, .btn { font: 400 14px var(--body); border-radius: 37px; padding: 9px 18px; }
+button.primary { background: var(--pill); color: var(--pill-ink); border-color: var(--pill); }
+button.primary:hover { filter: brightness(1.08); }
+.score { font: 700 13px var(--mono); border-radius: 37px; padding: 3px 9px; }
+.s-good { color: #1a1206; }
+.alert, .locard, .logrow, .grid-scroll, details.fold, .step, .cond-row, .install { border-radius: 10px; }
+.alert .cond svg, .locard .ico-row svg, .detail-list svg, .cond-top svg, .logrow .thumb, button.cover-ph svg { color: var(--ink); }
+.alert .cond { font-weight: 500; }
+.alert .loc, .locard .name { font: 400 18px/1.3 var(--display); letter-spacing: -0.01em; }
+.alert .when, .stamp, .coords, .radar thead th { font-family: var(--mono); }
+.radar thead th { letter-spacing: .14em; }
+.chip { border-radius: 37px; }
+.pip { border-radius: 37px; padding: 2px 8px 2px 5px; }
+.pip.s-hot { background: color-mix(in srgb, var(--hot) 30%, transparent); }
+.cover, .alert .banner img, .photo-edit img, .radar .who img, .logrow img.thumb { border-radius: 10px; }
+.locard .cover { border-radius: 10px 10px 0 0; }
+.alert .banner img { border-radius: 0; }
+.switch input:checked + span { background: var(--ink); }
+.switch input:checked + span::after { background: var(--bg); }
+.tabbar button.active { color: var(--ink); }
+.tabbar button { color: color-mix(in srgb, var(--ink) 45%, transparent); font-weight: 500; letter-spacing: .02em; }
+.install { background: var(--surface); border-color: var(--line); }
+.eyebrow { text-transform: uppercase; letter-spacing: .28em; font-size: 12px; }
+details.fold > summary h2 { font-size: 22px; }
+.badge { font-family: var(--mono); font-weight: 700; border-radius: 37px; background: var(--hot); color: #fff; }
+.badge.muted { background: transparent; }
+.toast { border-radius: 37px; }
+/* hero: full-bleed photo like the homepage */
+.hero { position: relative; height: clamp(230px, 42vw, 380px); overflow: hidden; background: #121212; color: #eff5ef; }
+.hero img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center 60%; }
+.hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(18, 18, 18, .15) 0%, rgba(18, 18, 18, .1) 40%, rgba(18, 18, 18, .85) 100%); }
+.hero-text { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding-block: 0 22px; display: grid; gap: 6px; }
+.hero-h { font: 300 clamp(28px, 6vw, 46px)/1.05 var(--display); letter-spacing: -0.03em; text-wrap: balance; }
+.hero-sub { font: 400 13px var(--mono); color: rgba(239, 245, 239, .8); letter-spacing: .02em; }
+.hero-sub { display: flex; flex-wrap: wrap; gap: 2px 14px; } .hero-sub span { white-space: nowrap; }
+body.tabbed .hero:not(.active) { display: none; }
+.hbtn svg { width: 17px; height: 17px; }
+@media (max-width: 600px) {
+  .brand .sig { height: 28px; } .brand .app-name { letter-spacing: .2em; font-size: 10px; padding-left: 10px; }
+  header .wrap { gap: 8px; padding-block: 10px; }
+  .hbtn { padding: 0; width: 40px; height: 40px; justify-content: center; }
+  .hbtn span { display: none; }
+  .stamp { width: 100%; order: 3; font-size: 11.5px; }
+  .hero-sub { font-size: 12px; }
+}
 </style>
 </head>
 <body>
@@ -269,19 +330,30 @@ body.tabbed .stamp { order: 3; width: 100%; }
     <symbol id="i-log" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 8h8M8 12h8M8 16h5"/></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.4"/></symbol>
     <symbol id="i-today" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2M5.6 5.6l1.4 1.4M3 12h2M19 12h2M17 7l1.4-1.4"/><path d="M7.5 15a4.5 4.5 0 0 1 9 0"/><path d="M3 19h18"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></symbol>
     <symbol id="i-snow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7M9.5 3.5 12 6l2.5-2.5M9.5 20.5 12 18l2.5 2.5"/></symbol>
   </defs>
 </svg>
 
 <header class="top">
   <div class="wrap">
-    <div class="brand"><svg><use href="#i-logo"/></svg>Shoot Radar</div>
+    <div class="brand"><img src="https://tysonwaldron.com/cdn/shop/files/Tyson-Waldron_white_low-res.png?height=140&v=1763355808" alt="Tyson Waldron Photography" class="sig"><span class="app-name">Shoot Radar</span></div>
     <span class="stamp" id="stamp">Loading forecasts…</span>
-    <button id="refresh" class="ghost" type="button">Refresh</button>
-    <button id="openSettings" type="button">Settings</button>
+    <button id="refresh" class="ghost hbtn" type="button" aria-label="Refresh"><svg aria-hidden="true"><use href="#i-refresh"/></svg><span>Refresh</span></button>
+    <button id="openSettings" class="hbtn" type="button" aria-label="Settings"><svg aria-hidden="true"><use href="#i-gear"/></svg><span>Settings</span></button>
   </div>
   <div class="progress" id="progress"></div>
 </header>
+
+<section class="hero" data-panel="today" id="hero" aria-label="Today">
+  <img id="heroImg" alt="" src="https://tysonwaldron.com/cdn/shop/files/DSC_9749-Edit.jpg?v=1770781421&amp;width=1600">
+  <div class="hero-text wrap">
+    <div class="eyebrow" id="heroDate">Today</div>
+    <div class="hero-h" id="heroH">Checking the sky…</div>
+    <div class="hero-sub" id="heroSub"></div>
+  </div>
+</section>
 
 <main class="wrap">
   <div class="install" id="install" hidden>
@@ -440,6 +512,10 @@ body.tabbed .stamp { order: 3; width: 100%; }
         </div>
       </div>
       <div>
+        <h2 style="font-size:16px;margin-bottom:8px">Cover photo</h2>
+        <label class="f">Image link for the photo at the top of Today <input type="text" id="sHero" placeholder="Leave blank for the photo from tysonwaldron.com" autocomplete="off"></label>
+      </div>
+      <div>
         <h2 style="font-size:16px;margin-bottom:8px">Phone notifications</h2>
         <div class="conds">
           <p class="note" id="pStatus" style="margin:0"></p>
@@ -584,10 +660,15 @@ function markDirty() {
   $('savebar').hidden = !dirty();
 }
 
+const HERO_DEFAULT = 'https://tysonwaldron.com/cdn/shop/files/DSC_9749-Edit.jpg?v=1770781421&width=1600';
+function applyHero() { const src = config?.heroImage || HERO_DEFAULT; if ($('heroImg').getAttribute('src') !== src) $('heroImg').src = src; }
+$('heroImg').addEventListener('error', () => { $('heroImg').hidden = true; });
+$('heroImg').addEventListener('load', () => { $('heroImg').hidden = false; });
 async function init() {
   saved = normalise(await loadConfig());
   const draft = store.get('draft');
   config = draft ? normalise(draft) : structuredClone(saved);
+  applyHero();
   [history, ratingsDoc] = await Promise.all([loadData('history.json', { entries: [] }), loadData('ratings.json', { ratings: {}, tracked: [] })]);
   history.entries ||= []; ratingsDoc.ratings ||= {}; ratingsDoc.tracked ||= [];
   markDirty();
@@ -629,6 +710,23 @@ function renderAlerts() {
     : `<div class="empty">Nothing above your thresholds in the next ${s.hours} hours. The radar below shows near misses; lower a threshold on a location if you want to hear about them.</div>`;
   const ph = E.moonPhase(run.now);
   $('moonNote').textContent = `Moon tonight: ${E.moonPhaseName(run.now)}, ${Math.round(ph.illum * 100)}% lit`;
+  renderHero(alerts, ph);
+}
+// Sunrise/sunset for the first spot (or Melbourne), found by scanning the sun's altitude through the local day.
+function sunTimes(lat, lon, now) {
+  const p = E.localParts(now), start = now - ((p.h * 60 + p.min) * 60e3);
+  let prev = E.sunPos(start, lat, lon).alt, rise = null, set = null;
+  for (let t = start + 60e3; t < start + 86400e3; t += 60e3) { const a = E.sunPos(t, lat, lon).alt; if (prev < -0.833 && a >= -0.833) rise = t; if (prev > -0.833 && a <= -0.833) set = t; prev = a; }
+  return { rise, set };
+}
+function renderHero(alerts, ph) {
+  const now = run.now, soon = alerts.filter((e) => e.t - now < 36 * 3600e3);
+  const top = alerts.slice().sort((a, b) => b.score - a.score)[0];
+  $('heroDate').textContent = new Intl.DateTimeFormat('en-AU', { timeZone: E.TZ, weekday: 'long', day: 'numeric', month: 'long' }).format(now);
+  $('heroH').textContent = !alerts.length ? 'Quiet skies for now' : soon.length ? `${soon.length} shoot${soon.length > 1 ? 's' : ''} worth planning` : `Next up: ${E.CONDITIONS[top.key].label.toLowerCase()} ${E.fmtDay(top.t, now).toLowerCase()}`;
+  const l = config.locations.find((x) => x.enabled !== false) || { lat: -37.81, lon: 144.96 };
+  const st = sunTimes(l.lat, l.lon, now);
+  $('heroSub').innerHTML = [st.rise && `Sunrise ${E.fmtTime(st.rise)}`, st.set && `Sunset ${E.fmtTime(st.set)}`, `${E.moonPhaseName(now)} ${Math.round(ph.illum * 100)}%`].filter(Boolean).map((x) => `<span>${esc(x)}</span>`).join('');
 }
 
 function dayKeys() {
@@ -1010,7 +1108,7 @@ $('pTest').addEventListener('click', async () => {
 // ---------- settings
 $('openSettings').addEventListener('click', () => {
   const s = config.settings, g = gh();
-  $('sMorning').checked = s.morning; $('sEvening').checked = s.evening; $('sLive').checked = s.liveAurora; $('sQuiet').checked = s.quietDigest; $('sBolt').checked = s.liveLightning; $('sTune').checked = s.autoTune;
+  $('sMorning').checked = s.morning; $('sEvening').checked = s.evening; $('sLive').checked = s.liveAurora; $('sQuiet').checked = s.quietDigest; $('sBolt').checked = s.liveLightning; $('sTune').checked = s.autoTune; $('sHero').value = config.heroImage || '';
   $('sHours').value = s.hours; $('sMax').value = s.maxItems;
   $('gRepo').value = g.repo; $('gBranch').value = g.branch; $('gToken').value = g.token; $('pKeysShow').hidden = true;
   $('importBox').hidden = $('importRow').hidden = true;
@@ -1020,6 +1118,9 @@ $('sApply').addEventListener('click', async () => {
   const s = config.settings;
   Object.assign(s, { morning: $('sMorning').checked, evening: $('sEvening').checked, liveAurora: $('sLive').checked, quietDigest: $('sQuiet').checked, liveLightning: $('sBolt').checked, autoTune: $('sTune').checked,
     hours: Math.min(96, Math.max(12, +$('sHours').value || 72)), maxItems: Math.min(20, Math.max(1, +$('sMax').value || 8)) });
+  const hero = $('sHero').value.trim();
+  if (hero && /^https:\/\//.test(hero)) config.heroImage = hero; else delete config.heroImage;
+  applyHero();
   const before = JSON.stringify(gh());
   store.set('ghRepo', $('gRepo').value.trim().replace(/^https?:\/\/github\.com\//, '').replace(/\/$/, ''));
   store.set('ghBranch', $('gBranch').value.trim() || 'main'); store.set('ghToken', $('gToken').value.trim());

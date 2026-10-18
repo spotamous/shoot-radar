@@ -1,6 +1,7 @@
 // Shoot Radar service worker: offline app shell, last-known forecasts, and push notifications.
-const VERSION = 'sr-v5';
+const VERSION = 'sr-v6';
 const SHELL = ['./', './index.html', './engine.js', './manifest.webmanifest', './icons/icon-192.png', './icons/apple-touch-icon.png', './icons/badge-96.png'];
+const IMAGE_HOSTS = ['tysonwaldron.com', 'www.tysonwaldron.com', 'fonts.googleapis.com', 'fonts.gstatic.com'];
 const DATA_HOSTS = ['api.open-meteo.com', 'marine-api.open-meteo.com', 'services.swpc.noaa.gov', 'geocoding-api.open-meteo.com'];
 
 self.addEventListener('install', (e) => {
@@ -16,7 +17,8 @@ async function networkFirst(req, cacheName, timeoutMs, markCached) {
   try {
     const ctl = new AbortController(); const timer = setTimeout(() => ctl.abort(), timeoutMs);
     const res = await fetch(req, { signal: ctl.signal }); clearTimeout(timer);
-    if (res.ok) {
+    if (res.type === 'opaque') cache.put(req, res.clone()); // cross-site images (no CORS): keep as-is
+    else if (res.ok) {
       const copy = res.clone(); const headers = new Headers(copy.headers); headers.set('x-sr-saved', String(Date.now()));
       cache.put(req, new Response(await copy.blob(), { status: copy.status, headers }));
     }
@@ -36,6 +38,8 @@ self.addEventListener('fetch', (e) => {
   if (url.origin === location.origin) {
     if (/\/(history|ratings|devices|state)\.json$/.test(url.pathname)) return; // always live
     e.respondWith(networkFirst(req, VERSION + '-shell', 6000, false));
+  } else if (IMAGE_HOSTS.includes(url.hostname)) {
+    e.respondWith(networkFirst(req, VERSION + '-img', 8000, false));
   } else if (DATA_HOSTS.includes(url.hostname)) {
     e.respondWith(networkFirst(req, VERSION + '-data', 12000, true));
   }
