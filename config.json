@@ -308,6 +308,79 @@
         }
       },
       "image": "images/albert-park-i4kh-mvdb5p45.jpg"
+    },
+    {
+      "id": "mount-buffalo-664r",
+      "name": "Mount Buffalo",
+      "lat": -36.7833,
+      "lon": 146.7833,
+      "notes": "",
+      "enabled": true,
+      "conditions": {
+        "sunrise": {
+          "on": true
+        },
+        "sunset": {
+          "on": true
+        },
+        "fog": {
+          "on": true
+        },
+        "storm": {
+          "on": true
+        },
+        "snow": {
+          "on": true
+        }
+      },
+      "image": "images/mount-buffalo-664r-mvdba49d.jpg"
+    },
+    {
+      "id": "mount-donna-buang-x8z6",
+      "name": "Mount Donna Buang",
+      "lat": -37.7068,
+      "lon": 145.6807,
+      "notes": "",
+      "enabled": true,
+      "conditions": {
+        "sunrise": {
+          "on": true
+        },
+        "sunset": {
+          "on": true
+        },
+        "snow": {
+          "on": true
+        }
+      },
+      "imagePos": "bottom",
+      "image": "images/mount-donna-buang-x8z6-mvdba6ys.jpg"
+    },
+    {
+      "id": "portsea-2rdc",
+      "name": "Portsea",
+      "lat": -38.3238,
+      "lon": 144.7099,
+      "notes": "",
+      "enabled": true,
+      "conditions": {
+        "sunrise": {
+          "on": true
+        },
+        "sunset": {
+          "on": true
+        },
+        "fog": {
+          "on": true
+        },
+        "storm": {
+          "on": true
+        },
+        "lightning": {
+          "on": true
+        }
+      },
+      "image": "images/portsea-2rdc-mvdba8ty.jpg"
     }
   ]
 }
