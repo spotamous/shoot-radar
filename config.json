@@ -143,35 +143,59 @@
       "image": "images/cape-woolamai-mvdb5e37.jpg"
     },
     {
+      "enabled": true,
+      "conditions": {
+        "sunrise": {
+          "on": true
+        },
+        "sunset": {
+          "on": true
+        },
+        "fog": {
+          "on": true
+        },
+        "storm": {
+          "on": true
+        }
+      },
+      "notes": "",
       "id": "cathedral-abnm",
       "name": "Cathedral Ranges",
       "lat": -37.4,
       "lon": 145.75,
-      "notes": "",
-      "enabled": true,
-      "conditions": {
-        "sunrise": {
-          "on": true
-        },
-        "sunset": {
-          "on": true
-        },
-        "fog": {
-          "on": true
-        },
-        "storm": {
-          "on": true
-        }
-      },
       "imagePos": "top",
       "image": "images/cathedral-abnm-mvdb5fqm.jpg"
     },
     {
+      "enabled": true,
+      "conditions": {
+        "sunrise": {
+          "on": true
+        },
+        "sunset": {
+          "on": true
+        },
+        "fog": {
+          "on": true
+        },
+        "storm": {
+          "on": true
+        },
+        "lightning": {
+          "on": true
+        },
+        "milkyway": {
+          "on": true
+        }
+      },
+      "notes": "",
       "id": "port-campbell-national-park-3e78",
       "name": "Port Campbell National Park",
       "lat": -38.6414,
       "lon": 143.0681,
-      "notes": "",
+      "image": "images/port-campbell-national-park-3e78-mvdb5hgq.jpg"
+    },
+    {
       "enabled": true,
       "conditions": {
         "sunrise": {
@@ -182,60 +206,31 @@
         },
         "fog": {
           "on": true
-        },
-        "storm": {
-          "on": true
-        },
-        "lightning": {
-          "on": true
-        },
-        "milkyway": {
-          "on": true
         }
       },
-      "image": "images/port-campbell-national-park-3e78-mvdb5hgq.jpg"
-    },
-    {
+      "notes": "",
       "id": "mount-william-he8i",
       "name": "Mount William",
       "lat": -37.2926,
       "lon": 142.601,
-      "notes": "",
-      "enabled": true,
-      "conditions": {
-        "sunrise": {
-          "on": true
-        },
-        "sunset": {
-          "on": true
-        },
-        "fog": {
-          "on": true
-        }
-      },
       "imagePos": "top",
       "image": "images/mount-william-he8i-mvdb5ila.jpg"
     },
     {
-      "id": "taggerty-river-mjcs",
-      "name": "Taggerty River",
-      "lat": -37.3333,
-      "lon": 145.7167,
-      "notes": "",
       "enabled": true,
       "conditions": {
         "fog": {
           "on": true
         }
       },
+      "notes": "",
+      "id": "taggerty-river-mjcs",
+      "name": "Taggerty River",
+      "lat": -37.3333,
+      "lon": 145.7167,
       "image": "images/taggerty-river-mjcs-mvdb5jyk.jpg"
     },
     {
-      "id": "mepunga-77d3",
-      "name": "Childers Cove",
-      "lat": -38.4878,
-      "lon": 142.682,
-      "notes": "",
       "enabled": true,
       "conditions": {
         "sunrise": {
@@ -254,15 +249,44 @@
           "on": true
         }
       },
+      "notes": "",
+      "id": "mepunga-77d3",
+      "name": "Childers Cove",
+      "lat": -38.4878,
+      "lon": 142.682,
       "imagePos": "top",
       "image": "images/mepunga-77d3-mvdb5lq1.jpg"
     },
     {
+      "enabled": true,
+      "conditions": {
+        "sunrise": {
+          "on": true
+        },
+        "sunset": {
+          "on": true
+        },
+        "fog": {
+          "on": true
+        },
+        "storm": {
+          "on": true
+        },
+        "lightning": {
+          "on": true
+        },
+        "snow": {
+          "on": true
+        }
+      },
+      "notes": "",
       "id": "mount-mckay-eta1",
       "name": "Mount McKay",
       "lat": -36.8749,
       "lon": 147.2424,
-      "notes": "",
+      "image": "images/mount-mckay-eta1-mvdb5nmr.jpg"
+    },
+    {
       "enabled": true,
       "conditions": {
         "sunrise": {
@@ -276,22 +300,16 @@
         },
         "storm": {
           "on": true
-        },
-        "lightning": {
-          "on": true
-        },
-        "snow": {
-          "on": true
         }
       },
-      "image": "images/mount-mckay-eta1-mvdb5nmr.jpg"
-    },
-    {
+      "notes": "",
       "id": "albert-park-i4kh",
       "name": "Albert Park",
       "lat": -37.8411,
       "lon": 144.952,
-      "notes": "",
+      "image": "images/albert-park-i4kh-mvdb5p45.jpg"
+    },
+    {
       "enabled": true,
       "conditions": {
         "sunrise": {
@@ -305,16 +323,19 @@
         },
         "storm": {
           "on": true
+        },
+        "snow": {
+          "on": true
         }
       },
-      "image": "images/albert-park-i4kh-mvdb5p45.jpg"
-    },
-    {
+      "notes": "",
       "id": "mount-buffalo-664r",
       "name": "Mount Buffalo",
       "lat": -36.7833,
       "lon": 146.7833,
-      "notes": "",
+      "image": "images/mount-buffalo-664r-mvdba49d.jpg"
+    },
+    {
       "enabled": true,
       "conditions": {
         "sunrise": {
@@ -323,45 +344,19 @@
         "sunset": {
           "on": true
         },
-        "fog": {
-          "on": true
-        },
-        "storm": {
-          "on": true
-        },
         "snow": {
           "on": true
         }
       },
-      "image": "images/mount-buffalo-664r-mvdba49d.jpg"
-    },
-    {
+      "notes": "",
       "id": "mount-donna-buang-x8z6",
       "name": "Mount Donna Buang",
       "lat": -37.7068,
       "lon": 145.6807,
-      "notes": "",
-      "enabled": true,
-      "conditions": {
-        "sunrise": {
-          "on": true
-        },
-        "sunset": {
-          "on": true
-        },
-        "snow": {
-          "on": true
-        }
-      },
       "imagePos": "bottom",
       "image": "images/mount-donna-buang-x8z6-mvdba6ys.jpg"
     },
     {
-      "id": "portsea-2rdc",
-      "name": "Portsea",
-      "lat": -38.3238,
-      "lon": 144.7099,
-      "notes": "",
       "enabled": true,
       "conditions": {
         "sunrise": {
@@ -380,8 +375,13 @@
           "on": true
         }
       },
+      "notes": "",
+      "id": "portsea-2rdc",
+      "name": "Portsea",
+      "lat": -38.3238,
+      "lon": 144.7099,
       "image": "images/portsea-2rdc-mvdba8ty.jpg"
     }
   ],
-  "vapidPublicKey": "BGmZByfV7fkIf8efNk-37giXdA0gEMxC28gwUsQ9LNfK_qot7P08grJanSWSr8vhkWQJinBDsB3fvWwXaZwCDSo"
+  "vapidPublicKey": "BK3c4gTdaqrJoveFZzR0idVwVe8QGxHui8iQDwXtFeMDBs29YvGZ11zDbdRiokwqRp5KOLzVUJxslnO5ZWWNpkI"
 }
