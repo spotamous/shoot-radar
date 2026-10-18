@@ -381,6 +381,32 @@
       "lat": -38.3238,
       "lon": 144.7099,
       "image": "images/portsea-2rdc-mvdba8ty.jpg"
+    },
+    {
+      "id": "rowville-xpvw",
+      "name": "Rowville",
+      "lat": -37.9333,
+      "lon": 145.2333,
+      "notes": "",
+      "enabled": true,
+      "conditions": {
+        "sunrise": {
+          "on": true
+        },
+        "sunset": {
+          "on": true
+        },
+        "fog": {
+          "on": true
+        },
+        "storm": {
+          "on": true
+        },
+        "moon": {
+          "on": true
+        }
+      },
+      "image": "images/rowville-xpvw-mvdfpd09.jpg"
     }
   ],
   "vapidPublicKey": "BLF3Us25MJq34Qjxx_bqTaP7SsT6Bl_Y494zAbH31yGubSmkVMskSETgHwJUqw6AfAZ3gtIqutpSCnE4vWNkMs8"
