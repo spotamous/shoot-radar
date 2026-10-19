@@ -7,6 +7,14 @@
       "locId": "rowville-xpvw",
       "t": 1792312753000,
       "at": 1792313249713
+    },
+    "port-campbell-national-park-3e78|storm|2026-10-19": {
+      "rating": "dud",
+      "score": 75,
+      "key": "storm",
+      "locId": "port-campbell-national-park-3e78",
+      "t": 1792389600000,
+      "at": 1792398970441
     }
   },
   "tracked": [
