@@ -23,6 +23,14 @@
       "locId": "albert-park-i4kh",
       "t": 1792438126000,
       "at": 1792454692479
+    },
+    "cathedral-abnm|sunrise|2026-10-20": {
+      "rating": "epic",
+      "score": 71,
+      "key": "sunrise",
+      "locId": "cathedral-abnm",
+      "t": 1792437952000,
+      "at": 1792454731869
     }
   },
   "tracked": [
