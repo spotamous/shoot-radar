@@ -31,6 +31,14 @@
       "locId": "cathedral-abnm",
       "t": 1792437952000,
       "at": 1792454731869
+    },
+    "rowville-xpvw|sunset|2026-10-20": {
+      "rating": "ok",
+      "score": 99,
+      "key": "sunset",
+      "locId": "rowville-xpvw",
+      "t": 1792485673000,
+      "at": 1792492574927
     }
   },
   "tracked": [
