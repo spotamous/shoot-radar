@@ -15,6 +15,14 @@
       "locId": "port-campbell-national-park-3e78",
       "t": 1792389600000,
       "at": 1792398970441
+    },
+    "albert-park-i4kh|sunrise|2026-10-20": {
+      "rating": "epic",
+      "score": 60,
+      "key": "sunrise",
+      "locId": "albert-park-i4kh",
+      "t": 1792438126000,
+      "at": 1792454692479
     }
   },
   "tracked": [
