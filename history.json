@@ -1,13 +1,83 @@
 {
   "entries": [
     {
+      "id": "mount-william-he8i|fog|2026-10-27",
+      "t": 1793042976000,
+      "key": "fog",
+      "locId": "mount-william-he8i",
+      "loc": "Mount William",
+      "score": 85,
+      "why": "Visibility 820 m, humidity 99%, wind 4 km/h around 5:29am",
+      "sent": 1792785945084
+    },
+    {
+      "id": "flinders-blowhole|moon|2026-10-27",
+      "t": 1793042312000,
+      "key": "moon",
+      "locId": "flinders-blowhole",
+      "loc": "Flinders Blowhole",
+      "score": 87,
+      "why": "99% lit moon sets at 6:18am, 0 min after sunrise; 13% low cloud on that horizon",
+      "sent": 1792785945084
+    },
+    {
+      "id": "rowville-xpvw|moon|2026-10-27",
+      "t": 1793042303000,
+      "key": "moon",
+      "locId": "rowville-xpvw",
+      "loc": "Rowville",
+      "score": 89,
+      "why": "99% lit moon sets at 6:18am, 0 min after sunrise; 2% low cloud on that horizon",
+      "sent": 1792785945084
+    },
+    {
+      "id": "taggerty-river-mjcs|fog|2026-10-27",
+      "t": 1793042232000,
+      "key": "fog",
+      "locId": "taggerty-river-mjcs",
+      "loc": "Taggerty River",
+      "score": 80,
+      "why": "Visibility 6.0 km, humidity 98%, wind 5 km/h around 4:17am",
+      "sent": 1792785945084
+    },
+    {
+      "id": "cathedral-abnm|fog|2026-10-27",
+      "t": 1793042212000,
+      "key": "fog",
+      "locId": "cathedral-abnm",
+      "loc": "Cathedral Ranges",
+      "score": 85,
+      "why": "Visibility 680 m, humidity 100%, wind 4 km/h around 4:16am",
+      "sent": 1792785945084
+    },
+    {
+      "id": "mount-buffalo-664r|fog|2026-10-27",
+      "t": 1793042030000,
+      "key": "fog",
+      "locId": "mount-buffalo-664r",
+      "loc": "Mount Buffalo",
+      "score": 80,
+      "why": "Visibility 7.6 km, humidity 97%, wind 6 km/h around 5:13am",
+      "sent": 1792785945084
+    },
+    {
+      "id": "mount-mckay-eta1|fog|2026-10-27",
+      "t": 1793041893000,
+      "key": "fog",
+      "locId": "mount-mckay-eta1",
+      "loc": "Mount McKay",
+      "score": 85,
+      "why": "Visibility 700 m, humidity 99%, wind 8 km/h around 3:11am",
+      "sent": 1792785945084
+    },
+    {
       "id": "mount-william-he8i|fog|2026-10-26",
       "t": 1792956649000,
       "key": "fog",
       "locId": "mount-william-he8i",
       "loc": "Mount William",
       "score": 80,
-      "why": "Visibility 3.2 km, humidity 97%, wind 4 km/h around 5:30am",
+      "why": "Visibility 4.7 km, humidity 97%, wind 4 km/h around 5:30am",
       "sent": 1792699842957
     },
     {
@@ -57,7 +127,7 @@
       "locId": "taggerty-river-mjcs",
       "loc": "Taggerty River",
       "score": 80,
-      "why": "Visibility 35.2 km, humidity 97%, wind 4 km/h around 6:18am",
+      "why": "Visibility 6.7 km, humidity 97%, wind 4 km/h around 5:18am",
       "sent": 1792743405520
     },
     {
@@ -67,7 +137,7 @@
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
       "score": 80,
-      "why": "Visibility 1.7 km, humidity 99%, wind 7 km/h around 6:18am",
+      "why": "Visibility 1.1 km, humidity 99%, wind 7 km/h around 6:18am",
       "sent": 1792699842957
     },
     {
@@ -96,8 +166,8 @@
       "key": "moon",
       "locId": "flinders-blowhole",
       "loc": "Flinders Blowhole",
-      "score": 95,
-      "why": "100% lit moon sets at 5:44am, 35 min before sunrise; 5% low cloud on that horizon",
+      "score": 94,
+      "why": "100% lit moon sets at 5:44am, 35 min before sunrise; 6% low cloud on that horizon",
       "sent": 1792699842957
     },
     {
@@ -111,23 +181,13 @@
       "sent": 1792613323501
     },
     {
-      "id": "mount-buffalo-664r|storm|2026-10-25",
-      "t": 1792886400000,
-      "key": "storm",
-      "locId": "mount-buffalo-664r",
-      "loc": "Mount Buffalo",
-      "score": 85,
-      "why": "Thunderstorm forecast around 11:00am, 96% rain chance",
-      "sent": 1792699842957
-    },
-    {
       "id": "cathedral-abnm|storm|2026-10-25",
-      "t": 1792875600000,
+      "t": 1792882800000,
       "key": "storm",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
       "score": 75,
-      "why": "Thunderstorm forecast around 8:00am, 80% rain chance",
+      "why": "Thunderstorm forecast around 10:00am, 98% rain chance",
       "sent": 1792613323501
     },
     {
@@ -146,9 +206,19 @@
       "key": "fog",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 84,
-      "why": "Visibility 600 m, humidity 100%, wind 18 km/h around 3:13am",
+      "score": 91,
+      "why": "Visibility 500 m, humidity 100%, wind 18 km/h around 5:13am",
       "sent": 1792743405520
+    },
+    {
+      "id": "mount-buffalo-664r|storm|2026-10-25",
+      "t": 1792868400000,
+      "key": "storm",
+      "locId": "mount-buffalo-664r",
+      "loc": "Mount Buffalo",
+      "score": 86,
+      "why": "Thunderstorm forecast around 6:00am, 90% rain chance, after dark (lightning)",
+      "sent": 1792699842957
     },
     {
       "id": "mount-buffalo-664r|storm|2026-10-24",
@@ -196,8 +266,8 @@
       "key": "sunset",
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
-      "score": 87,
-      "why": "Mid/high cloud 54%, low cloud 6% here / 2% on the horizon, clearing after rain, 47% rain chance",
+      "score": 95,
+      "why": "Mid/high cloud 65%, low cloud 0% here / 0% on the horizon",
       "sent": 1792743405520
     },
     {
@@ -206,8 +276,8 @@
       "key": "sunset",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 76,
-      "why": "Mid/high cloud 47%, low cloud 3% here / 12% on the horizon, 37% rain chance",
+      "score": 91,
+      "why": "Mid/high cloud 65%, low cloud 5% here / 13% on the horizon",
       "sent": 1792743405520
     },
     {
@@ -249,6 +319,16 @@
       "score": 80,
       "why": "Visibility 5.1 km, humidity 100%, wind 6 km/h around 3:33am",
       "sent": 1792526866375
+    },
+    {
+      "id": "mount-william-he8i|sunrise|2026-10-24",
+      "t": 1792783998000,
+      "key": "sunrise",
+      "locId": "mount-william-he8i",
+      "loc": "Mount William",
+      "score": 74,
+      "why": "Mid/high cloud 67%, low cloud 19% here / 4% on the horizon, clearing after rain, 66% rain chance",
+      "sent": 1792785945084
     },
     {
       "id": "mepunga-77d3|fog|2026-10-24",
@@ -296,8 +376,8 @@
       "key": "sunrise",
       "locId": "albert-park-i4kh",
       "loc": "Albert Park",
-      "score": 62,
-      "why": "Mid/high cloud 82%, low cloud 2% here / 2% on the horizon",
+      "score": 87,
+      "why": "Mid/high cloud 66%, low cloud 0% here / 8% on the horizon",
       "sent": 1792526866375
     },
     {
@@ -356,8 +436,8 @@
       "key": "sunrise",
       "locId": "rowville-xpvw",
       "loc": "Rowville",
-      "score": 90,
-      "why": "Mid/high cloud 52%, low cloud 2% here / 0% on the horizon",
+      "score": 87,
+      "why": "Mid/high cloud 44%, low cloud 3% here / 2% on the horizon",
       "sent": 1792570671426
     },
     {
@@ -376,8 +456,8 @@
       "key": "sunrise",
       "locId": "mount-donna-buang-x8z6",
       "loc": "Mount Donna Buang",
-      "score": 98,
-      "why": "Mid/high cloud 30%, low cloud 0% here / 0% on the horizon",
+      "score": 100,
+      "why": "Mid/high cloud 38%, low cloud 16% here / 4% on the horizon, clearing after rain",
       "sent": 1792526866375
     },
     {
@@ -386,8 +466,8 @@
       "key": "sunrise",
       "locId": "cape-woolamai",
       "loc": "Cape Woolamai (The Pinnacles)",
-      "score": 62,
-      "why": "Mid/high cloud 49%, low cloud 35% here / 21% on the horizon, 58% rain chance",
+      "score": 80,
+      "why": "Mid/high cloud 66%, low cloud 5% here / 13% on the horizon, clearing after rain, 52% rain chance",
       "sent": 1792526866375
     },
     {
