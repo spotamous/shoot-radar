@@ -6,8 +6,8 @@
       "key": "fog",
       "locId": "mount-william-he8i",
       "loc": "Mount William",
-      "score": 85,
-      "why": "Visibility 820 m, humidity 99%, wind 4 km/h around 5:29am",
+      "score": 100,
+      "why": "Visibility 340 m, humidity 100%, wind 2 km/h around 3:29am",
       "sent": 1792785945084
     },
     {
@@ -16,8 +16,8 @@
       "key": "moon",
       "locId": "flinders-blowhole",
       "loc": "Flinders Blowhole",
-      "score": 87,
-      "why": "99% lit moon sets at 6:18am, 0 min after sunrise; 13% low cloud on that horizon",
+      "score": 69,
+      "why": "99% lit moon sets at 6:18am, 0 min after sunrise; 10% low cloud on that horizon",
       "sent": 1792785945084
     },
     {
@@ -26,8 +26,8 @@
       "key": "moon",
       "locId": "rowville-xpvw",
       "loc": "Rowville",
-      "score": 89,
-      "why": "99% lit moon sets at 6:18am, 0 min after sunrise; 2% low cloud on that horizon",
+      "score": 81,
+      "why": "99% lit moon sets at 6:18am, 0 min after sunrise; 19% low cloud on that horizon",
       "sent": 1792785945084
     },
     {
@@ -37,7 +37,7 @@
       "locId": "taggerty-river-mjcs",
       "loc": "Taggerty River",
       "score": 80,
-      "why": "Visibility 6.0 km, humidity 98%, wind 5 km/h around 4:17am",
+      "why": "Visibility 25.7 km, humidity 97%, wind 4 km/h around 3:17am",
       "sent": 1792785945084
     },
     {
@@ -47,7 +47,7 @@
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
       "score": 85,
-      "why": "Visibility 680 m, humidity 100%, wind 4 km/h around 4:16am",
+      "why": "Visibility 900 m, humidity 97%, wind 5 km/h around 7:16am",
       "sent": 1792785945084
     },
     {
@@ -76,9 +76,19 @@
       "key": "fog",
       "locId": "mount-william-he8i",
       "loc": "Mount William",
-      "score": 80,
-      "why": "Visibility 4.7 km, humidity 97%, wind 4 km/h around 5:30am",
+      "score": 85,
+      "why": "Visibility 660 m, humidity 97%, wind 5 km/h around 6:30am",
       "sent": 1792699842957
+    },
+    {
+      "id": "mepunga-77d3|sunrise|2026-10-26",
+      "t": 1792956538000,
+      "key": "sunrise",
+      "locId": "mepunga-77d3",
+      "loc": "Childers Cove",
+      "score": 75,
+      "why": "Mid/high cloud 50%, low cloud 21% here / 21% on the horizon",
+      "sent": 1792829223039
     },
     {
       "id": "portsea-2rdc|sunrise|2026-10-26",
@@ -86,8 +96,8 @@
       "key": "sunrise",
       "locId": "portsea-2rdc",
       "loc": "Portsea",
-      "score": 75,
-      "why": "Mid/high cloud 28%, low cloud 12% here / 9% on the horizon",
+      "score": 73,
+      "why": "Mid/high cloud 27%, low cloud 12% here / 13% on the horizon",
       "sent": 1792699842957
     },
     {
@@ -97,7 +107,7 @@
       "locId": "gunnamatta",
       "loc": "Gunnamatta Beach",
       "score": 61,
-      "why": "Mid/high cloud 28%, low cloud 12% here / 19% on the horizon, 34% rain chance",
+      "why": "Mid/high cloud 27%, low cloud 12% here / 16% on the horizon, 32% rain chance",
       "sent": 1792699842957
     },
     {
@@ -127,7 +137,7 @@
       "locId": "taggerty-river-mjcs",
       "loc": "Taggerty River",
       "score": 80,
-      "why": "Visibility 6.7 km, humidity 97%, wind 4 km/h around 5:18am",
+      "why": "Visibility 26.4 km, humidity 97%, wind 4 km/h around 4:18am",
       "sent": 1792743405520
     },
     {
@@ -137,7 +147,7 @@
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
       "score": 80,
-      "why": "Visibility 1.1 km, humidity 99%, wind 7 km/h around 6:18am",
+      "why": "Visibility 1.4 km, humidity 99%, wind 7 km/h around 5:18am",
       "sent": 1792699842957
     },
     {
@@ -147,7 +157,7 @@
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
       "score": 85,
-      "why": "Visibility 840 m, humidity 99%, wind 4 km/h around 6:12am",
+      "why": "Visibility 780 m, humidity 98%, wind 4 km/h around 3:12am",
       "sent": 1792699842957
     },
     {
@@ -166,18 +176,18 @@
       "key": "moon",
       "locId": "flinders-blowhole",
       "loc": "Flinders Blowhole",
-      "score": 94,
-      "why": "100% lit moon sets at 5:44am, 35 min before sunrise; 6% low cloud on that horizon",
+      "score": 95,
+      "why": "100% lit moon sets at 5:44am, 35 min before sunrise; 5% low cloud on that horizon",
       "sent": 1792699842957
     },
     {
       "id": "mount-mckay-eta1|storm|2026-10-25",
-      "t": 1792890000000,
+      "t": 1792918800000,
       "key": "storm",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 85,
-      "why": "Thunderstorm forecast around 12:00pm, 100% rain chance",
+      "score": 86,
+      "why": "Thunderstorm forecast around 8:00pm, 100% rain chance, after dark (lightning)",
       "sent": 1792613323501
     },
     {
@@ -217,7 +227,7 @@
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
       "score": 86,
-      "why": "Thunderstorm forecast around 6:00am, 90% rain chance, after dark (lightning)",
+      "why": "Thunderstorm forecast around 6:00am, 77% rain chance, after dark (lightning)",
       "sent": 1792699842957
     },
     {
@@ -231,16 +241,6 @@
       "sent": 1792613323501
     },
     {
-      "id": "portsea-2rdc|storm|2026-10-24",
-      "t": 1792843200000,
-      "key": "storm",
-      "locId": "portsea-2rdc",
-      "loc": "Portsea",
-      "score": 86,
-      "why": "Thunderstorm forecast around 11:00pm, 61% rain chance, after dark (lightning)",
-      "sent": 1792570671426
-    },
-    {
       "id": "cape-schanck|storm|2026-10-24",
       "t": 1792843200000,
       "key": "storm",
@@ -249,6 +249,26 @@
       "score": 86,
       "why": "Thunderstorm forecast around 11:00pm, 65% rain chance, after dark (lightning)",
       "sent": 1792570671426
+    },
+    {
+      "id": "portsea-2rdc|storm|2026-10-24",
+      "t": 1792839600000,
+      "key": "storm",
+      "locId": "portsea-2rdc",
+      "loc": "Portsea",
+      "score": 86,
+      "why": "Thunderstorm forecast around 10:00pm, 90% rain chance, after dark (lightning)",
+      "sent": 1792570671426
+    },
+    {
+      "id": "albert-park-i4kh|storm|2026-10-24",
+      "t": 1792836000000,
+      "key": "storm",
+      "locId": "albert-park-i4kh",
+      "loc": "Albert Park",
+      "score": 86,
+      "why": "Thunderstorm forecast around 9:00pm, 91% rain chance, after dark (lightning)",
+      "sent": 1792613323501
     },
     {
       "id": "mount-donna-buang-x8z6|sunset|2026-10-24",
@@ -266,8 +286,8 @@
       "key": "sunset",
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
-      "score": 95,
-      "why": "Mid/high cloud 65%, low cloud 0% here / 0% on the horizon",
+      "score": 100,
+      "why": "Mid/high cloud 48%, low cloud 9% here / 2% on the horizon, clearing after rain",
       "sent": 1792743405520
     },
     {
@@ -299,16 +319,6 @@
       "score": 75,
       "why": "Thunderstorm forecast around 2:00pm, 63% rain chance",
       "sent": 1792570671426
-    },
-    {
-      "id": "albert-park-i4kh|storm|2026-10-24",
-      "t": 1792807200000,
-      "key": "storm",
-      "locId": "albert-park-i4kh",
-      "loc": "Albert Park",
-      "score": 75,
-      "why": "Thunderstorm forecast around 1:00pm, 44% rain chance",
-      "sent": 1792613323501
     },
     {
       "id": "mount-william-he8i|fog|2026-10-24",
