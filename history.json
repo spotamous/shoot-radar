@@ -1,6 +1,56 @@
 {
   "entries": [
     {
+      "id": "mount-william-he8i|fog|2026-10-29",
+      "t": 1793215636000,
+      "key": "fog",
+      "locId": "mount-william-he8i",
+      "loc": "Mount William",
+      "score": 100,
+      "why": "Visibility 420 m, humidity 99%, wind 5 km/h around 4:27am",
+      "sent": 1792958406050
+    },
+    {
+      "id": "taggerty-river-mjcs|fog|2026-10-29",
+      "t": 1793214892000,
+      "key": "fog",
+      "locId": "taggerty-river-mjcs",
+      "loc": "Taggerty River",
+      "score": 80,
+      "why": "Visibility 22.0 km, humidity 97%, wind 4 km/h around 3:14am",
+      "sent": 1792958406050
+    },
+    {
+      "id": "cathedral-abnm|fog|2026-10-29",
+      "t": 1793214872000,
+      "key": "fog",
+      "locId": "cathedral-abnm",
+      "loc": "Cathedral Ranges",
+      "score": 85,
+      "why": "Visibility 940 m, humidity 99%, wind 5 km/h around 6:14am",
+      "sent": 1792958406050
+    },
+    {
+      "id": "mount-buffalo-664r|fog|2026-10-29",
+      "t": 1793214693000,
+      "key": "fog",
+      "locId": "mount-buffalo-664r",
+      "loc": "Mount Buffalo",
+      "score": 100,
+      "why": "Visibility 360 m, humidity 100%, wind 1 km/h around 4:11am",
+      "sent": 1792958406050
+    },
+    {
+      "id": "mount-mckay-eta1|fog|2026-10-29",
+      "t": 1793214555000,
+      "key": "fog",
+      "locId": "mount-mckay-eta1",
+      "loc": "Mount McKay",
+      "score": 100,
+      "why": "Visibility 240 m, humidity 100%, wind 3 km/h around 3:09am",
+      "sent": 1792958406050
+    },
+    {
       "id": "rowville-xpvw|moon|2026-10-28",
       "t": 1793131330000,
       "key": "moon",
@@ -17,8 +67,18 @@
       "locId": "mount-william-he8i",
       "loc": "Mount William",
       "score": 100,
-      "why": "Visibility 220 m, humidity 99%, wind 5 km/h around 5:28am",
+      "why": "Visibility 460 m, humidity 99%, wind 4 km/h around 3:28am",
       "sent": 1792872005321
+    },
+    {
+      "id": "albert-park-i4kh|sunrise|2026-10-28",
+      "t": 1793128708000,
+      "key": "sunrise",
+      "locId": "albert-park-i4kh",
+      "loc": "Albert Park",
+      "score": 90,
+      "why": "Mid/high cloud 31%, low cloud 23% here / 12% on the horizon",
+      "sent": 1792958406050
     },
     {
       "id": "portsea-2rdc|sunrise|2026-10-28",
@@ -57,7 +117,7 @@
       "locId": "taggerty-river-mjcs",
       "loc": "Taggerty River",
       "score": 80,
-      "why": "Visibility 26.2 km, humidity 99%, wind 4 km/h around 5:16am",
+      "why": "Visibility 16.6 km, humidity 98%, wind 5 km/h around 3:16am",
       "sent": 1792872005321
     },
     {
@@ -66,8 +126,8 @@
       "key": "fog",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
-      "score": 80,
-      "why": "Visibility 2.6 km, humidity 97%, wind 5 km/h around 6:15am",
+      "score": 100,
+      "why": "Visibility 500 m, humidity 100%, wind 4 km/h around 6:15am",
       "sent": 1792872005321
     },
     {
@@ -81,13 +141,23 @@
       "sent": 1792785945084
     },
     {
+      "id": "portsea-2rdc|sunrise|2026-10-27",
+      "t": 1793042336000,
+      "key": "sunrise",
+      "locId": "portsea-2rdc",
+      "loc": "Portsea",
+      "score": 73,
+      "why": "Mid/high cloud 35%, low cloud 25% here / 34% on the horizon",
+      "sent": 1792958406050
+    },
+    {
       "id": "flinders-blowhole|moon|2026-10-27",
       "t": 1793042312000,
       "key": "moon",
       "locId": "flinders-blowhole",
       "loc": "Flinders Blowhole",
-      "score": 70,
-      "why": "99% lit moon sets at 6:18am, 0 min after sunrise; 30% low cloud on that horizon",
+      "score": 80,
+      "why": "99% lit moon sets at 6:18am, 0 min after sunrise; 18% low cloud on that horizon",
       "sent": 1792785945084
     },
     {
@@ -107,7 +177,7 @@
       "locId": "taggerty-river-mjcs",
       "loc": "Taggerty River",
       "score": 80,
-      "why": "Visibility 26.2 km, humidity 97%, wind 5 km/h around 5:17am",
+      "why": "Visibility 2.7 km, humidity 97%, wind 5 km/h around 5:17am",
       "sent": 1792785945084
     },
     {
@@ -117,7 +187,7 @@
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
       "score": 100,
-      "why": "Visibility 320 m, humidity 100%, wind 5 km/h around 4:16am",
+      "why": "Visibility 480 m, humidity 100%, wind 5 km/h around 4:16am",
       "sent": 1792785945084
     },
     {
@@ -207,7 +277,7 @@
       "locId": "mount-william-he8i",
       "loc": "Mount William",
       "score": 80,
-      "why": "Visibility 1.7 km, humidity 97%, wind 5 km/h around 6:30am",
+      "why": "Visibility 3.1 km, humidity 97%, wind 4 km/h around 5:30am",
       "sent": 1792699842957
     },
     {
@@ -216,9 +286,19 @@
       "key": "sunrise",
       "locId": "mepunga-77d3",
       "loc": "Childers Cove",
-      "score": 75,
-      "why": "Mid/high cloud 50%, low cloud 21% here / 21% on the horizon",
+      "score": 63,
+      "why": "Mid/high cloud 25%, low cloud 30% here / 16% on the horizon",
       "sent": 1792829223039
+    },
+    {
+      "id": "port-campbell-national-park-3e78|sunrise|2026-10-26",
+      "t": 1792956438000,
+      "key": "sunrise",
+      "locId": "port-campbell-national-park-3e78",
+      "loc": "Port Campbell National Park",
+      "score": 89,
+      "why": "Mid/high cloud 30%, low cloud 13% here / 15% on the horizon",
+      "sent": 1792958406050
     },
     {
       "id": "portsea-2rdc|sunrise|2026-10-26",
@@ -226,8 +306,8 @@
       "key": "sunrise",
       "locId": "portsea-2rdc",
       "loc": "Portsea",
-      "score": 92,
-      "why": "Mid/high cloud 42%, low cloud 10% here / 12% on the horizon",
+      "score": 65,
+      "why": "Mid/high cloud 23%, low cloud 6% here / 5% on the horizon",
       "sent": 1792699842957
     },
     {
@@ -267,7 +347,7 @@
       "locId": "taggerty-river-mjcs",
       "loc": "Taggerty River",
       "score": 80,
-      "why": "Visibility 4.1 km, humidity 97%, wind 4 km/h around 4:18am",
+      "why": "Visibility 35.2 km, humidity 97%, wind 4 km/h around 5:18am",
       "sent": 1792743405520
     },
     {
@@ -276,8 +356,8 @@
       "key": "fog",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
-      "score": 80,
-      "why": "Visibility 3.2 km, humidity 99%, wind 7 km/h around 5:18am",
+      "score": 60,
+      "why": "Visibility 2.0 km, humidity 97%, wind 9 km/h around 6:18am",
       "sent": 1792699842957
     },
     {
@@ -286,8 +366,8 @@
       "key": "fog",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 100,
-      "why": "Visibility 260 m, humidity 100%, wind 3 km/h around 5:12am",
+      "score": 80,
+      "why": "Visibility 40.2 km, humidity 99%, wind 6 km/h around 3:12am",
       "sent": 1792699842957
     },
     {
