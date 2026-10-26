@@ -7,7 +7,7 @@
       "locId": "mount-william-he8i",
       "loc": "Mount William",
       "score": 100,
-      "why": "Visibility 420 m, humidity 99%, wind 5 km/h around 4:27am",
+      "why": "Visibility 500 m, humidity 99%, wind 5 km/h around 5:27am",
       "sent": 1792958406050
     },
     {
@@ -26,8 +26,8 @@
       "key": "fog",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
-      "score": 85,
-      "why": "Visibility 940 m, humidity 99%, wind 5 km/h around 6:14am",
+      "score": 100,
+      "why": "Visibility 480 m, humidity 98%, wind 7 km/h around 6:14am",
       "sent": 1792958406050
     },
     {
@@ -36,8 +36,8 @@
       "key": "fog",
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
-      "score": 100,
-      "why": "Visibility 360 m, humidity 100%, wind 1 km/h around 4:11am",
+      "score": 85,
+      "why": "Visibility 1.0 km, humidity 92%, wind 3 km/h around 6:11am",
       "sent": 1792958406050
     },
     {
@@ -67,7 +67,7 @@
       "locId": "mount-william-he8i",
       "loc": "Mount William",
       "score": 100,
-      "why": "Visibility 460 m, humidity 99%, wind 4 km/h around 3:28am",
+      "why": "Visibility 340 m, humidity 100%, wind 6 km/h around 5:28am",
       "sent": 1792872005321
     },
     {
@@ -116,8 +116,8 @@
       "key": "fog",
       "locId": "taggerty-river-mjcs",
       "loc": "Taggerty River",
-      "score": 80,
-      "why": "Visibility 16.6 km, humidity 98%, wind 5 km/h around 3:16am",
+      "score": 100,
+      "why": "Visibility 380 m, humidity 100%, wind 4 km/h around 5:16am",
       "sent": 1792872005321
     },
     {
@@ -126,9 +126,19 @@
       "key": "fog",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
-      "score": 100,
-      "why": "Visibility 500 m, humidity 100%, wind 4 km/h around 6:15am",
+      "score": 85,
+      "why": "Visibility 740 m, humidity 99%, wind 5 km/h around 6:15am",
       "sent": 1792872005321
+    },
+    {
+      "id": "rowville-xpvw|sunset|2026-10-27",
+      "t": 1793090902000,
+      "key": "sunset",
+      "locId": "rowville-xpvw",
+      "loc": "Rowville",
+      "score": 72,
+      "why": "Mid/high cloud 57%, low cloud 46% here / 34% on the horizon",
+      "sent": 1793003157859
     },
     {
       "id": "mount-william-he8i|fog|2026-10-27",
@@ -136,8 +146,8 @@
       "key": "fog",
       "locId": "mount-william-he8i",
       "loc": "Mount William",
-      "score": 100,
-      "why": "Visibility 280 m, humidity 100%, wind 2 km/h around 5:29am",
+      "score": 85,
+      "why": "Visibility 520 m, humidity 99%, wind 2 km/h around 7:29am",
       "sent": 1792785945084
     },
     {
@@ -146,8 +156,8 @@
       "key": "sunrise",
       "locId": "portsea-2rdc",
       "loc": "Portsea",
-      "score": 73,
-      "why": "Mid/high cloud 35%, low cloud 25% here / 34% on the horizon",
+      "score": 81,
+      "why": "Mid/high cloud 33%, low cloud 39% here / 25% on the horizon",
       "sent": 1792958406050
     },
     {
@@ -156,8 +166,8 @@
       "key": "moon",
       "locId": "flinders-blowhole",
       "loc": "Flinders Blowhole",
-      "score": 80,
-      "why": "99% lit moon sets at 6:18am, 0 min after sunrise; 18% low cloud on that horizon",
+      "score": 88,
+      "why": "99% lit moon sets at 6:18am, 0 min after sunrise; 9% low cloud on that horizon",
       "sent": 1792785945084
     },
     {
@@ -166,8 +176,8 @@
       "key": "moon",
       "locId": "rowville-xpvw",
       "loc": "Rowville",
-      "score": 98,
-      "why": "99% lit moon sets at 6:18am, 0 min after sunrise; 2% low cloud on that horizon",
+      "score": 95,
+      "why": "99% lit moon sets at 6:18am, 0 min after sunrise; 5% low cloud on that horizon",
       "sent": 1792785945084
     },
     {
@@ -177,7 +187,7 @@
       "locId": "taggerty-river-mjcs",
       "loc": "Taggerty River",
       "score": 80,
-      "why": "Visibility 2.7 km, humidity 97%, wind 5 km/h around 5:17am",
+      "why": "Visibility 26.2 km, humidity 97%, wind 4 km/h around 6:17am",
       "sent": 1792785945084
     },
     {
@@ -186,8 +196,8 @@
       "key": "fog",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
-      "score": 100,
-      "why": "Visibility 480 m, humidity 100%, wind 5 km/h around 4:16am",
+      "score": 80,
+      "why": "Visibility 1.1 km, humidity 99%, wind 6 km/h around 3:16am",
       "sent": 1792785945084
     },
     {
