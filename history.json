@@ -6,8 +6,8 @@
       "key": "fog",
       "locId": "mount-william-he8i",
       "loc": "Mount William",
-      "score": 80,
-      "why": "Visibility 19.1 km, humidity 97%, wind 4 km/h around 5:23am",
+      "score": 75,
+      "why": "Visibility 29.7 km, humidity 97%, wind 4 km/h around 6:23am",
       "sent": 1793218891470
     },
     {
@@ -16,8 +16,8 @@
       "key": "fog",
       "locId": "taggerty-river-mjcs",
       "loc": "Taggerty River",
-      "score": 65,
-      "why": "Visibility 15.1 km, humidity 97%, wind 4 km/h around 3:11am",
+      "score": 80,
+      "why": "Visibility 20.8 km, humidity 97%, wind 4 km/h around 5:11am",
       "sent": 1793218891470
     },
     {
@@ -26,8 +26,8 @@
       "key": "fog",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
-      "score": 68,
-      "why": "Visibility 37.8 km, humidity 98%, wind 4 km/h around 3:11am",
+      "score": 80,
+      "why": "Visibility 7.4 km, humidity 99%, wind 4 km/h around 4:11am",
       "sent": 1793218891470
     },
     {
@@ -36,8 +36,8 @@
       "key": "fog",
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
-      "score": 88,
-      "why": "Visibility 120 m, humidity 100%, wind 2 km/h around 3:08am",
+      "score": 76,
+      "why": "Visibility 39.5 km, humidity 97%, wind 5 km/h around 7:08am",
       "sent": 1793218891470
     },
     {
@@ -46,9 +46,49 @@
       "key": "fog",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 82,
-      "why": "Visibility 320 m, humidity 100%, wind 6 km/h around 3:05am",
+      "score": 100,
+      "why": "Visibility 300 m, humidity 100%, wind 9 km/h around 5:05am",
       "sent": 1793218891470
+    },
+    {
+      "id": "cape-woolamai|milkyway|2026-10-31",
+      "t": 1793444400000,
+      "key": "milkyway",
+      "locId": "cape-woolamai",
+      "loc": "Cape Woolamai (The Pinnacles)",
+      "score": 74,
+      "why": "3 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (Waning gibbous, 64% lit)",
+      "sent": 1793262497682
+    },
+    {
+      "id": "port-campbell-national-park-3e78|sunset|2026-10-31",
+      "t": 1793437352000,
+      "key": "sunset",
+      "locId": "port-campbell-national-park-3e78",
+      "loc": "Port Campbell National Park",
+      "score": 60,
+      "why": "Mid/high cloud 28%, low cloud 29% here / 43% on the horizon, clearing after rain",
+      "sent": 1793262497682
+    },
+    {
+      "id": "mount-william-he8i|sunset|2026-10-31",
+      "t": 1793437305000,
+      "key": "sunset",
+      "locId": "mount-william-he8i",
+      "loc": "Mount William",
+      "score": 67,
+      "why": "Mid/high cloud 64%, low cloud 51% here / 19% on the horizon",
+      "sent": 1793262497682
+    },
+    {
+      "id": "albert-park-i4kh|sunset|2026-10-31",
+      "t": 1793436803000,
+      "key": "sunset",
+      "locId": "albert-park-i4kh",
+      "loc": "Albert Park",
+      "score": 65,
+      "why": "Mid/high cloud 28%, low cloud 6% here / 2% on the horizon, 43% rain chance",
+      "sent": 1793262497682
     },
     {
       "id": "cape-woolamai|sunset|2026-10-31",
@@ -61,6 +101,16 @@
       "sent": 1793218891470
     },
     {
+      "id": "rowville-xpvw|sunset|2026-10-31",
+      "t": 1793436753000,
+      "key": "sunset",
+      "locId": "rowville-xpvw",
+      "loc": "Rowville",
+      "score": 66,
+      "why": "Mid/high cloud 26%, low cloud 1% here / 3% on the horizon",
+      "sent": 1793262497682
+    },
+    {
       "id": "cathedral-abnm|storm|2026-10-31",
       "t": 1793419200000,
       "key": "storm",
@@ -68,16 +118,6 @@
       "loc": "Cathedral Ranges",
       "score": 75,
       "why": "Thunderstorm forecast around 3:00pm, 89% rain chance",
-      "sent": 1793176013917
-    },
-    {
-      "id": "mount-buffalo-664r|storm|2026-10-31",
-      "t": 1793412000000,
-      "key": "storm",
-      "locId": "mount-buffalo-664r",
-      "loc": "Mount Buffalo",
-      "score": 75,
-      "why": "Thunderstorm forecast around 1:00pm, 95% rain chance",
       "sent": 1793176013917
     },
     {
@@ -91,6 +131,26 @@
       "sent": 1793176013917
     },
     {
+      "id": "albert-park-i4kh|storm|2026-10-31",
+      "t": 1793412000000,
+      "key": "storm",
+      "locId": "albert-park-i4kh",
+      "loc": "Albert Park",
+      "score": 75,
+      "why": "Thunderstorm forecast around 1:00pm, 80% rain chance",
+      "sent": 1793218891470
+    },
+    {
+      "id": "mount-buffalo-664r|storm|2026-10-31",
+      "t": 1793404800000,
+      "key": "storm",
+      "locId": "mount-buffalo-664r",
+      "loc": "Mount Buffalo",
+      "score": 75,
+      "why": "Thunderstorm forecast around 11:00am, 67% rain chance",
+      "sent": 1793176013917
+    },
+    {
       "id": "rowville-xpvw|storm|2026-10-31",
       "t": 1793404800000,
       "key": "storm",
@@ -99,16 +159,6 @@
       "score": 75,
       "why": "Thunderstorm forecast around 11:00am, 67% rain chance",
       "sent": 1793176013917
-    },
-    {
-      "id": "albert-park-i4kh|storm|2026-10-31",
-      "t": 1793404800000,
-      "key": "storm",
-      "locId": "albert-park-i4kh",
-      "loc": "Albert Park",
-      "score": 75,
-      "why": "Thunderstorm forecast around 11:00am, 63% rain chance",
-      "sent": 1793218891470
     },
     {
       "id": "cape-schanck|storm|2026-10-31",
@@ -266,8 +316,8 @@
       "key": "fog",
       "locId": "mount-william-he8i",
       "loc": "Mount William",
-      "score": 83,
-      "why": "Visibility 380 m, humidity 100%, wind 1 km/h around 5:26am",
+      "score": 100,
+      "why": "Visibility 320 m, humidity 100%, wind 1 km/h around 4:26am",
       "sent": 1793045497684
     },
     {
@@ -286,8 +336,8 @@
       "key": "fog",
       "locId": "mepunga-77d3",
       "loc": "Childers Cove",
-      "score": 96,
-      "why": "Visibility 440 m, humidity 99%, wind 16 km/h around 7:24am",
+      "score": 85,
+      "why": "Visibility 1.0 km, humidity 99%, wind 14 km/h around 6:24am",
       "sent": 1793045497684
     },
     {
@@ -297,7 +347,7 @@
       "locId": "port-campbell-national-park-3e78",
       "loc": "Port Campbell National Park",
       "score": 100,
-      "why": "Visibility 320 m, humidity 98%, wind 12 km/h around 5:22am",
+      "why": "Visibility 340 m, humidity 96%, wind 10 km/h around 3:22am",
       "sent": 1793045497684
     },
     {
@@ -307,7 +357,7 @@
       "locId": "albert-park-i4kh",
       "loc": "Albert Park",
       "score": 100,
-      "why": "Visibility 160 m, humidity 100%, wind 2 km/h around 4:16am",
+      "why": "Visibility 140 m, humidity 99%, wind 2 km/h around 4:16am",
       "sent": 1793045497684
     },
     {
@@ -317,7 +367,7 @@
       "locId": "portsea-2rdc",
       "loc": "Portsea",
       "score": 100,
-      "why": "Visibility 200 m, humidity 98%, wind 7 km/h around 7:15am",
+      "why": "Visibility 260 m, humidity 94%, wind 7 km/h around 6:15am",
       "sent": 1793045497684
     },
     {
@@ -327,7 +377,7 @@
       "locId": "flinders-blowhole",
       "loc": "Flinders Blowhole",
       "score": 100,
-      "why": "Visibility 360 m, humidity 92%, wind 4 km/h around 5:14am",
+      "why": "Visibility 280 m, humidity 92%, wind 3 km/h around 5:14am",
       "sent": 1793045497684
     },
     {
@@ -337,7 +387,7 @@
       "locId": "rowville-xpvw",
       "loc": "Rowville",
       "score": 100,
-      "why": "Visibility 180 m, humidity 99%, wind 6 km/h around 4:14am",
+      "why": "Visibility 260 m, humidity 99%, wind 7 km/h around 4:14am",
       "sent": 1793045497684
     },
     {
@@ -367,7 +417,7 @@
       "locId": "cape-woolamai",
       "loc": "Cape Woolamai (The Pinnacles)",
       "score": 100,
-      "why": "Visibility 440 m, humidity 96%, wind 3 km/h around 4:12am",
+      "why": "Visibility 340 m, humidity 96%, wind 4 km/h around 4:12am",
       "sent": 1793045497684
     },
     {
