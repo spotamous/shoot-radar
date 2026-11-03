@@ -7,8 +7,18 @@
       "locId": "mount-william-he8i",
       "loc": "Mount William",
       "score": 80,
-      "why": "Visibility 25.4 km, humidity 97%, wind 5 km/h around 4:18am",
+      "why": "Visibility 33.3 km, humidity 97%, wind 5 km/h around 4:18am",
       "sent": 1793651118058
+    },
+    {
+      "id": "cathedral-abnm|fog|2026-11-06",
+      "t": 1793905554000,
+      "key": "fog",
+      "locId": "cathedral-abnm",
+      "loc": "Cathedral Ranges",
+      "score": 79,
+      "why": "Visibility 38.1 km, humidity 98%, wind 7 km/h around 3:05am",
+      "sent": 1793695040463
     },
     {
       "id": "mepunga-77d3|sunrise|2026-11-05",
@@ -56,8 +66,8 @@
       "key": "fog",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
-      "score": 80,
-      "why": "Visibility 4.3 km, humidity 98%, wind 7 km/h around 3:06am",
+      "score": 85,
+      "why": "Visibility 620 m, humidity 99%, wind 12 km/h around 3:06am",
       "sent": 1793563943490
     },
     {
@@ -66,8 +76,8 @@
       "key": "fog",
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
-      "score": 85,
-      "why": "Visibility 660 m, humidity 100%, wind 4 km/h around 4:04am",
+      "score": 80,
+      "why": "Visibility 28.3 km, humidity 99%, wind 4 km/h around 3:04am",
       "sent": 1793563943490
     },
     {
@@ -76,8 +86,8 @@
       "key": "fog",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 85,
-      "why": "Visibility 680 m, humidity 100%, wind 5 km/h around 3:01am",
+      "score": 100,
+      "why": "Visibility 400 m, humidity 100%, wind 7 km/h around 3:01am",
       "sent": 1793563943490
     },
     {
@@ -102,13 +112,23 @@
     },
     {
       "id": "mount-mckay-eta1|storm|2026-11-04",
-      "t": 1793779200000,
+      "t": 1793772000000,
       "key": "storm",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
       "score": 75,
-      "why": "Thunderstorm forecast around 7:00pm, 98% rain chance",
+      "why": "Thunderstorm forecast around 5:00pm, 94% rain chance",
       "sent": 1793609055038
+    },
+    {
+      "id": "cathedral-abnm|storm|2026-11-04",
+      "t": 1793772000000,
+      "key": "storm",
+      "locId": "cathedral-abnm",
+      "loc": "Cathedral Ranges",
+      "score": 75,
+      "why": "Thunderstorm forecast around 5:00pm, 100% rain chance",
+      "sent": 1793521543917
     },
     {
       "id": "mount-buffalo-664r|storm|2026-11-04",
@@ -116,28 +136,18 @@
       "key": "storm",
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
-      "score": 75,
-      "why": "Thunderstorm forecast around 4:00pm, 62% rain chance",
+      "score": 85,
+      "why": "Thunderstorm forecast around 4:00pm, 76% rain chance",
       "sent": 1793609055038
     },
     {
-      "id": "cathedral-abnm|storm|2026-11-04",
-      "t": 1793768400000,
-      "key": "storm",
-      "locId": "cathedral-abnm",
-      "loc": "Cathedral Ranges",
-      "score": 75,
-      "why": "Thunderstorm forecast around 4:00pm, 98% rain chance",
-      "sent": 1793521543917
-    },
-    {
       "id": "portsea-2rdc|storm|2026-11-04",
-      "t": 1793764800000,
+      "t": 1793761200000,
       "key": "storm",
       "locId": "portsea-2rdc",
       "loc": "Portsea",
       "score": 75,
-      "why": "Thunderstorm forecast around 3:00pm, 98% rain chance",
+      "why": "Thunderstorm forecast around 2:00pm, 90% rain chance",
       "sent": 1793563943490
     },
     {
@@ -157,7 +167,7 @@
       "locId": "albert-park-i4kh",
       "loc": "Albert Park",
       "score": 75,
-      "why": "Thunderstorm forecast around 2:00pm, 88% rain chance",
+      "why": "Thunderstorm forecast around 2:00pm, 98% rain chance",
       "sent": 1793563943490
     },
     {
@@ -166,8 +176,8 @@
       "key": "storm",
       "locId": "port-campbell-national-park-3e78",
       "loc": "Port Campbell National Park",
-      "score": 85,
-      "why": "Thunderstorm forecast around 1:00pm, 100% rain chance",
+      "score": 75,
+      "why": "Thunderstorm forecast around 1:00pm, 97% rain chance",
       "sent": 1793563943490
     },
     {
@@ -246,8 +256,8 @@
       "key": "fog",
       "locId": "taggerty-river-mjcs",
       "loc": "Taggerty River",
-      "score": 69,
-      "why": "Visibility 920 m, humidity 82%, wind 5 km/h around 7:08am",
+      "score": 70,
+      "why": "Visibility 880 m, humidity 94%, wind 2 km/h around 6:08am",
       "sent": 1793477471659
     },
     {
@@ -287,7 +297,7 @@
       "locId": "cape-woolamai",
       "loc": "Cape Woolamai (The Pinnacles)",
       "score": 81,
-      "why": "Visibility 340 m, humidity 97%, wind 9 km/h around 4:07am",
+      "why": "Visibility 320 m, humidity 96%, wind 8 km/h around 3:07am",
       "sent": 1793477471659
     },
     {
