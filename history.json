@@ -1,6 +1,46 @@
 {
   "entries": [
     {
+      "id": "mount-mckay-eta1|fog|2026-11-08",
+      "t": 1794077932000,
+      "key": "fog",
+      "locId": "mount-mckay-eta1",
+      "loc": "Mount McKay",
+      "score": 100,
+      "why": "Visibility 340 m, humidity 98%, wind 14 km/h around 2:58am",
+      "sent": 1793824184685
+    },
+    {
+      "id": "cape-woolamai|milkyway|2026-11-07",
+      "t": 1794049200000,
+      "key": "milkyway",
+      "locId": "cape-woolamai",
+      "loc": "Cape Woolamai (The Pinnacles)",
+      "score": 83,
+      "why": "5 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (Waning crescent, 3% lit)",
+      "sent": 1793824184685
+    },
+    {
+      "id": "mount-mckay-eta1|snow|2026-11-07",
+      "t": 1794024000000,
+      "key": "snow",
+      "locId": "mount-mckay-eta1",
+      "loc": "Mount McKay",
+      "score": 67,
+      "why": "3.4 cm of snow forecast",
+      "sent": 1793824184685
+    },
+    {
+      "id": "rowville-xpvw|storm|2026-11-07",
+      "t": 1794009600000,
+      "key": "storm",
+      "locId": "rowville-xpvw",
+      "loc": "Rowville",
+      "score": 75,
+      "why": "Thunderstorm forecast around 11:00am, 96% rain chance",
+      "sent": 1793737693252
+    },
+    {
       "id": "mepunga-77d3|sunrise|2026-11-07",
       "t": 1793992518000,
       "key": "sunrise",
@@ -21,6 +61,16 @@
       "sent": 1793737693252
     },
     {
+      "id": "taggerty-river-mjcs|fog|2026-11-07",
+      "t": 1793991918000,
+      "key": "fog",
+      "locId": "taggerty-river-mjcs",
+      "loc": "Taggerty River",
+      "score": 80,
+      "why": "Visibility 8.4 km, humidity 98%, wind 4 km/h around 3:05am",
+      "sent": 1793824184685
+    },
+    {
       "id": "cathedral-abnm|fog|2026-11-07",
       "t": 1793991894000,
       "key": "fog",
@@ -37,7 +87,7 @@
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
       "score": 80,
-      "why": "Visibility 6.0 km, humidity 99%, wind 6 km/h around 7:02am",
+      "why": "Visibility 4.3 km, humidity 98%, wind 5 km/h around 7:02am",
       "sent": 1793737693252
     },
     {
@@ -47,17 +97,7 @@
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
       "score": 100,
-      "why": "Visibility 400 m, humidity 100%, wind 14 km/h around 4:59am",
-      "sent": 1793737693252
-    },
-    {
-      "id": "rowville-xpvw|storm|2026-11-07",
-      "t": 1793984400000,
-      "key": "storm",
-      "locId": "rowville-xpvw",
-      "loc": "Rowville",
-      "score": 86,
-      "why": "Thunderstorm forecast around 4:00am, 100% rain chance, after dark (lightning)",
+      "why": "Visibility 420 m, humidity 100%, wind 8 km/h around 2:59am",
       "sent": 1793737693252
     },
     {
@@ -101,13 +141,33 @@
       "sent": 1793737693252
     },
     {
+      "id": "cathedral-abnm|sunset|2026-11-06",
+      "t": 1793955351000,
+      "key": "sunset",
+      "locId": "cathedral-abnm",
+      "loc": "Cathedral Ranges",
+      "score": 90,
+      "why": "Mid/high cloud 57%, low cloud 20% here / 3% on the horizon",
+      "sent": 1793824184685
+    },
+    {
+      "id": "mount-buffalo-664r|sunset|2026-11-06",
+      "t": 1793955039000,
+      "key": "sunset",
+      "locId": "mount-buffalo-664r",
+      "loc": "Mount Buffalo",
+      "score": 96,
+      "why": "Mid/high cloud 65%, low cloud 9% here / 5% on the horizon",
+      "sent": 1793824184685
+    },
+    {
       "id": "mount-mckay-eta1|sunset|2026-11-06",
       "t": 1793954916000,
       "key": "sunset",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 77,
-      "why": "Mid/high cloud 42%, low cloud 7% here / 30% on the horizon",
+      "score": 61,
+      "why": "Mid/high cloud 84%, low cloud 4% here / 9% on the horizon",
       "sent": 1793737693252
     },
     {
@@ -116,8 +176,8 @@
       "key": "fog",
       "locId": "mount-william-he8i",
       "loc": "Mount William",
-      "score": 76,
-      "why": "Visibility 25.1 km, humidity 98%, wind 4 km/h around 3:18am",
+      "score": 75,
+      "why": "Visibility 34.3 km, humidity 97%, wind 5 km/h around 4:18am",
       "sent": 1793651118058
     },
     {
@@ -126,8 +186,8 @@
       "key": "sunrise",
       "locId": "albert-park-i4kh",
       "loc": "Albert Park",
-      "score": 96,
-      "why": "Mid/high cloud 45%, low cloud 9% here / 1% on the horizon",
+      "score": 93,
+      "why": "Mid/high cloud 44%, low cloud 12% here / 10% on the horizon",
       "sent": 1793781483868
     },
     {
@@ -136,8 +196,8 @@
       "key": "sunrise",
       "locId": "rowville-xpvw",
       "loc": "Rowville",
-      "score": 75,
-      "why": "Mid/high cloud 27%, low cloud 16% here / 1% on the horizon",
+      "score": 92,
+      "why": "Mid/high cloud 48%, low cloud 15% here / 11% on the horizon",
       "sent": 1793781483868
     },
     {
@@ -151,6 +211,26 @@
       "sent": 1793695040463
     },
     {
+      "id": "cathedral-abnm|sunrise|2026-11-06",
+      "t": 1793905554000,
+      "key": "sunrise",
+      "locId": "cathedral-abnm",
+      "loc": "Cathedral Ranges",
+      "score": 97,
+      "why": "Mid/high cloud 41%, low cloud 1% here / 5% on the horizon",
+      "sent": 1793824184685
+    },
+    {
+      "id": "mount-buffalo-664r|sunrise|2026-11-06",
+      "t": 1793905387000,
+      "key": "sunrise",
+      "locId": "mount-buffalo-664r",
+      "loc": "Mount Buffalo",
+      "score": 100,
+      "why": "Mid/high cloud 36%, low cloud 0% here / 0% on the horizon",
+      "sent": 1793824184685
+    },
+    {
       "id": "mount-mckay-eta1|fog|2026-11-06",
       "t": 1793905248000,
       "key": "fog",
@@ -159,6 +239,16 @@
       "score": 60,
       "why": "Visibility 1.5 km, humidity 82%, wind 5 km/h around 3:00am",
       "sent": 1793737693252
+    },
+    {
+      "id": "mount-mckay-eta1|sunrise|2026-11-06",
+      "t": 1793905248000,
+      "key": "sunrise",
+      "locId": "mount-mckay-eta1",
+      "loc": "Mount McKay",
+      "score": 67,
+      "why": "Mid/high cloud 57%, low cloud 0% here / 41% on the horizon",
+      "sent": 1793824184685
     },
     {
       "id": "mepunga-77d3|sunrise|2026-11-05",
