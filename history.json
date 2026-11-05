@@ -7,7 +7,7 @@
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
       "score": 100,
-      "why": "Visibility 340 m, humidity 98%, wind 14 km/h around 2:58am",
+      "why": "Visibility 180 m, humidity 98%, wind 15 km/h around 2:58am",
       "sent": 1793824184685
     },
     {
@@ -17,8 +17,28 @@
       "locId": "cape-woolamai",
       "loc": "Cape Woolamai (The Pinnacles)",
       "score": 83,
-      "why": "5 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (Waning crescent, 3% lit)",
+      "why": "6 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (Waning crescent, 3% lit)",
       "sent": 1793824184685
+    },
+    {
+      "id": "port-campbell-national-park-3e78|sunset|2026-11-07",
+      "t": 1794042621000,
+      "key": "sunset",
+      "locId": "port-campbell-national-park-3e78",
+      "loc": "Port Campbell National Park",
+      "score": 78,
+      "why": "Mid/high cloud 27%, low cloud 21% here / 18% on the horizon, clearing after rain",
+      "sent": 1793867985217
+    },
+    {
+      "id": "albert-park-i4kh|sunset|2026-11-07",
+      "t": 1794042058000,
+      "key": "sunset",
+      "locId": "albert-park-i4kh",
+      "loc": "Albert Park",
+      "score": 61,
+      "why": "Mid/high cloud 27%, low cloud 4% here / 3% on the horizon, 51% rain chance",
+      "sent": 1793867985217
     },
     {
       "id": "mount-mckay-eta1|snow|2026-11-07",
@@ -87,7 +107,7 @@
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
       "score": 80,
-      "why": "Visibility 4.3 km, humidity 98%, wind 5 km/h around 7:02am",
+      "why": "Visibility 15.0 km, humidity 97%, wind 5 km/h around 7:02am",
       "sent": 1793737693252
     },
     {
@@ -96,8 +116,8 @@
       "key": "fog",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 100,
-      "why": "Visibility 420 m, humidity 100%, wind 8 km/h around 2:59am",
+      "score": 60,
+      "why": "Visibility 1.8 km, humidity 94%, wind 7 km/h around 6:59am",
       "sent": 1793737693252
     },
     {
@@ -146,8 +166,8 @@
       "key": "sunset",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
-      "score": 90,
-      "why": "Mid/high cloud 57%, low cloud 20% here / 3% on the horizon",
+      "score": 94,
+      "why": "Mid/high cloud 37%, low cloud 13% here / 2% on the horizon",
       "sent": 1793824184685
     },
     {
@@ -186,9 +206,19 @@
       "key": "sunrise",
       "locId": "albert-park-i4kh",
       "loc": "Albert Park",
-      "score": 93,
-      "why": "Mid/high cloud 44%, low cloud 12% here / 10% on the horizon",
+      "score": 75,
+      "why": "Mid/high cloud 28%, low cloud 23% here / 11% on the horizon",
       "sent": 1793781483868
+    },
+    {
+      "id": "portsea-2rdc|sunrise|2026-11-06",
+      "t": 1793905654000,
+      "key": "sunrise",
+      "locId": "portsea-2rdc",
+      "loc": "Portsea",
+      "score": 79,
+      "why": "Mid/high cloud 34%, low cloud 17% here / 28% on the horizon",
+      "sent": 1793867985217
     },
     {
       "id": "rowville-xpvw|sunrise|2026-11-06",
@@ -196,8 +226,8 @@
       "key": "sunrise",
       "locId": "rowville-xpvw",
       "loc": "Rowville",
-      "score": 92,
-      "why": "Mid/high cloud 48%, low cloud 15% here / 11% on the horizon",
+      "score": 81,
+      "why": "Mid/high cloud 32%, low cloud 31% here / 25% on the horizon",
       "sent": 1793781483868
     },
     {
@@ -216,9 +246,19 @@
       "key": "sunrise",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
-      "score": 97,
-      "why": "Mid/high cloud 41%, low cloud 1% here / 5% on the horizon",
+      "score": 92,
+      "why": "Mid/high cloud 61%, low cloud 3% here / 11% on the horizon",
       "sent": 1793824184685
+    },
+    {
+      "id": "mount-donna-buang-x8z6|sunrise|2026-11-06",
+      "t": 1793905537000,
+      "key": "sunrise",
+      "locId": "mount-donna-buang-x8z6",
+      "loc": "Mount Donna Buang",
+      "score": 85,
+      "why": "Mid/high cloud 66%, low cloud 9% here / 20% on the horizon",
+      "sent": 1793867985217
     },
     {
       "id": "mount-buffalo-664r|sunrise|2026-11-06",
@@ -227,7 +267,7 @@
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
       "score": 100,
-      "why": "Mid/high cloud 36%, low cloud 0% here / 0% on the horizon",
+      "why": "Mid/high cloud 44%, low cloud 0% here / 0% on the horizon",
       "sent": 1793824184685
     },
     {
@@ -246,8 +286,8 @@
       "key": "sunrise",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 67,
-      "why": "Mid/high cloud 57%, low cloud 0% here / 41% on the horizon",
+      "score": 100,
+      "why": "Mid/high cloud 54%, low cloud 0% here / 0% on the horizon",
       "sent": 1793824184685
     },
     {
