@@ -1,13 +1,83 @@
 {
   "entries": [
     {
+      "id": "mount-william-he8i|sunrise|2026-11-09",
+      "t": 1794165347000,
+      "key": "sunrise",
+      "locId": "mount-william-he8i",
+      "loc": "Mount William",
+      "score": 100,
+      "why": "Mid/high cloud 40%, low cloud 0% here / 0% on the horizon",
+      "sent": 1793910480474
+    },
+    {
+      "id": "cathedral-abnm|fog|2026-11-09",
+      "t": 1794164579000,
+      "key": "fog",
+      "locId": "cathedral-abnm",
+      "loc": "Cathedral Ranges",
+      "score": 80,
+      "why": "Visibility 12.7 km, humidity 97%, wind 6 km/h around 5:02am",
+      "sent": 1793910480474
+    },
+    {
+      "id": "mount-mckay-eta1|fog|2026-11-09",
+      "t": 1794164276000,
+      "key": "fog",
+      "locId": "mount-mckay-eta1",
+      "loc": "Mount McKay",
+      "score": 100,
+      "why": "Visibility 240 m, humidity 99%, wind 10 km/h around 2:57am",
+      "sent": 1793910480474
+    },
+    {
+      "id": "cape-schanck|milkyway|2026-11-08",
+      "t": 1794135600000,
+      "key": "milkyway",
+      "locId": "cape-schanck",
+      "loc": "Cape Schanck (Pulpit Rock)",
+      "score": 83,
+      "why": "7 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (New moon, 1% lit)",
+      "sent": 1793910480474
+    },
+    {
+      "id": "cape-woolamai|milkyway|2026-11-08",
+      "t": 1794135600000,
+      "key": "milkyway",
+      "locId": "cape-woolamai",
+      "loc": "Cape Woolamai (The Pinnacles)",
+      "score": 83,
+      "why": "7 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (New moon, 1% lit)",
+      "sent": 1793910480474
+    },
+    {
+      "id": "port-campbell-national-park-3e78|milkyway|2026-11-08",
+      "t": 1794135600000,
+      "key": "milkyway",
+      "locId": "port-campbell-national-park-3e78",
+      "loc": "Port Campbell National Park",
+      "score": 83,
+      "why": "7 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (New moon, 1% lit)",
+      "sent": 1793910480474
+    },
+    {
+      "id": "mepunga-77d3|milkyway|2026-11-08",
+      "t": 1794135600000,
+      "key": "milkyway",
+      "locId": "mepunga-77d3",
+      "loc": "Childers Cove",
+      "score": 83,
+      "why": "7 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (New moon, 1% lit)",
+      "sent": 1793910480474
+    },
+    {
       "id": "mount-mckay-eta1|fog|2026-11-08",
       "t": 1794077932000,
       "key": "fog",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
       "score": 100,
-      "why": "Visibility 180 m, humidity 98%, wind 15 km/h around 2:58am",
+      "why": "Visibility 240 m, humidity 98%, wind 15 km/h around 2:58am",
       "sent": 1793824184685
     },
     {
@@ -17,7 +87,7 @@
       "locId": "cape-woolamai",
       "loc": "Cape Woolamai (The Pinnacles)",
       "score": 83,
-      "why": "6 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (Waning crescent, 3% lit)",
+      "why": "5 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (Waning crescent, 3% lit)",
       "sent": 1793824184685
     },
     {
@@ -52,12 +122,12 @@
     },
     {
       "id": "rowville-xpvw|storm|2026-11-07",
-      "t": 1794009600000,
+      "t": 1794002400000,
       "key": "storm",
       "locId": "rowville-xpvw",
       "loc": "Rowville",
       "score": 75,
-      "why": "Thunderstorm forecast around 11:00am, 96% rain chance",
+      "why": "Thunderstorm forecast around 9:00am, 100% rain chance",
       "sent": 1793737693252
     },
     {
@@ -116,8 +186,8 @@
       "key": "fog",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 60,
-      "why": "Visibility 1.8 km, humidity 94%, wind 7 km/h around 6:59am",
+      "score": 85,
+      "why": "Visibility 520 m, humidity 100%, wind 9 km/h around 4:59am",
       "sent": 1793737693252
     },
     {
@@ -136,8 +206,8 @@
       "key": "sunset",
       "locId": "albert-park-i4kh",
       "loc": "Albert Park",
-      "score": 72,
-      "why": "Mid/high cloud 71%, low cloud 25% here / 17% on the horizon, 35% rain chance",
+      "score": 81,
+      "why": "Mid/high cloud 74%, low cloud 7% here / 8% on the horizon",
       "sent": 1793737693252
     },
     {
@@ -156,8 +226,8 @@
       "key": "sunset",
       "locId": "mount-donna-buang-x8z6",
       "loc": "Mount Donna Buang",
-      "score": 63,
-      "why": "Mid/high cloud 72%, low cloud 59% here / 34% on the horizon",
+      "score": 86,
+      "why": "Mid/high cloud 56%, low cloud 30% here / 18% on the horizon",
       "sent": 1793737693252
     },
     {
@@ -166,8 +236,8 @@
       "key": "sunset",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
-      "score": 94,
-      "why": "Mid/high cloud 37%, low cloud 13% here / 2% on the horizon",
+      "score": 65,
+      "why": "Mid/high cloud 26%, low cloud 35% here / 16% on the horizon",
       "sent": 1793824184685
     },
     {
