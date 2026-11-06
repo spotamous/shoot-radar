@@ -11,13 +11,23 @@
       "sent": 1793910480474
     },
     {
+      "id": "albert-park-i4kh|fog|2026-11-09",
+      "t": 1794164735000,
+      "key": "fog",
+      "locId": "albert-park-i4kh",
+      "loc": "Albert Park",
+      "score": 80,
+      "why": "Visibility 23.2 km, humidity 97%, wind 3 km/h around 6:05am",
+      "sent": 1793954142084
+    },
+    {
       "id": "cathedral-abnm|fog|2026-11-09",
       "t": 1794164579000,
       "key": "fog",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
       "score": 80,
-      "why": "Visibility 12.7 km, humidity 97%, wind 6 km/h around 5:02am",
+      "why": "Visibility 28.7 km, humidity 97%, wind 6 km/h around 5:02am",
       "sent": 1793910480474
     },
     {
@@ -27,7 +37,7 @@
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
       "score": 100,
-      "why": "Visibility 240 m, humidity 99%, wind 10 km/h around 2:57am",
+      "why": "Visibility 400 m, humidity 98%, wind 9 km/h around 2:57am",
       "sent": 1793910480474
     },
     {
@@ -67,8 +77,18 @@
       "locId": "mepunga-77d3",
       "loc": "Childers Cove",
       "score": 83,
-      "why": "7 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (New moon, 1% lit)",
+      "why": "6 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (New moon, 1% lit)",
       "sent": 1793910480474
+    },
+    {
+      "id": "albert-park-i4kh|sunrise|2026-11-08",
+      "t": 1794078393000,
+      "key": "sunrise",
+      "locId": "albert-park-i4kh",
+      "loc": "Albert Park",
+      "score": 63,
+      "why": "Mid/high cloud 41%, low cloud 32% here / 46% on the horizon",
+      "sent": 1793954142084
     },
     {
       "id": "mount-mckay-eta1|fog|2026-11-08",
@@ -91,6 +111,16 @@
       "sent": 1793824184685
     },
     {
+      "id": "mepunga-77d3|sunset|2026-11-07",
+      "t": 1794042677000,
+      "key": "sunset",
+      "locId": "mepunga-77d3",
+      "loc": "Childers Cove",
+      "score": 83,
+      "why": "Mid/high cloud 61%, low cloud 36% here / 21% on the horizon",
+      "sent": 1793954142084
+    },
+    {
       "id": "port-campbell-national-park-3e78|sunset|2026-11-07",
       "t": 1794042621000,
       "key": "sunset",
@@ -101,6 +131,16 @@
       "sent": 1793867985217
     },
     {
+      "id": "gunnamatta|sunset|2026-11-07",
+      "t": 1794042149000,
+      "key": "sunset",
+      "locId": "gunnamatta",
+      "loc": "Gunnamatta Beach",
+      "score": 61,
+      "why": "Mid/high cloud 30%, low cloud 20% here / 39% on the horizon",
+      "sent": 1793954142084
+    },
+    {
       "id": "albert-park-i4kh|sunset|2026-11-07",
       "t": 1794042058000,
       "key": "sunset",
@@ -109,6 +149,16 @@
       "score": 61,
       "why": "Mid/high cloud 27%, low cloud 4% here / 3% on the horizon, 51% rain chance",
       "sent": 1793867985217
+    },
+    {
+      "id": "cape-woolamai|sunset|2026-11-07",
+      "t": 1794042023000,
+      "key": "sunset",
+      "locId": "cape-woolamai",
+      "loc": "Cape Woolamai (The Pinnacles)",
+      "score": 68,
+      "why": "Mid/high cloud 48%, low cloud 30% here / 40% on the horizon, clearing after rain, 33% rain chance",
+      "sent": 1793954142084
     },
     {
       "id": "mount-mckay-eta1|snow|2026-11-07",
@@ -166,8 +216,8 @@
       "key": "fog",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
-      "score": 80,
-      "why": "Visibility 2.8 km, humidity 99%, wind 7 km/h around 4:04am",
+      "score": 60,
+      "why": "Visibility 2.0 km, humidity 97%, wind 9 km/h around 3:04am",
       "sent": 1793737693252
     },
     {
@@ -177,7 +227,7 @@
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
       "score": 80,
-      "why": "Visibility 15.0 km, humidity 97%, wind 5 km/h around 7:02am",
+      "why": "Visibility 8.7 km, humidity 98%, wind 5 km/h around 7:02am",
       "sent": 1793737693252
     },
     {
@@ -186,8 +236,8 @@
       "key": "fog",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 85,
-      "why": "Visibility 520 m, humidity 100%, wind 9 km/h around 4:59am",
+      "score": 100,
+      "why": "Visibility 500 m, humidity 100%, wind 8 km/h around 4:59am",
       "sent": 1793737693252
     },
     {
@@ -226,8 +276,8 @@
       "key": "sunset",
       "locId": "mount-donna-buang-x8z6",
       "loc": "Mount Donna Buang",
-      "score": 86,
-      "why": "Mid/high cloud 56%, low cloud 30% here / 18% on the horizon",
+      "score": 91,
+      "why": "Mid/high cloud 62%, low cloud 20% here / 13% on the horizon",
       "sent": 1793737693252
     },
     {
@@ -236,8 +286,8 @@
       "key": "sunset",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
-      "score": 65,
-      "why": "Mid/high cloud 26%, low cloud 35% here / 16% on the horizon",
+      "score": 93,
+      "why": "Mid/high cloud 33%, low cloud 15% here / 4% on the horizon",
       "sent": 1793824184685
     },
     {
@@ -256,8 +306,8 @@
       "key": "sunset",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 61,
-      "why": "Mid/high cloud 84%, low cloud 4% here / 9% on the horizon",
+      "score": 82,
+      "why": "Mid/high cloud 45%, low cloud 9% here / 24% on the horizon",
       "sent": 1793737693252
     },
     {
