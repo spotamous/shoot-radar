@@ -1,6 +1,126 @@
 {
   "entries": [
     {
+      "id": "mepunga-77d3|sunrise|2026-11-10",
+      "t": 1794251540000,
+      "key": "sunrise",
+      "locId": "mepunga-77d3",
+      "loc": "Childers Cove",
+      "score": 100,
+      "why": "Mid/high cloud 66%, low cloud 0% here / 0% on the horizon, clearing after rain",
+      "sent": 1793996822879
+    },
+    {
+      "id": "gunnamatta|sunrise|2026-11-10",
+      "t": 1794251014000,
+      "key": "sunrise",
+      "locId": "gunnamatta",
+      "loc": "Gunnamatta Beach",
+      "score": 96,
+      "why": "Mid/high cloud 71%, low cloud 0% here / 0% on the horizon",
+      "sent": 1793996822879
+    },
+    {
+      "id": "portsea-2rdc|sunrise|2026-11-10",
+      "t": 1794251014000,
+      "key": "sunrise",
+      "locId": "portsea-2rdc",
+      "loc": "Portsea",
+      "score": 95,
+      "why": "Mid/high cloud 71%, low cloud 0% here / 0% on the horizon",
+      "sent": 1793996822879
+    },
+    {
+      "id": "cape-woolamai|sunrise|2026-11-10",
+      "t": 1794250870000,
+      "key": "sunrise",
+      "locId": "cape-woolamai",
+      "loc": "Cape Woolamai (The Pinnacles)",
+      "score": 100,
+      "why": "Mid/high cloud 62%, low cloud 0% here / 0% on the horizon",
+      "sent": 1793996822879
+    },
+    {
+      "id": "port-campbell-national-park-3e78|sunset|2026-11-09",
+      "t": 1794215557000,
+      "key": "sunset",
+      "locId": "port-campbell-national-park-3e78",
+      "loc": "Port Campbell National Park",
+      "score": 67,
+      "why": "Mid/high cloud 83%, low cloud 0% here / 0% on the horizon",
+      "sent": 1793996822879
+    },
+    {
+      "id": "gunnamatta|sunset|2026-11-09",
+      "t": 1794215084000,
+      "key": "sunset",
+      "locId": "gunnamatta",
+      "loc": "Gunnamatta Beach",
+      "score": 100,
+      "why": "Mid/high cloud 33%, low cloud 0% here / 0% on the horizon",
+      "sent": 1793996822879
+    },
+    {
+      "id": "portsea-2rdc|sunset|2026-11-09",
+      "t": 1794215084000,
+      "key": "sunset",
+      "locId": "portsea-2rdc",
+      "loc": "Portsea",
+      "score": 100,
+      "why": "Mid/high cloud 33%, low cloud 0% here / 0% on the horizon",
+      "sent": 1793996822879
+    },
+    {
+      "id": "cape-schanck|sunset|2026-11-09",
+      "t": 1794215075000,
+      "key": "sunset",
+      "locId": "cape-schanck",
+      "loc": "Cape Schanck (Pulpit Rock)",
+      "score": 100,
+      "why": "Mid/high cloud 30%, low cloud 0% here / 0% on the horizon",
+      "sent": 1793996822879
+    },
+    {
+      "id": "flinders-blowhole|sunset|2026-11-09",
+      "t": 1794215075000,
+      "key": "sunset",
+      "locId": "flinders-blowhole",
+      "loc": "Flinders Blowhole",
+      "score": 99,
+      "why": "Mid/high cloud 30%, low cloud 0% here / 1% on the horizon",
+      "sent": 1793996822879
+    },
+    {
+      "id": "rowville-xpvw|sunset|2026-11-09",
+      "t": 1794214943000,
+      "key": "sunset",
+      "locId": "rowville-xpvw",
+      "loc": "Rowville",
+      "score": 100,
+      "why": "Mid/high cloud 30%, low cloud 0% here / 0% on the horizon",
+      "sent": 1793996822879
+    },
+    {
+      "id": "mount-donna-buang-x8z6|sunset|2026-11-09",
+      "t": 1794214796000,
+      "key": "sunset",
+      "locId": "mount-donna-buang-x8z6",
+      "loc": "Mount Donna Buang",
+      "score": 100,
+      "why": "Mid/high cloud 55%, low cloud 0% here / 0% on the horizon",
+      "sent": 1793996822879
+    },
+    {
+      "id": "mount-mckay-eta1|sunset|2026-11-09",
+      "t": 1794214307000,
+      "key": "sunset",
+      "locId": "mount-mckay-eta1",
+      "loc": "Mount McKay",
+      "score": 74,
+      "why": "Mid/high cloud 25%, low cloud 0% here / 0% on the horizon",
+      "sent": 1793996822879
+    },
+    {
       "id": "mount-william-he8i|sunrise|2026-11-09",
       "t": 1794165347000,
       "key": "sunrise",
@@ -27,7 +147,7 @@
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
       "score": 80,
-      "why": "Visibility 28.7 km, humidity 97%, wind 6 km/h around 5:02am",
+      "why": "Visibility 28.8 km, humidity 97%, wind 5 km/h around 5:02am",
       "sent": 1793910480474
     },
     {
@@ -37,7 +157,7 @@
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
       "score": 100,
-      "why": "Visibility 400 m, humidity 98%, wind 9 km/h around 2:57am",
+      "why": "Visibility 360 m, humidity 98%, wind 8 km/h around 2:57am",
       "sent": 1793910480474
     },
     {
@@ -67,7 +187,7 @@
       "locId": "port-campbell-national-park-3e78",
       "loc": "Port Campbell National Park",
       "score": 83,
-      "why": "7 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (New moon, 1% lit)",
+      "why": "6 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (New moon, 1% lit)",
       "sent": 1793910480474
     },
     {
@@ -86,8 +206,8 @@
       "key": "sunrise",
       "locId": "albert-park-i4kh",
       "loc": "Albert Park",
-      "score": 63,
-      "why": "Mid/high cloud 41%, low cloud 32% here / 46% on the horizon",
+      "score": 80,
+      "why": "Mid/high cloud 49%, low cloud 27% here / 26% on the horizon",
       "sent": 1793954142084
     },
     {
@@ -97,7 +217,7 @@
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
       "score": 100,
-      "why": "Visibility 240 m, humidity 98%, wind 15 km/h around 2:58am",
+      "why": "Visibility 260 m, humidity 98%, wind 15 km/h around 2:58am",
       "sent": 1793824184685
     },
     {
@@ -116,8 +236,8 @@
       "key": "sunset",
       "locId": "mepunga-77d3",
       "loc": "Childers Cove",
-      "score": 83,
-      "why": "Mid/high cloud 61%, low cloud 36% here / 21% on the horizon",
+      "score": 81,
+      "why": "Mid/high cloud 45%, low cloud 40% here / 25% on the horizon",
       "sent": 1793954142084
     },
     {
@@ -126,8 +246,8 @@
       "key": "sunset",
       "locId": "port-campbell-national-park-3e78",
       "loc": "Port Campbell National Park",
-      "score": 78,
-      "why": "Mid/high cloud 27%, low cloud 21% here / 18% on the horizon, clearing after rain",
+      "score": 68,
+      "why": "Mid/high cloud 37%, low cloud 27% here / 40% on the horizon",
       "sent": 1793867985217
     },
     {
@@ -136,9 +256,39 @@
       "key": "sunset",
       "locId": "gunnamatta",
       "loc": "Gunnamatta Beach",
-      "score": 61,
-      "why": "Mid/high cloud 30%, low cloud 20% here / 39% on the horizon",
+      "score": 79,
+      "why": "Mid/high cloud 34%, low cloud 16% here / 20% on the horizon",
       "sent": 1793954142084
+    },
+    {
+      "id": "portsea-2rdc|sunset|2026-11-07",
+      "t": 1794042149000,
+      "key": "sunset",
+      "locId": "portsea-2rdc",
+      "loc": "Portsea",
+      "score": 77,
+      "why": "Mid/high cloud 34%, low cloud 16% here / 27% on the horizon",
+      "sent": 1793996822879
+    },
+    {
+      "id": "cape-schanck|sunset|2026-11-07",
+      "t": 1794042140000,
+      "key": "sunset",
+      "locId": "cape-schanck",
+      "loc": "Cape Schanck (Pulpit Rock)",
+      "score": 88,
+      "why": "Mid/high cloud 30%, low cloud 16% here / 22% on the horizon, clearing after rain",
+      "sent": 1793996822879
+    },
+    {
+      "id": "flinders-blowhole|sunset|2026-11-07",
+      "t": 1794042140000,
+      "key": "sunset",
+      "locId": "flinders-blowhole",
+      "loc": "Flinders Blowhole",
+      "score": 84,
+      "why": "Mid/high cloud 30%, low cloud 16% here / 27% on the horizon, clearing after rain",
+      "sent": 1793996822879
     },
     {
       "id": "albert-park-i4kh|sunset|2026-11-07",
@@ -159,6 +309,16 @@
       "score": 68,
       "why": "Mid/high cloud 48%, low cloud 30% here / 40% on the horizon, clearing after rain, 33% rain chance",
       "sent": 1793954142084
+    },
+    {
+      "id": "rowville-xpvw|sunset|2026-11-07",
+      "t": 1794042010000,
+      "key": "sunset",
+      "locId": "rowville-xpvw",
+      "loc": "Rowville",
+      "score": 80,
+      "why": "Mid/high cloud 28%, low cloud 25% here / 3% on the horizon, clearing after rain",
+      "sent": 1793996822879
     },
     {
       "id": "mount-mckay-eta1|snow|2026-11-07",
