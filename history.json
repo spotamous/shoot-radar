@@ -1,6 +1,86 @@
 {
   "entries": [
     {
+      "id": "mount-william-he8i|fog|2026-11-11",
+      "t": 1794338039000,
+      "key": "fog",
+      "locId": "mount-william-he8i",
+      "loc": "Mount William",
+      "score": 60,
+      "why": "Visibility 1.1 km, humidity 100%, wind 16 km/h around 3:13am",
+      "sent": 1794082464128
+    },
+    {
+      "id": "mount-buffalo-664r|sunrise|2026-11-11",
+      "t": 1794337110000,
+      "key": "sunrise",
+      "locId": "mount-buffalo-664r",
+      "loc": "Mount Buffalo",
+      "score": 99,
+      "why": "Mid/high cloud 37%, low cloud 0% here / 0% on the horizon",
+      "sent": 1794082464128
+    },
+    {
+      "id": "mount-mckay-eta1|sunrise|2026-11-11",
+      "t": 1794336970000,
+      "key": "sunrise",
+      "locId": "mount-mckay-eta1",
+      "loc": "Mount McKay",
+      "score": 96,
+      "why": "Mid/high cloud 66%, low cloud 0% here / 0% on the horizon",
+      "sent": 1794082464128
+    },
+    {
+      "id": "mount-william-he8i|sunset|2026-11-10",
+      "t": 1794301946000,
+      "key": "sunset",
+      "locId": "mount-william-he8i",
+      "loc": "Mount William",
+      "score": 96,
+      "why": "Mid/high cloud 55%, low cloud 0% here / 0% on the horizon",
+      "sent": 1794082464128
+    },
+    {
+      "id": "albert-park-i4kh|sunset|2026-11-10",
+      "t": 1794301456000,
+      "key": "sunset",
+      "locId": "albert-park-i4kh",
+      "loc": "Albert Park",
+      "score": 73,
+      "why": "Mid/high cloud 79%, low cloud 0% here / 0% on the horizon",
+      "sent": 1794082464128
+    },
+    {
+      "id": "rowville-xpvw|sunset|2026-11-10",
+      "t": 1794301409000,
+      "key": "sunset",
+      "locId": "rowville-xpvw",
+      "loc": "Rowville",
+      "score": 61,
+      "why": "Mid/high cloud 84%, low cloud 0% here / 0% on the horizon",
+      "sent": 1794082464128
+    },
+    {
+      "id": "mount-donna-buang-x8z6|sunset|2026-11-10",
+      "t": 1794301262000,
+      "key": "sunset",
+      "locId": "mount-donna-buang-x8z6",
+      "loc": "Mount Donna Buang",
+      "score": 89,
+      "why": "Mid/high cloud 73%, low cloud 0% here / 0% on the horizon",
+      "sent": 1794082464128
+    },
+    {
+      "id": "cathedral-abnm|sunset|2026-11-10",
+      "t": 1794301212000,
+      "key": "sunset",
+      "locId": "cathedral-abnm",
+      "loc": "Cathedral Ranges",
+      "score": 95,
+      "why": "Mid/high cloud 69%, low cloud 0% here / 0% on the horizon",
+      "sent": 1794082464128
+    },
+    {
       "id": "mepunga-77d3|sunrise|2026-11-10",
       "t": 1794251540000,
       "key": "sunrise",
@@ -132,12 +212,12 @@
     },
     {
       "id": "cape-schanck|milkyway|2026-11-09",
-      "t": 1794225600000,
+      "t": 1794222000000,
       "key": "milkyway",
       "locId": "cape-schanck",
       "loc": "Cape Schanck (Pulpit Rock)",
-      "score": 65,
-      "why": "5 h dark, moonless, ≤20% cloud from 11:00pm; core below horizon (New moon, 0% lit)",
+      "score": 83,
+      "why": "7 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (New moon, 0% lit)",
       "sent": 1794040066789
     },
     {
@@ -156,9 +236,29 @@
       "key": "milkyway",
       "locId": "mepunga-77d3",
       "loc": "Childers Cove",
-      "score": 70,
-      "why": "4 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (New moon, 0% lit)",
+      "score": 83,
+      "why": "7 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (New moon, 0% lit)",
       "sent": 1794040066789
+    },
+    {
+      "id": "cape-woolamai|milkyway|2026-11-09",
+      "t": 1794222000000,
+      "key": "milkyway",
+      "locId": "cape-woolamai",
+      "loc": "Cape Woolamai (The Pinnacles)",
+      "score": 83,
+      "why": "7 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (New moon, 0% lit)",
+      "sent": 1794082464128
+    },
+    {
+      "id": "mepunga-77d3|sunset|2026-11-09",
+      "t": 1794215611000,
+      "key": "sunset",
+      "locId": "mepunga-77d3",
+      "loc": "Childers Cove",
+      "score": 100,
+      "why": "Mid/high cloud 58%, low cloud 0% here / 0% on the horizon",
+      "sent": 1794082464128
     },
     {
       "id": "port-campbell-national-park-3e78|sunset|2026-11-09",
@@ -166,9 +266,19 @@
       "key": "sunset",
       "locId": "port-campbell-national-park-3e78",
       "loc": "Port Campbell National Park",
-      "score": 67,
-      "why": "Mid/high cloud 83%, low cloud 0% here / 0% on the horizon",
+      "score": 80,
+      "why": "Mid/high cloud 27%, low cloud 0% here / 0% on the horizon",
       "sent": 1793996822879
+    },
+    {
+      "id": "mount-william-he8i|sunset|2026-11-09",
+      "t": 1794215481000,
+      "key": "sunset",
+      "locId": "mount-william-he8i",
+      "loc": "Mount William",
+      "score": 100,
+      "why": "Mid/high cloud 68%, low cloud 0% here / 0% on the horizon",
+      "sent": 1794082464128
     },
     {
       "id": "gunnamatta|sunset|2026-11-09",
@@ -216,8 +326,8 @@
       "key": "sunset",
       "locId": "albert-park-i4kh",
       "loc": "Albert Park",
-      "score": 100,
-      "why": "Mid/high cloud 62%, low cloud 0% here / 0% on the horizon",
+      "score": 99,
+      "why": "Mid/high cloud 53%, low cloud 0% here / 1% on the horizon",
       "sent": 1794040066789
     },
     {
@@ -227,7 +337,7 @@
       "locId": "rowville-xpvw",
       "loc": "Rowville",
       "score": 100,
-      "why": "Mid/high cloud 30%, low cloud 0% here / 0% on the horizon",
+      "why": "Mid/high cloud 57%, low cloud 0% here / 0% on the horizon",
       "sent": 1793996822879
     },
     {
@@ -307,7 +417,7 @@
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
       "score": 85,
-      "why": "Visibility 760 m, humidity 98%, wind 8 km/h around 2:57am",
+      "why": "Visibility 900 m, humidity 98%, wind 6 km/h around 5:57am",
       "sent": 1793910480474
     },
     {
@@ -337,7 +447,7 @@
       "locId": "port-campbell-national-park-3e78",
       "loc": "Port Campbell National Park",
       "score": 83,
-      "why": "7 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (New moon, 1% lit)",
+      "why": "5 h dark, moonless, ≤20% cloud from 10:00pm; core up from 10:00pm (New moon, 1% lit)",
       "sent": 1793910480474
     },
     {
