@@ -6,8 +6,8 @@
       "key": "fog",
       "locId": "mount-william-he8i",
       "loc": "Mount William",
-      "score": 60,
-      "why": "Visibility 1.1 km, humidity 100%, wind 16 km/h around 3:13am",
+      "score": 100,
+      "why": "Visibility 280 m, humidity 99%, wind 15 km/h around 6:13am",
       "sent": 1794082464128
     },
     {
@@ -31,13 +31,23 @@
       "sent": 1794082464128
     },
     {
+      "id": "mepunga-77d3|sunset|2026-11-10",
+      "t": 1794302079000,
+      "key": "sunset",
+      "locId": "mepunga-77d3",
+      "loc": "Childers Cove",
+      "score": 86,
+      "why": "Mid/high cloud 75%, low cloud 0% here / 0% on the horizon",
+      "sent": 1794126441007
+    },
+    {
       "id": "mount-william-he8i|sunset|2026-11-10",
       "t": 1794301946000,
       "key": "sunset",
       "locId": "mount-william-he8i",
       "loc": "Mount William",
-      "score": 96,
-      "why": "Mid/high cloud 55%, low cloud 0% here / 0% on the horizon",
+      "score": 86,
+      "why": "Mid/high cloud 26%, low cloud 0% here / 0% on the horizon, clearing after rain",
       "sent": 1794082464128
     },
     {
@@ -46,8 +56,8 @@
       "key": "sunset",
       "locId": "albert-park-i4kh",
       "loc": "Albert Park",
-      "score": 73,
-      "why": "Mid/high cloud 79%, low cloud 0% here / 0% on the horizon",
+      "score": 66,
+      "why": "Mid/high cloud 81%, low cloud 0% here / 0% on the horizon",
       "sent": 1794082464128
     },
     {
@@ -66,8 +76,8 @@
       "key": "sunset",
       "locId": "mount-donna-buang-x8z6",
       "loc": "Mount Donna Buang",
-      "score": 89,
-      "why": "Mid/high cloud 73%, low cloud 0% here / 0% on the horizon",
+      "score": 67,
+      "why": "Mid/high cloud 79%, low cloud 11% here / 0% on the horizon",
       "sent": 1794082464128
     },
     {
@@ -76,9 +86,29 @@
       "key": "sunset",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
-      "score": 95,
-      "why": "Mid/high cloud 69%, low cloud 0% here / 0% on the horizon",
+      "score": 89,
+      "why": "Mid/high cloud 37%, low cloud 5% here / 6% on the horizon",
       "sent": 1794082464128
+    },
+    {
+      "id": "mount-buffalo-664r|sunset|2026-11-10",
+      "t": 1794300894000,
+      "key": "sunset",
+      "locId": "mount-buffalo-664r",
+      "loc": "Mount Buffalo",
+      "score": 96,
+      "why": "Mid/high cloud 33%, low cloud 0% here / 0% on the horizon",
+      "sent": 1794126441007
+    },
+    {
+      "id": "mount-william-he8i|sunrise|2026-11-10",
+      "t": 1794251692000,
+      "key": "sunrise",
+      "locId": "mount-william-he8i",
+      "loc": "Mount William",
+      "score": 68,
+      "why": "Mid/high cloud 25%, low cloud 0% here / 0% on the horizon",
+      "sent": 1794126441007
     },
     {
       "id": "mepunga-77d3|sunrise|2026-11-10",
@@ -86,8 +116,8 @@
       "key": "sunrise",
       "locId": "mepunga-77d3",
       "loc": "Childers Cove",
-      "score": 100,
-      "why": "Mid/high cloud 66%, low cloud 0% here / 0% on the horizon, clearing after rain",
+      "score": 96,
+      "why": "Mid/high cloud 51%, low cloud 0% here / 0% on the horizon",
       "sent": 1793996822879
     },
     {
@@ -96,8 +126,8 @@
       "key": "sunrise",
       "locId": "port-campbell-national-park-3e78",
       "loc": "Port Campbell National Park",
-      "score": 97,
-      "why": "Mid/high cloud 38%, low cloud 0% here / 0% on the horizon",
+      "score": 72,
+      "why": "Mid/high cloud 80%, low cloud 0% here / 0% on the horizon",
       "sent": 1794040066789
     },
     {
@@ -176,8 +206,8 @@
       "key": "sunrise",
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
-      "score": 99,
-      "why": "Mid/high cloud 31%, low cloud 0% here / 0% on the horizon",
+      "score": 100,
+      "why": "Mid/high cloud 36%, low cloud 0% here / 0% on the horizon",
       "sent": 1794040066789
     },
     {
@@ -209,6 +239,16 @@
       "score": 43,
       "why": "NOAA Kp 5.0 forecast around 3:00am, 1% cloud to the south",
       "sent": 1794040066789
+    },
+    {
+      "id": "cape-schanck|milkyway|2026-11-10",
+      "t": 1794229200000,
+      "key": "milkyway",
+      "locId": "cape-schanck",
+      "loc": "Cape Schanck (Pulpit Rock)",
+      "score": 65,
+      "why": "5 h dark, moonless, ≤20% cloud from 12:00am; core below horizon (New moon, 0% lit)",
+      "sent": 1794126441007
     },
     {
       "id": "cape-schanck|milkyway|2026-11-09",
@@ -266,8 +306,8 @@
       "key": "sunset",
       "locId": "port-campbell-national-park-3e78",
       "loc": "Port Campbell National Park",
-      "score": 80,
-      "why": "Mid/high cloud 27%, low cloud 0% here / 0% on the horizon",
+      "score": 61,
+      "why": "Mid/high cloud 86%, low cloud 0% here / 0% on the horizon",
       "sent": 1793996822879
     },
     {
@@ -276,8 +316,8 @@
       "key": "sunset",
       "locId": "mount-william-he8i",
       "loc": "Mount William",
-      "score": 100,
-      "why": "Mid/high cloud 68%, low cloud 0% here / 0% on the horizon",
+      "score": 99,
+      "why": "Mid/high cloud 50%, low cloud 0% here / 0% on the horizon",
       "sent": 1794082464128
     },
     {
@@ -347,7 +387,7 @@
       "locId": "mount-donna-buang-x8z6",
       "loc": "Mount Donna Buang",
       "score": 100,
-      "why": "Mid/high cloud 39%, low cloud 0% here / 0% on the horizon",
+      "why": "Mid/high cloud 66%, low cloud 0% here / 0% on the horizon",
       "sent": 1793996822879
     },
     {
@@ -376,8 +416,8 @@
       "key": "sunset",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 87,
-      "why": "Mid/high cloud 29%, low cloud 0% here / 0% on the horizon",
+      "score": 68,
+      "why": "Mid/high cloud 82%, low cloud 6% here / 2% on the horizon",
       "sent": 1793996822879
     },
     {
@@ -417,7 +457,7 @@
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
       "score": 85,
-      "why": "Visibility 900 m, humidity 98%, wind 6 km/h around 5:57am",
+      "why": "Visibility 600 m, humidity 98%, wind 8 km/h around 2:57am",
       "sent": 1793910480474
     },
     {
