@@ -1,6 +1,76 @@
 {
   "entries": [
     {
+      "id": "mount-william-he8i|fog|2026-11-15",
+      "t": 1794683443000,
+      "key": "fog",
+      "locId": "mount-william-he8i",
+      "loc": "Mount William",
+      "score": 80,
+      "why": "Visibility 25.3 km, humidity 98%, wind 5 km/h around 3:10am",
+      "sent": 1794431209406
+    },
+    {
+      "id": "gunnamatta|sunrise|2026-11-15",
+      "t": 1794682752000,
+      "key": "sunrise",
+      "locId": "gunnamatta",
+      "loc": "Gunnamatta Beach",
+      "score": 75,
+      "why": "Mid/high cloud 69%, low cloud 17% here / 22% on the horizon",
+      "sent": 1794431209406
+    },
+    {
+      "id": "portsea-2rdc|sunrise|2026-11-15",
+      "t": 1794682752000,
+      "key": "sunrise",
+      "locId": "portsea-2rdc",
+      "loc": "Portsea",
+      "score": 73,
+      "why": "Mid/high cloud 69%, low cloud 17% here / 35% on the horizon",
+      "sent": 1794431209406
+    },
+    {
+      "id": "cape-schanck|sunrise|2026-11-15",
+      "t": 1794682724000,
+      "key": "sunrise",
+      "locId": "cape-schanck",
+      "loc": "Cape Schanck (Pulpit Rock)",
+      "score": 65,
+      "why": "Mid/high cloud 61%, low cloud 50% here / 23% on the horizon, 31% rain chance",
+      "sent": 1794431209406
+    },
+    {
+      "id": "cape-woolamai|sunrise|2026-11-15",
+      "t": 1794682607000,
+      "key": "sunrise",
+      "locId": "cape-woolamai",
+      "loc": "Cape Woolamai (The Pinnacles)",
+      "score": 61,
+      "why": "Mid/high cloud 59%, low cloud 40% here / 38% on the horizon",
+      "sent": 1794431209406
+    },
+    {
+      "id": "mount-buffalo-664r|fog|2026-11-15",
+      "t": 1794682518000,
+      "key": "fog",
+      "locId": "mount-buffalo-664r",
+      "loc": "Mount Buffalo",
+      "score": 86,
+      "why": "Visibility 120 m, humidity 99%, wind 1 km/h around 2:55am",
+      "sent": 1794431209406
+    },
+    {
+      "id": "mount-mckay-eta1|fog|2026-11-15",
+      "t": 1794682377000,
+      "key": "fog",
+      "locId": "mount-mckay-eta1",
+      "loc": "Mount McKay",
+      "score": 97,
+      "why": "Visibility 240 m, humidity 100%, wind 7 km/h around 2:52am",
+      "sent": 1794431209406
+    },
+    {
       "id": "mount-mckay-eta1|storm|2026-11-14",
       "t": 1794621600000,
       "key": "storm",
@@ -17,7 +87,7 @@
       "locId": "mount-william-he8i",
       "loc": "Mount William",
       "score": 100,
-      "why": "Visibility 400 m, humidity 99%, wind 7 km/h around 3:11am",
+      "why": "Visibility 500 m, humidity 100%, wind 7 km/h around 3:11am",
       "sent": 1794342473597
     },
     {
@@ -36,8 +106,8 @@
       "key": "fog",
       "locId": "taggerty-river-mjcs",
       "loc": "Taggerty River",
-      "score": 100,
-      "why": "Visibility 260 m, humidity 100%, wind 2 km/h around 5:59am",
+      "score": 79,
+      "why": "Visibility 2.2 km, humidity 97%, wind 4 km/h around 5:59am",
       "sent": 1794386226864
     },
     {
@@ -96,8 +166,8 @@
       "key": "fog",
       "locId": "taggerty-river-mjcs",
       "loc": "Taggerty River",
-      "score": 80,
-      "why": "Visibility 160 m, humidity 99%, wind 2 km/h around 4:59am",
+      "score": 83,
+      "why": "Visibility 160 m, humidity 99%, wind 3 km/h around 3:59am",
       "sent": 1794256263166
     },
     {
@@ -106,8 +176,8 @@
       "key": "fog",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
-      "score": 69,
-      "why": "Visibility 620 m, humidity 87%, wind 2 km/h around 2:59am",
+      "score": 85,
+      "why": "Visibility 320 m, humidity 91%, wind 1 km/h around 2:59am",
       "sent": 1794256263166
     },
     {
@@ -146,8 +216,8 @@
       "key": "sunrise",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 82,
-      "why": "Mid/high cloud 52%, low cloud 0% here / 24% on the horizon",
+      "score": 75,
+      "why": "Mid/high cloud 76%, low cloud 0% here / 16% on the horizon",
       "sent": 1794299821559
     },
     {
@@ -216,8 +286,8 @@
       "key": "sunset",
       "locId": "cape-woolamai",
       "loc": "Cape Woolamai (The Pinnacles)",
-      "score": 97,
-      "why": "Mid/high cloud 63%, low cloud 0% here / 5% on the horizon",
+      "score": 64,
+      "why": "Mid/high cloud 84%, low cloud 0% here / 2% on the horizon",
       "sent": 1794299821559
     },
     {
@@ -226,8 +296,8 @@
       "key": "sunset",
       "locId": "rowville-xpvw",
       "loc": "Rowville",
-      "score": 75,
-      "why": "Mid/high cloud 80%, low cloud 0% here / 0% on the horizon",
+      "score": 100,
+      "why": "Mid/high cloud 59%, low cloud 0% here / 0% on the horizon",
       "sent": 1794299821559
     },
     {
@@ -236,8 +306,8 @@
       "key": "sunset",
       "locId": "mount-donna-buang-x8z6",
       "loc": "Mount Donna Buang",
-      "score": 95,
-      "why": "Mid/high cloud 61%, low cloud 12% here / 0% on the horizon",
+      "score": 71,
+      "why": "Mid/high cloud 68%, low cloud 58% here / 0% on the horizon",
       "sent": 1794299821559
     },
     {
@@ -246,8 +316,8 @@
       "key": "sunset",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
-      "score": 77,
-      "why": "Mid/high cloud 29%, low cloud 0% here / 15% on the horizon",
+      "score": 86,
+      "why": "Mid/high cloud 68%, low cloud 1% here / 19% on the horizon",
       "sent": 1794256263166
     },
     {
@@ -256,8 +326,8 @@
       "key": "sunset",
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
-      "score": 69,
-      "why": "Mid/high cloud 24%, low cloud 0% here / 1% on the horizon",
+      "score": 100,
+      "why": "Mid/high cloud 38%, low cloud 0% here / 0% on the horizon",
       "sent": 1794256263166
     },
     {
