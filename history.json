@@ -6,9 +6,19 @@
       "key": "fog",
       "locId": "mount-william-he8i",
       "loc": "Mount William",
-      "score": 80,
-      "why": "Visibility 25.3 km, humidity 98%, wind 5 km/h around 3:10am",
+      "score": 74,
+      "why": "Visibility 940 m, humidity 99%, wind 4 km/h around 4:10am",
       "sent": 1794431209406
+    },
+    {
+      "id": "mount-william-he8i|sunrise|2026-11-15",
+      "t": 1794683443000,
+      "key": "sunrise",
+      "locId": "mount-william-he8i",
+      "loc": "Mount William",
+      "score": 63,
+      "why": "Mid/high cloud 66%, low cloud 72% here / 20% on the horizon",
+      "sent": 1794472854621
     },
     {
       "id": "gunnamatta|sunrise|2026-11-15",
@@ -16,8 +26,8 @@
       "key": "sunrise",
       "locId": "gunnamatta",
       "loc": "Gunnamatta Beach",
-      "score": 75,
-      "why": "Mid/high cloud 69%, low cloud 17% here / 22% on the horizon",
+      "score": 62,
+      "why": "Mid/high cloud 45%, low cloud 49% here / 41% on the horizon",
       "sent": 1794431209406
     },
     {
@@ -26,8 +36,8 @@
       "key": "sunrise",
       "locId": "portsea-2rdc",
       "loc": "Portsea",
-      "score": 73,
-      "why": "Mid/high cloud 69%, low cloud 17% here / 35% on the horizon",
+      "score": 76,
+      "why": "Mid/high cloud 45%, low cloud 49% here / 22% on the horizon",
       "sent": 1794431209406
     },
     {
@@ -36,8 +46,8 @@
       "key": "sunrise",
       "locId": "cape-schanck",
       "loc": "Cape Schanck (Pulpit Rock)",
-      "score": 65,
-      "why": "Mid/high cloud 61%, low cloud 50% here / 23% on the horizon, 31% rain chance",
+      "score": 69,
+      "why": "Mid/high cloud 52%, low cloud 52% here / 9% on the horizon",
       "sent": 1794431209406
     },
     {
@@ -56,8 +66,8 @@
       "key": "fog",
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
-      "score": 86,
-      "why": "Visibility 120 m, humidity 99%, wind 1 km/h around 2:55am",
+      "score": 72,
+      "why": "Visibility 3.8 km, humidity 99%, wind 3 km/h around 2:55am",
       "sent": 1794431209406
     },
     {
@@ -66,8 +76,8 @@
       "key": "fog",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 97,
-      "why": "Visibility 240 m, humidity 100%, wind 7 km/h around 2:52am",
+      "score": 96,
+      "why": "Visibility 180 m, humidity 100%, wind 3 km/h around 2:52am",
       "sent": 1794431209406
     },
     {
@@ -77,7 +87,7 @@
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
       "score": 75,
-      "why": "Thunderstorm forecast around 1:00pm, 86% rain chance",
+      "why": "Thunderstorm forecast around 1:00pm, 92% rain chance",
       "sent": 1794386226864
     },
     {
@@ -97,7 +107,7 @@
       "locId": "rowville-xpvw",
       "loc": "Rowville",
       "score": 80,
-      "why": "Visibility 17.8 km, humidity 99%, wind 5 km/h around 2:59am",
+      "why": "Visibility 19.2 km, humidity 99%, wind 1 km/h around 2:59am",
       "sent": 1794342473597
     },
     {
@@ -106,9 +116,39 @@
       "key": "fog",
       "locId": "taggerty-river-mjcs",
       "loc": "Taggerty River",
-      "score": 79,
-      "why": "Visibility 2.2 km, humidity 97%, wind 4 km/h around 5:59am",
+      "score": 80,
+      "why": "Visibility 25.8 km, humidity 99%, wind 1 km/h around 2:59am",
       "sent": 1794386226864
+    },
+    {
+      "id": "cathedral-abnm|fog|2026-11-14",
+      "t": 1794596319000,
+      "key": "fog",
+      "locId": "cathedral-abnm",
+      "loc": "Cathedral Ranges",
+      "score": 80,
+      "why": "Visibility 3.9 km, humidity 97%, wind 3 km/h around 4:58am",
+      "sent": 1794472854621
+    },
+    {
+      "id": "mount-buffalo-664r|fog|2026-11-14",
+      "t": 1794596163000,
+      "key": "fog",
+      "locId": "mount-buffalo-664r",
+      "loc": "Mount Buffalo",
+      "score": 80,
+      "why": "Visibility 20.9 km, humidity 97%, wind 6 km/h around 2:56am",
+      "sent": 1794472854621
+    },
+    {
+      "id": "mount-mckay-eta1|fog|2026-11-14",
+      "t": 1794596023000,
+      "key": "fog",
+      "locId": "mount-mckay-eta1",
+      "loc": "Mount McKay",
+      "score": 100,
+      "why": "Visibility 320 m, humidity 100%, wind 10 km/h around 4:53am",
+      "sent": 1794472854621
     },
     {
       "id": "mount-william-he8i|fog|2026-11-13",
@@ -146,8 +186,8 @@
       "key": "fog",
       "locId": "rowville-xpvw",
       "loc": "Rowville",
-      "score": 65,
-      "why": "Visibility 22.7 km, humidity 97%, wind 5 km/h around 3:00am",
+      "score": 64,
+      "why": "Visibility 22.4 km, humidity 97%, wind 6 km/h around 4:00am",
       "sent": 1794256263166
     },
     {
@@ -166,8 +206,8 @@
       "key": "fog",
       "locId": "taggerty-river-mjcs",
       "loc": "Taggerty River",
-      "score": 83,
-      "why": "Visibility 160 m, humidity 99%, wind 3 km/h around 3:59am",
+      "score": 80,
+      "why": "Visibility 240 m, humidity 100%, wind 2 km/h around 2:59am",
       "sent": 1794256263166
     },
     {
@@ -176,8 +216,8 @@
       "key": "fog",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
-      "score": 85,
-      "why": "Visibility 320 m, humidity 91%, wind 1 km/h around 2:59am",
+      "score": 80,
+      "why": "Visibility 280 m, humidity 95%, wind 2 km/h around 2:59am",
       "sent": 1794256263166
     },
     {
@@ -276,8 +316,8 @@
       "key": "sunset",
       "locId": "albert-park-i4kh",
       "loc": "Albert Park",
-      "score": 100,
-      "why": "Mid/high cloud 58%, low cloud 0% here / 0% on the horizon",
+      "score": 75,
+      "why": "Mid/high cloud 80%, low cloud 0% here / 0% on the horizon",
       "sent": 1794299821559
     },
     {
@@ -306,8 +346,8 @@
       "key": "sunset",
       "locId": "mount-donna-buang-x8z6",
       "loc": "Mount Donna Buang",
-      "score": 71,
-      "why": "Mid/high cloud 68%, low cloud 58% here / 0% on the horizon",
+      "score": 84,
+      "why": "Mid/high cloud 62%, low cloud 34% here / 0% on the horizon",
       "sent": 1794299821559
     },
     {
@@ -316,8 +356,8 @@
       "key": "sunset",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
-      "score": 86,
-      "why": "Mid/high cloud 68%, low cloud 1% here / 19% on the horizon",
+      "score": 73,
+      "why": "Mid/high cloud 40%, low cloud 0% here / 34% on the horizon",
       "sent": 1794256263166
     },
     {
