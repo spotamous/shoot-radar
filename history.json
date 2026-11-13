@@ -7,7 +7,7 @@
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
       "score": 100,
-      "why": "Visibility 280 m, humidity 100%, wind 10 km/h around 2:52am",
+      "why": "Visibility 340 m, humidity 99%, wind 9 km/h around 2:52am",
       "sent": 1794515340710
     },
     {
@@ -56,8 +56,8 @@
       "key": "fog",
       "locId": "mount-william-he8i",
       "loc": "Mount William",
-      "score": 83,
-      "why": "Visibility 960 m, humidity 99%, wind 3 km/h around 6:10am",
+      "score": 85,
+      "why": "Visibility 800 m, humidity 99%, wind 5 km/h around 6:10am",
       "sent": 1794431209406
     },
     {
@@ -76,8 +76,8 @@
       "key": "sunrise",
       "locId": "albert-park-i4kh",
       "loc": "Albert Park",
-      "score": 63,
-      "why": "Mid/high cloud 59%, low cloud 16% here / 46% on the horizon",
+      "score": 64,
+      "why": "Mid/high cloud 27%, low cloud 6% here / 28% on the horizon",
       "sent": 1794515340710
     },
     {
@@ -106,8 +106,8 @@
       "key": "fog",
       "locId": "rowville-xpvw",
       "loc": "Rowville",
-      "score": 66,
-      "why": "Visibility 22.6 km, humidity 97%, wind 6 km/h around 3:59am",
+      "score": 75,
+      "why": "Visibility 3.4 km, humidity 98%, wind 6 km/h around 4:59am",
       "sent": 1794515340710
     },
     {
@@ -146,8 +146,8 @@
       "key": "fog",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 96,
-      "why": "Visibility 200 m, humidity 100%, wind 3 km/h around 2:52am",
+      "score": 93,
+      "why": "Visibility 160 m, humidity 100%, wind 1 km/h around 2:52am",
       "sent": 1794431209406
     },
     {
@@ -177,7 +177,7 @@
       "locId": "rowville-xpvw",
       "loc": "Rowville",
       "score": 80,
-      "why": "Visibility 6.4 km, humidity 99%, wind 4 km/h around 2:59am",
+      "why": "Visibility 4.0 km, humidity 99%, wind 6 km/h around 2:59am",
       "sent": 1794342473597
     },
     {
@@ -217,7 +217,7 @@
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
       "score": 100,
-      "why": "Visibility 240 m, humidity 100%, wind 12 km/h around 3:53am",
+      "why": "Visibility 320 m, humidity 100%, wind 13 km/h around 6:53am",
       "sent": 1794472854621
     },
     {
