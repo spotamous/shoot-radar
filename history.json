@@ -1,13 +1,83 @@
 {
   "entries": [
     {
+      "id": "albert-park-i4kh|sunrise|2026-11-18",
+      "t": 1794941895000,
+      "key": "sunrise",
+      "locId": "albert-park-i4kh",
+      "loc": "Albert Park",
+      "score": 78,
+      "why": "Mid/high cloud 62%, low cloud 46% here / 22% on the horizon",
+      "sent": 1794687357423
+    },
+    {
+      "id": "taggerty-river-mjcs|fog|2026-11-18",
+      "t": 1794941772000,
+      "key": "fog",
+      "locId": "taggerty-river-mjcs",
+      "loc": "Taggerty River",
+      "score": 69,
+      "why": "Visibility 900 m, humidity 100%, wind 1 km/h around 3:56am",
+      "sent": 1794687357423
+    },
+    {
+      "id": "cathedral-abnm|fog|2026-11-18",
+      "t": 1794941745000,
+      "key": "fog",
+      "locId": "cathedral-abnm",
+      "loc": "Cathedral Ranges",
+      "score": 82,
+      "why": "Visibility 400 m, humidity 99%, wind 9 km/h around 2:55am",
+      "sent": 1794687357423
+    },
+    {
+      "id": "cape-woolamai|sunrise|2026-11-18",
+      "t": 1794941673000,
+      "key": "sunrise",
+      "locId": "cape-woolamai",
+      "loc": "Cape Woolamai (The Pinnacles)",
+      "score": 61,
+      "why": "Mid/high cloud 31%, low cloud 2% here / 48% on the horizon",
+      "sent": 1794687357423
+    },
+    {
+      "id": "mount-mckay-eta1|fog|2026-11-18",
+      "t": 1794941454000,
+      "key": "fog",
+      "locId": "mount-mckay-eta1",
+      "loc": "Mount McKay",
+      "score": 71,
+      "why": "Visibility 900 m, humidity 76%, wind 3 km/h around 2:50am",
+      "sent": 1794687357423
+    },
+    {
+      "id": "mount-buffalo-664r|sunset|2026-11-17",
+      "t": 1794906134000,
+      "key": "sunset",
+      "locId": "mount-buffalo-664r",
+      "loc": "Mount Buffalo",
+      "score": 100,
+      "why": "Mid/high cloud 70%, low cloud 0% here / 0% on the horizon",
+      "sent": 1794687357423
+    },
+    {
+      "id": "mount-mckay-eta1|sunset|2026-11-17",
+      "t": 1794906012000,
+      "key": "sunset",
+      "locId": "mount-mckay-eta1",
+      "loc": "Mount McKay",
+      "score": 65,
+      "why": "Mid/high cloud 25%, low cloud 25% here / 1% on the horizon",
+      "sent": 1794687357423
+    },
+    {
       "id": "mount-william-he8i|sunrise|2026-11-17",
       "t": 1794856156000,
       "key": "sunrise",
       "locId": "mount-william-he8i",
       "loc": "Mount William",
-      "score": 60,
-      "why": "Mid/high cloud 86%, low cloud 0% here / 0% on the horizon",
+      "score": 93,
+      "why": "Mid/high cloud 72%, low cloud 1% here / 4% on the horizon",
       "sent": 1794644856615
     },
     {
@@ -26,8 +96,8 @@
       "key": "fog",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
-      "score": 100,
-      "why": "Visibility 360 m, humidity 100%, wind 6 km/h around 2:56am",
+      "score": 80,
+      "why": "Visibility 28.6 km, humidity 98%, wind 6 km/h around 2:56am",
       "sent": 1794644856615
     },
     {
@@ -37,7 +107,7 @@
       "locId": "cape-woolamai",
       "loc": "Cape Woolamai (The Pinnacles)",
       "score": 100,
-      "why": "Visibility 320 m, humidity 89%, wind 9 km/h around 6:55am",
+      "why": "Visibility 400 m, humidity 84%, wind 8 km/h around 6:55am",
       "sent": 1794644856615
     },
     {
@@ -47,7 +117,7 @@
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
       "score": 100,
-      "why": "Visibility 240 m, humidity 100%, wind 9 km/h around 2:52am",
+      "why": "Visibility 300 m, humidity 100%, wind 9 km/h around 2:52am",
       "sent": 1794515340710
     },
     {
@@ -91,6 +161,16 @@
       "sent": 1794515340710
     },
     {
+      "id": "albert-park-i4kh|sunset|2026-11-15",
+      "t": 1794733783000,
+      "key": "sunset",
+      "locId": "albert-park-i4kh",
+      "loc": "Albert Park",
+      "score": 65,
+      "why": "Mid/high cloud 45%, low cloud 27% here / 13% on the horizon, 57% rain chance",
+      "sent": 1794687357423
+    },
+    {
       "id": "cape-woolamai|sunset|2026-11-15",
       "t": 1794733760000,
       "key": "sunset",
@@ -106,8 +186,8 @@
       "key": "sunset",
       "locId": "rowville-xpvw",
       "loc": "Rowville",
-      "score": 65,
-      "why": "Mid/high cloud 51%, low cloud 33% here / 25% on the horizon, 43% rain chance",
+      "score": 69,
+      "why": "Mid/high cloud 38%, low cloud 30% here / 18% on the horizon, 43% rain chance",
       "sent": 1794644856615
     },
     {
