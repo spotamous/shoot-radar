@@ -1,13 +1,53 @@
 {
   "entries": [
     {
+      "id": "mount-william-he8i|sunrise|2026-11-17",
+      "t": 1794856156000,
+      "key": "sunrise",
+      "locId": "mount-william-he8i",
+      "loc": "Mount William",
+      "score": 60,
+      "why": "Mid/high cloud 86%, low cloud 0% here / 0% on the horizon",
+      "sent": 1794644856615
+    },
+    {
+      "id": "taggerty-river-mjcs|fog|2026-11-17",
+      "t": 1794855412000,
+      "key": "fog",
+      "locId": "taggerty-river-mjcs",
+      "loc": "Taggerty River",
+      "score": 85,
+      "why": "Visibility 880 m, humidity 99%, wind 2 km/h around 3:56am",
+      "sent": 1794644856615
+    },
+    {
+      "id": "cathedral-abnm|fog|2026-11-17",
+      "t": 1794855385000,
+      "key": "fog",
+      "locId": "cathedral-abnm",
+      "loc": "Cathedral Ranges",
+      "score": 100,
+      "why": "Visibility 360 m, humidity 100%, wind 6 km/h around 2:56am",
+      "sent": 1794644856615
+    },
+    {
+      "id": "cape-woolamai|fog|2026-11-17",
+      "t": 1794855315000,
+      "key": "fog",
+      "locId": "cape-woolamai",
+      "loc": "Cape Woolamai (The Pinnacles)",
+      "score": 100,
+      "why": "Visibility 320 m, humidity 89%, wind 9 km/h around 6:55am",
+      "sent": 1794644856615
+    },
+    {
       "id": "mount-mckay-eta1|fog|2026-11-16",
       "t": 1794768734000,
       "key": "fog",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
       "score": 100,
-      "why": "Visibility 340 m, humidity 99%, wind 9 km/h around 2:52am",
+      "why": "Visibility 240 m, humidity 100%, wind 9 km/h around 2:52am",
       "sent": 1794515340710
     },
     {
@@ -51,13 +91,33 @@
       "sent": 1794515340710
     },
     {
+      "id": "cape-woolamai|sunset|2026-11-15",
+      "t": 1794733760000,
+      "key": "sunset",
+      "locId": "cape-woolamai",
+      "loc": "Cape Woolamai (The Pinnacles)",
+      "score": 66,
+      "why": "Mid/high cloud 23%, low cloud 20% here / 19% on the horizon, clearing after rain",
+      "sent": 1794644856615
+    },
+    {
+      "id": "rowville-xpvw|sunset|2026-11-15",
+      "t": 1794733738000,
+      "key": "sunset",
+      "locId": "rowville-xpvw",
+      "loc": "Rowville",
+      "score": 65,
+      "why": "Mid/high cloud 51%, low cloud 33% here / 25% on the horizon, 43% rain chance",
+      "sent": 1794644856615
+    },
+    {
       "id": "mount-william-he8i|fog|2026-11-15",
       "t": 1794683443000,
       "key": "fog",
       "locId": "mount-william-he8i",
       "loc": "Mount William",
-      "score": 85,
-      "why": "Visibility 800 m, humidity 99%, wind 5 km/h around 6:10am",
+      "score": 80,
+      "why": "Visibility 22.9 km, humidity 98%, wind 4 km/h around 4:10am",
       "sent": 1794431209406
     },
     {
@@ -106,8 +166,8 @@
       "key": "fog",
       "locId": "rowville-xpvw",
       "loc": "Rowville",
-      "score": 75,
-      "why": "Visibility 3.4 km, humidity 98%, wind 6 km/h around 4:59am",
+      "score": 71,
+      "why": "Visibility 10.1 km, humidity 97%, wind 6 km/h around 3:59am",
       "sent": 1794515340710
     },
     {
@@ -119,6 +179,16 @@
       "score": 69,
       "why": "Mid/high cloud 52%, low cloud 52% here / 9% on the horizon",
       "sent": 1794431209406
+    },
+    {
+      "id": "cathedral-abnm|fog|2026-11-15",
+      "t": 1794682672000,
+      "key": "fog",
+      "locId": "cathedral-abnm",
+      "loc": "Cathedral Ranges",
+      "score": 57,
+      "why": "Visibility 1.0 km, humidity 96%, wind 12 km/h around 2:57am",
+      "sent": 1794644856615
     },
     {
       "id": "cape-woolamai|sunrise|2026-11-15",
@@ -146,8 +216,8 @@
       "key": "fog",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 93,
-      "why": "Visibility 160 m, humidity 100%, wind 1 km/h around 2:52am",
+      "score": 95,
+      "why": "Visibility 140 m, humidity 100%, wind 4 km/h around 2:52am",
       "sent": 1794431209406
     },
     {
