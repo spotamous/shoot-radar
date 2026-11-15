@@ -1,13 +1,73 @@
 {
   "entries": [
     {
+      "id": "mepunga-77d3|sunset|2026-11-18",
+      "t": 1794993808000,
+      "key": "sunset",
+      "locId": "mepunga-77d3",
+      "loc": "Childers Cove",
+      "score": 97,
+      "why": "Mid/high cloud 61%, low cloud 0% here / 0% on the horizon",
+      "sent": 1794754676874
+    },
+    {
+      "id": "port-campbell-national-park-3e78|sunset|2026-11-18",
+      "t": 1794993758000,
+      "key": "sunset",
+      "locId": "port-campbell-national-park-3e78",
+      "loc": "Port Campbell National Park",
+      "score": 99,
+      "why": "Mid/high cloud 64%, low cloud 0% here / 0% on the horizon",
+      "sent": 1794754676874
+    },
+    {
+      "id": "rowville-xpvw|sunset|2026-11-18",
+      "t": 1794993130000,
+      "key": "sunset",
+      "locId": "rowville-xpvw",
+      "loc": "Rowville",
+      "score": 62,
+      "why": "Mid/high cloud 85%, low cloud 0% here / 0% on the horizon",
+      "sent": 1794754676874
+    },
+    {
+      "id": "mount-buffalo-664r|sunset|2026-11-18",
+      "t": 1794992595000,
+      "key": "sunset",
+      "locId": "mount-buffalo-664r",
+      "loc": "Mount Buffalo",
+      "score": 96,
+      "why": "Mid/high cloud 51%, low cloud 0% here / 0% on the horizon",
+      "sent": 1794754676874
+    },
+    {
+      "id": "mount-mckay-eta1|sunset|2026-11-18",
+      "t": 1794992473000,
+      "key": "sunset",
+      "locId": "mount-mckay-eta1",
+      "loc": "Mount McKay",
+      "score": 96,
+      "why": "Mid/high cloud 32%, low cloud 1% here / 0% on the horizon",
+      "sent": 1794754676874
+    },
+    {
+      "id": "mount-william-he8i|sunrise|2026-11-18",
+      "t": 1794942516000,
+      "key": "sunrise",
+      "locId": "mount-william-he8i",
+      "loc": "Mount William",
+      "score": 61,
+      "why": "Mid/high cloud 81%, low cloud 33% here / 13% on the horizon",
+      "sent": 1794754676874
+    },
+    {
       "id": "albert-park-i4kh|sunrise|2026-11-18",
       "t": 1794941895000,
       "key": "sunrise",
       "locId": "albert-park-i4kh",
       "loc": "Albert Park",
-      "score": 78,
-      "why": "Mid/high cloud 62%, low cloud 46% here / 22% on the horizon",
+      "score": 65,
+      "why": "Mid/high cloud 69%, low cloud 49% here / 44% on the horizon",
       "sent": 1794687357423
     },
     {
@@ -16,8 +76,8 @@
       "key": "fog",
       "locId": "taggerty-river-mjcs",
       "loc": "Taggerty River",
-      "score": 69,
-      "why": "Visibility 900 m, humidity 100%, wind 1 km/h around 3:56am",
+      "score": 74,
+      "why": "Visibility 1.6 km, humidity 99%, wind 0 km/h around 2:56am",
       "sent": 1794687357423
     },
     {
@@ -26,8 +86,8 @@
       "key": "fog",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
-      "score": 82,
-      "why": "Visibility 400 m, humidity 99%, wind 9 km/h around 2:55am",
+      "score": 86,
+      "why": "Visibility 480 m, humidity 99%, wind 8 km/h around 2:55am",
       "sent": 1794687357423
     },
     {
@@ -46,9 +106,19 @@
       "key": "fog",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 71,
-      "why": "Visibility 900 m, humidity 76%, wind 3 km/h around 2:50am",
+      "score": 60,
+      "why": "Visibility 1.6 km, humidity 78%, wind 5 km/h around 2:50am",
       "sent": 1794687357423
+    },
+    {
+      "id": "cathedral-abnm|sunset|2026-11-17",
+      "t": 1794906461000,
+      "key": "sunset",
+      "locId": "cathedral-abnm",
+      "loc": "Cathedral Ranges",
+      "score": 88,
+      "why": "Mid/high cloud 70%, low cloud 1% here / 17% on the horizon",
+      "sent": 1794754676874
     },
     {
       "id": "mount-buffalo-664r|sunset|2026-11-17",
@@ -56,8 +126,8 @@
       "key": "sunset",
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
-      "score": 100,
-      "why": "Mid/high cloud 70%, low cloud 0% here / 0% on the horizon",
+      "score": 93,
+      "why": "Mid/high cloud 73%, low cloud 0% here / 0% on the horizon",
       "sent": 1794687357423
     },
     {
@@ -117,7 +187,7 @@
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
       "score": 100,
-      "why": "Visibility 300 m, humidity 100%, wind 9 km/h around 2:52am",
+      "why": "Visibility 300 m, humidity 100%, wind 10 km/h around 2:52am",
       "sent": 1794515340710
     },
     {
