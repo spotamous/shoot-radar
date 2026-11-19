@@ -1,6 +1,76 @@
 {
   "entries": [
     {
+      "id": "cape-schanck|sunset|2026-11-22",
+      "t": 1795339133000,
+      "key": "sunset",
+      "locId": "cape-schanck",
+      "loc": "Cape Schanck (Pulpit Rock)",
+      "score": 61,
+      "why": "Mid/high cloud 34%, low cloud 1% here / 11% on the horizon, 75% rain chance",
+      "sent": 1795106862135
+    },
+    {
+      "id": "albert-park-i4kh|sunset|2026-11-22",
+      "t": 1795339028000,
+      "key": "sunset",
+      "locId": "albert-park-i4kh",
+      "loc": "Albert Park",
+      "score": 72,
+      "why": "Mid/high cloud 44%, low cloud 0% here / 0% on the horizon, 63% rain chance",
+      "sent": 1795106862135
+    },
+    {
+      "id": "rowville-xpvw|sunset|2026-11-22",
+      "t": 1795338985000,
+      "key": "sunset",
+      "locId": "rowville-xpvw",
+      "loc": "Rowville",
+      "score": 81,
+      "why": "Mid/high cloud 57%, low cloud 0% here / 0% on the horizon, clearing after rain, 65% rain chance",
+      "sent": 1795106862135
+    },
+    {
+      "id": "mount-buffalo-664r|sunset|2026-11-22",
+      "t": 1795338442000,
+      "key": "sunset",
+      "locId": "mount-buffalo-664r",
+      "loc": "Mount Buffalo",
+      "score": 69,
+      "why": "Mid/high cloud 74%, low cloud 0% here / 0% on the horizon, 53% rain chance",
+      "sent": 1795106862135
+    },
+    {
+      "id": "mount-mckay-eta1|sunset|2026-11-22",
+      "t": 1795338321000,
+      "key": "sunset",
+      "locId": "mount-mckay-eta1",
+      "loc": "Mount McKay",
+      "score": 71,
+      "why": "Mid/high cloud 62%, low cloud 1% here / 0% on the horizon, 65% rain chance",
+      "sent": 1795106862135
+    },
+    {
+      "id": "port-campbell-national-park-3e78|storm|2026-11-22",
+      "t": 1795320000000,
+      "key": "storm",
+      "locId": "port-campbell-national-park-3e78",
+      "loc": "Port Campbell National Park",
+      "score": 75,
+      "why": "Thunderstorm forecast around 3:00pm, 79% rain chance",
+      "sent": 1795106862135
+    },
+    {
+      "id": "gunnamatta|sunrise|2026-11-22",
+      "t": 1795287269000,
+      "key": "sunrise",
+      "locId": "gunnamatta",
+      "loc": "Gunnamatta Beach",
+      "score": 74,
+      "why": "Mid/high cloud 78%, low cloud 1% here / 9% on the horizon",
+      "sent": 1795106862135
+    },
+    {
       "id": "rowville-xpvw|fog|2026-11-22",
       "t": 1795287265000,
       "key": "fog",
@@ -11,13 +81,33 @@
       "sent": 1795051769749
     },
     {
+      "id": "cape-schanck|sunrise|2026-11-22",
+      "t": 1795287241000,
+      "key": "sunrise",
+      "locId": "cape-schanck",
+      "loc": "Cape Schanck (Pulpit Rock)",
+      "score": 64,
+      "why": "Mid/high cloud 83%, low cloud 1% here / 6% on the horizon",
+      "sent": 1795106862135
+    },
+    {
+      "id": "cathedral-abnm|sunrise|2026-11-22",
+      "t": 1795287204000,
+      "key": "sunrise",
+      "locId": "cathedral-abnm",
+      "loc": "Cathedral Ranges",
+      "score": 73,
+      "why": "Mid/high cloud 80%, low cloud 0% here / 5% on the horizon",
+      "sent": 1795106862135
+    },
+    {
       "id": "cape-woolamai|sunrise|2026-11-22",
       "t": 1795287124000,
       "key": "sunrise",
       "locId": "cape-woolamai",
       "loc": "Cape Woolamai (The Pinnacles)",
-      "score": 94,
-      "why": "Mid/high cloud 64%, low cloud 13% here / 5% on the horizon",
+      "score": 67,
+      "why": "Mid/high cloud 77%, low cloud 17% here / 25% on the horizon",
       "sent": 1795051769749
     },
     {
@@ -57,7 +147,7 @@
       "locId": "mount-william-he8i",
       "loc": "Mount William",
       "score": 100,
-      "why": "Mid/high cloud 67%, low cloud 0% here / 0% on the horizon",
+      "why": "Mid/high cloud 69%, low cloud 1% here / 0% on the horizon",
       "sent": 1795051769749
     },
     {
@@ -76,8 +166,8 @@
       "key": "fog",
       "locId": "mount-william-he8i",
       "loc": "Mount William",
-      "score": 80,
-      "why": "Visibility 1.9 km, humidity 99%, wind 6 km/h around 3:06am",
+      "score": 100,
+      "why": "Visibility 260 m, humidity 100%, wind 3 km/h around 3:06am",
       "sent": 1794966713618
     },
     {
@@ -107,7 +197,7 @@
       "locId": "taggerty-river-mjcs",
       "loc": "Taggerty River",
       "score": 80,
-      "why": "Visibility 12.2 km, humidity 99%, wind 6 km/h around 2:54am",
+      "why": "Visibility 8.3 km, humidity 98%, wind 5 km/h around 2:54am",
       "sent": 1794966713618
     },
     {
@@ -117,7 +207,7 @@
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
       "score": 100,
-      "why": "Visibility 280 m, humidity 100%, wind 11 km/h around 2:53am",
+      "why": "Visibility 260 m, humidity 100%, wind 10 km/h around 2:53am",
       "sent": 1794966713618
     },
     {
@@ -136,8 +226,8 @@
       "key": "fog",
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
-      "score": 85,
-      "why": "Visibility 820 m, humidity 100%, wind 6 km/h around 2:51am",
+      "score": 79,
+      "why": "Visibility 4.3 km, humidity 100%, wind 5 km/h around 2:51am",
       "sent": 1794966713618
     },
     {
@@ -146,8 +236,8 @@
       "key": "fog",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 83,
-      "why": "Visibility 260 m, humidity 100%, wind 13 km/h around 3:49am",
+      "score": 88,
+      "why": "Visibility 460 m, humidity 100%, wind 11 km/h around 3:49am",
       "sent": 1794966713618
     },
     {
@@ -171,6 +261,26 @@
       "sent": 1794935047678
     },
     {
+      "id": "mount-buffalo-664r|storm|2026-11-20",
+      "t": 1795176000000,
+      "key": "storm",
+      "locId": "mount-buffalo-664r",
+      "loc": "Mount Buffalo",
+      "score": 86,
+      "why": "Thunderstorm forecast around 11:00pm, 96% rain chance, after dark (lightning)",
+      "sent": 1794935047678
+    },
+    {
+      "id": "port-campbell-national-park-3e78|storm|2026-11-20",
+      "t": 1795168800000,
+      "key": "storm",
+      "locId": "port-campbell-national-park-3e78",
+      "loc": "Port Campbell National Park",
+      "score": 86,
+      "why": "Thunderstorm forecast around 9:00pm, 74% rain chance, after dark (lightning)",
+      "sent": 1794935047678
+    },
+    {
       "id": "mepunga-77d3|sunset|2026-11-20",
       "t": 1795166737000,
       "key": "sunset",
@@ -191,14 +301,44 @@
       "sent": 1795020187836
     },
     {
+      "id": "albert-park-i4kh|storm|2026-11-20",
+      "t": 1795165200000,
+      "key": "storm",
+      "locId": "albert-park-i4kh",
+      "loc": "Albert Park",
+      "score": 75,
+      "why": "Thunderstorm forecast around 8:00pm, 76% rain chance",
+      "sent": 1794883037939
+    },
+    {
       "id": "rowville-xpvw|storm|2026-11-20",
-      "t": 1795150800000,
+      "t": 1795161600000,
       "key": "storm",
       "locId": "rowville-xpvw",
       "loc": "Rowville",
-      "score": 60,
-      "why": "Instability CAPE 1570 J/kg around 4:00pm, 90% rain chance",
+      "score": 75,
+      "why": "Thunderstorm forecast around 7:00pm, 90% rain chance",
       "sent": 1794883037939
+    },
+    {
+      "id": "cathedral-abnm|storm|2026-11-20",
+      "t": 1795158000000,
+      "key": "storm",
+      "locId": "cathedral-abnm",
+      "loc": "Cathedral Ranges",
+      "score": 75,
+      "why": "Thunderstorm forecast around 6:00pm, 100% rain chance",
+      "sent": 1794935047678
+    },
+    {
+      "id": "cape-schanck|storm|2026-11-20",
+      "t": 1795154400000,
+      "key": "storm",
+      "locId": "cape-schanck",
+      "loc": "Cape Schanck (Pulpit Rock)",
+      "score": 75,
+      "why": "Thunderstorm forecast around 5:00pm, 96% rain chance",
+      "sent": 1794966713618
     },
     {
       "id": "portsea-2rdc|storm|2026-11-20",
@@ -211,46 +351,6 @@
       "sent": 1794935047678
     },
     {
-      "id": "cape-schanck|storm|2026-11-20",
-      "t": 1795147200000,
-      "key": "storm",
-      "locId": "cape-schanck",
-      "loc": "Cape Schanck (Pulpit Rock)",
-      "score": 75,
-      "why": "Thunderstorm forecast around 3:00pm, 95% rain chance",
-      "sent": 1794966713618
-    },
-    {
-      "id": "albert-park-i4kh|storm|2026-11-20",
-      "t": 1795143600000,
-      "key": "storm",
-      "locId": "albert-park-i4kh",
-      "loc": "Albert Park",
-      "score": 75,
-      "why": "Thunderstorm forecast around 2:00pm, 94% rain chance",
-      "sent": 1794883037939
-    },
-    {
-      "id": "cathedral-abnm|storm|2026-11-20",
-      "t": 1795143600000,
-      "key": "storm",
-      "locId": "cathedral-abnm",
-      "loc": "Cathedral Ranges",
-      "score": 75,
-      "why": "Thunderstorm forecast around 2:00pm, 100% rain chance",
-      "sent": 1794935047678
-    },
-    {
-      "id": "port-campbell-national-park-3e78|storm|2026-11-20",
-      "t": 1795143600000,
-      "key": "storm",
-      "locId": "port-campbell-national-park-3e78",
-      "loc": "Port Campbell National Park",
-      "score": 85,
-      "why": "Thunderstorm forecast around 2:00pm, 100% rain chance",
-      "sent": 1794935047678
-    },
-    {
       "id": "mount-mckay-eta1|storm|2026-11-20",
       "t": 1795140000000,
       "key": "storm",
@@ -258,16 +358,6 @@
       "loc": "Mount McKay",
       "score": 75,
       "why": "Thunderstorm forecast around 1:00pm, 100% rain chance",
-      "sent": 1794935047678
-    },
-    {
-      "id": "mount-buffalo-664r|storm|2026-11-20",
-      "t": 1795125600000,
-      "key": "storm",
-      "locId": "mount-buffalo-664r",
-      "loc": "Mount Buffalo",
-      "score": 75,
-      "why": "Thunderstorm forecast around 9:00am, 93% rain chance",
       "sent": 1794935047678
     },
     {
@@ -286,8 +376,8 @@
       "key": "sunrise",
       "locId": "mepunga-77d3",
       "loc": "Childers Cove",
-      "score": 93,
-      "why": "Mid/high cloud 67%, low cloud 2% here / 0% on the horizon",
+      "score": 90,
+      "why": "Mid/high cloud 72%, low cloud 0% here / 0% on the horizon",
       "sent": 1794966713618
     },
     {
@@ -327,7 +417,7 @@
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
       "score": 64,
-      "why": "Visibility 3.9 km, humidity 98%, wind 4 km/h around 2:52am",
+      "why": "Visibility 2.9 km, humidity 98%, wind 3 km/h around 4:52am",
       "sent": 1794883037939
     },
     {
@@ -337,7 +427,7 @@
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
       "score": 68,
-      "why": "Visibility 560 m, humidity 100%, wind 11 km/h around 2:49am",
+      "why": "Visibility 840 m, humidity 100%, wind 8 km/h around 4:49am",
       "sent": 1794883037939
     },
     {
@@ -4909,96 +4999,6 @@
       "score": 100,
       "why": "Mid/high cloud 69%, low cloud 0% here / 0% on the horizon",
       "sent": 1792484063255
-    },
-    {
-      "id": "rowville-xpvw|sunrise|2026-10-23",
-      "t": 1792697008000,
-      "key": "sunrise",
-      "locId": "rowville-xpvw",
-      "loc": "Rowville",
-      "score": 100,
-      "why": "Mid/high cloud 35%, low cloud 0% here / 0% on the horizon",
-      "sent": 1792570671426
-    },
-    {
-      "id": "cathedral-abnm|sunrise|2026-10-23",
-      "t": 1792696913000,
-      "key": "sunrise",
-      "locId": "cathedral-abnm",
-      "loc": "Cathedral Ranges",
-      "score": 99,
-      "why": "Mid/high cloud 53%, low cloud 0% here / 1% on the horizon",
-      "sent": 1792440722899
-    },
-    {
-      "id": "cape-woolamai|sunrise|2026-10-23",
-      "t": 1792696906000,
-      "key": "sunrise",
-      "locId": "cape-woolamai",
-      "loc": "Cape Woolamai (The Pinnacles)",
-      "score": 100,
-      "why": "Mid/high cloud 50%, low cloud 0% here / 0% on the horizon",
-      "sent": 1792484063255
-    },
-    {
-      "id": "mepunga-77d3|sunset|2026-10-22",
-      "t": 1792659241000,
-      "key": "sunset",
-      "locId": "mepunga-77d3",
-      "loc": "Childers Cove",
-      "score": 88,
-      "why": "Mid/high cloud 29%, low cloud 0% here / 0% on the horizon",
-      "sent": 1792440722899
-    },
-    {
-      "id": "port-campbell-national-park-3e78|sunset|2026-10-22",
-      "t": 1792659177000,
-      "key": "sunset",
-      "locId": "port-campbell-national-park-3e78",
-      "loc": "Port Campbell National Park",
-      "score": 77,
-      "why": "Mid/high cloud 26%, low cloud 0% here / 0% on the horizon",
-      "sent": 1792440722899
-    },
-    {
-      "id": "mount-william-he8i|sunset|2026-10-22",
-      "t": 1792659161000,
-      "key": "sunset",
-      "locId": "mount-william-he8i",
-      "loc": "Mount William",
-      "score": 100,
-      "why": "Mid/high cloud 49%, low cloud 0% here / 0% on the horizon",
-      "sent": 1792440722899
-    },
-    {
-      "id": "gunnamatta|sunset|2026-10-22",
-      "t": 1792658713000,
-      "key": "sunset",
-      "locId": "gunnamatta",
-      "loc": "Gunnamatta Beach",
-      "score": 100,
-      "why": "Mid/high cloud 39%, low cloud 0% here / 0% on the horizon",
-      "sent": 1792440722899
-    },
-    {
-      "id": "portsea-2rdc|sunset|2026-10-22",
-      "t": 1792658713000,
-      "key": "sunset",
-      "locId": "portsea-2rdc",
-      "loc": "Portsea",
-      "score": 100,
-      "why": "Mid/high cloud 39%, low cloud 0% here / 0% on the horizon",
-      "sent": 1792440722899
-    },
-    {
-      "id": "cape-schanck|sunset|2026-10-22",
-      "t": 1792658701000,
-      "key": "sunset",
-      "locId": "cape-schanck",
-      "loc": "Cape Schanck (Pulpit Rock)",
-      "score": 63,
-      "why": "Mid/high cloud 22%, low cloud 0% here / 0% on the horizon",
-      "sent": 1792440722899
     }
   ],
   "keepalive": 1794935047678
