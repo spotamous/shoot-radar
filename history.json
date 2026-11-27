@@ -1,13 +1,53 @@
 {
   "entries": [
     {
+      "id": "mount-buffalo-664r|fog|2026-11-30",
+      "t": 1795978074000,
+      "key": "fog",
+      "locId": "mount-buffalo-664r",
+      "loc": "Mount Buffalo",
+      "score": 80,
+      "why": "Visibility 13.9 km, humidity 98%, wind 4 km/h around 4:47am",
+      "sent": 1795746277046
+    },
+    {
+      "id": "mount-mckay-eta1|fog|2026-11-30",
+      "t": 1795977932000,
+      "key": "fog",
+      "locId": "mount-mckay-eta1",
+      "loc": "Mount McKay",
+      "score": 100,
+      "why": "Visibility 440 m, humidity 100%, wind 4 km/h around 2:45am",
+      "sent": 1795746277046
+    },
+    {
+      "id": "cape-woolamai|sunset|2026-11-29",
+      "t": 1795944264000,
+      "key": "sunset",
+      "locId": "cape-woolamai",
+      "loc": "Cape Woolamai (The Pinnacles)",
+      "score": 61,
+      "why": "Mid/high cloud 68%, low cloud 20% here / 38% on the horizon",
+      "sent": 1795746277046
+    },
+    {
+      "id": "taggerty-river-mjcs|fog|2026-11-29",
+      "t": 1795891858000,
+      "key": "fog",
+      "locId": "taggerty-river-mjcs",
+      "loc": "Taggerty River",
+      "score": 80,
+      "why": "Visibility 8.0 km, humidity 97%, wind 4 km/h around 3:50am",
+      "sent": 1795746277046
+    },
+    {
       "id": "cathedral-abnm|fog|2026-11-29",
       "t": 1795891829000,
       "key": "fog",
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
       "score": 80,
-      "why": "Visibility 4.9 km, humidity 97%, wind 7 km/h around 5:50am",
+      "why": "Visibility 2.2 km, humidity 99%, wind 5 km/h around 3:50am",
       "sent": 1795660036243
     },
     {
@@ -16,8 +56,8 @@
       "key": "fog",
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
-      "score": 80,
-      "why": "Visibility 1.4 km, humidity 97%, wind 6 km/h around 2:48am",
+      "score": 100,
+      "why": "Visibility 200 m, humidity 100%, wind 5 km/h around 2:48am",
       "sent": 1795660036243
     },
     {
@@ -27,7 +67,7 @@
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
       "score": 100,
-      "why": "Visibility 260 m, humidity 100%, wind 10 km/h around 2:45am",
+      "why": "Visibility 280 m, humidity 100%, wind 9 km/h around 3:45am",
       "sent": 1795660036243
     },
     {
@@ -106,8 +146,8 @@
       "key": "sunset",
       "locId": "cape-woolamai",
       "loc": "Cape Woolamai (The Pinnacles)",
-      "score": 73,
-      "why": "Mid/high cloud 45%, low cloud 39% here / 2% on the horizon",
+      "score": 82,
+      "why": "Mid/high cloud 44%, low cloud 34% here / 22% on the horizon",
       "sent": 1795630301285
     },
     {
@@ -116,8 +156,8 @@
       "key": "sunset",
       "locId": "rowville-xpvw",
       "loc": "Rowville",
-      "score": 67,
-      "why": "Mid/high cloud 55%, low cloud 27% here / 29% on the horizon, 31% rain chance",
+      "score": 66,
+      "why": "Mid/high cloud 29%, low cloud 20% here / 4% on the horizon, 33% rain chance",
       "sent": 1795630301285
     },
     {
@@ -142,23 +182,23 @@
     },
     {
       "id": "mount-mckay-eta1|storm|2026-11-28",
-      "t": 1795834800000,
+      "t": 1795824000000,
       "key": "storm",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 85,
-      "why": "Thunderstorm forecast around 2:00pm, 100% rain chance",
+      "score": 75,
+      "why": "Thunderstorm forecast around 11:00am, 100% rain chance",
       "sent": 1795630301285
     },
     {
-      "id": "mount-buffalo-664r|storm|2026-11-28",
-      "t": 1795831200000,
+      "id": "portsea-2rdc|storm|2026-11-28",
+      "t": 1795813200000,
       "key": "storm",
-      "locId": "mount-buffalo-664r",
-      "loc": "Mount Buffalo",
+      "locId": "portsea-2rdc",
+      "loc": "Portsea",
       "score": 75,
-      "why": "Thunderstorm forecast around 1:00pm, 100% rain chance",
-      "sent": 1795630301285
+      "why": "Thunderstorm forecast around 8:00am, 98% rain chance",
+      "sent": 1795660036243
     },
     {
       "id": "albert-park-i4kh|storm|2026-11-28",
@@ -171,23 +211,13 @@
       "sent": 1795660036243
     },
     {
-      "id": "cathedral-abnm|storm|2026-11-28",
-      "t": 1795809600000,
-      "key": "storm",
-      "locId": "cathedral-abnm",
-      "loc": "Cathedral Ranges",
-      "score": 75,
-      "why": "Thunderstorm forecast around 7:00am, 98% rain chance",
-      "sent": 1795630301285
-    },
-    {
       "id": "mount-william-he8i|fog|2026-11-28",
       "t": 1795806222000,
       "key": "fog",
       "locId": "mount-william-he8i",
       "loc": "Mount William",
-      "score": 70,
-      "why": "Visibility 980 m, humidity 100%, wind 13 km/h around 4:03am",
+      "score": 68,
+      "why": "Visibility 760 m, humidity 100%, wind 5 km/h around 3:03am",
       "sent": 1795630301285
     },
     {
@@ -196,8 +226,8 @@
       "key": "fog",
       "locId": "mepunga-77d3",
       "loc": "Childers Cove",
-      "score": 64,
-      "why": "Visibility 2.0 km, humidity 98%, wind 7 km/h around 4:00am",
+      "score": 87,
+      "why": "Visibility 460 m, humidity 100%, wind 18 km/h around 5:00am",
       "sent": 1795630301285
     },
     {
@@ -207,7 +237,7 @@
       "locId": "port-campbell-national-park-3e78",
       "loc": "Port Campbell National Park",
       "score": 64,
-      "why": "Visibility 1.4 km, humidity 99%, wind 5 km/h around 4:58am",
+      "why": "Visibility 3.4 km, humidity 98%, wind 2 km/h around 2:58am",
       "sent": 1795630301285
     },
     {
@@ -241,6 +271,16 @@
       "sent": 1795630301285
     },
     {
+      "id": "cathedral-abnm|storm|2026-11-28",
+      "t": 1795798800000,
+      "key": "storm",
+      "locId": "cathedral-abnm",
+      "loc": "Cathedral Ranges",
+      "score": 86,
+      "why": "Thunderstorm forecast around 4:00am, 99% rain chance, after dark (lightning)",
+      "sent": 1795630301285
+    },
+    {
       "id": "rowville-xpvw|storm|2026-11-28",
       "t": 1795798800000,
       "key": "storm",
@@ -261,14 +301,14 @@
       "sent": 1795660036243
     },
     {
-      "id": "portsea-2rdc|storm|2026-11-28",
-      "t": 1795798800000,
+      "id": "mount-buffalo-664r|storm|2026-11-28",
+      "t": 1795795200000,
       "key": "storm",
-      "locId": "portsea-2rdc",
-      "loc": "Portsea",
+      "locId": "mount-buffalo-664r",
+      "loc": "Mount Buffalo",
       "score": 86,
-      "why": "Thunderstorm forecast around 4:00am, 91% rain chance, after dark (lightning)",
-      "sent": 1795660036243
+      "why": "Thunderstorm forecast around 3:00am, 96% rain chance, after dark (lightning)",
+      "sent": 1795630301285
     },
     {
       "id": "mount-mckay-eta1|storm|2026-11-27",
@@ -4958,46 +4998,6 @@
       "loc": "Gunnamatta Beach",
       "score": 67,
       "why": "Mid/high cloud 77%, low cloud 0% here / 0% on the horizon, 41% rain chance",
-      "sent": 1793218891470
-    },
-    {
-      "id": "cape-schanck|sunrise|2026-10-31",
-      "t": 1793387626000,
-      "key": "sunrise",
-      "locId": "cape-schanck",
-      "loc": "Cape Schanck (Pulpit Rock)",
-      "score": 97,
-      "why": "Mid/high cloud 65%, low cloud 0% here / 0% on the horizon, clearing after rain",
-      "sent": 1793218891470
-    },
-    {
-      "id": "rowville-xpvw|sunrise|2026-10-31",
-      "t": 1793387622000,
-      "key": "sunrise",
-      "locId": "rowville-xpvw",
-      "loc": "Rowville",
-      "score": 94,
-      "why": "Mid/high cloud 69%, low cloud 0% here / 0% on the horizon",
-      "sent": 1793305399146
-    },
-    {
-      "id": "cathedral-abnm|sunrise|2026-10-31",
-      "t": 1793387537000,
-      "key": "sunrise",
-      "locId": "cathedral-abnm",
-      "loc": "Cathedral Ranges",
-      "score": 95,
-      "why": "Mid/high cloud 52%, low cloud 0% here / 0% on the horizon",
-      "sent": 1793305399146
-    },
-    {
-      "id": "mount-donna-buang-x8z6|sunrise|2026-10-31",
-      "t": 1793387523000,
-      "key": "sunrise",
-      "locId": "mount-donna-buang-x8z6",
-      "loc": "Mount Donna Buang",
-      "score": 96,
-      "why": "Mid/high cloud 57%, low cloud 0% here / 0% on the horizon",
       "sent": 1793218891470
     }
   ],
