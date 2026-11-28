@@ -1,6 +1,26 @@
 {
   "entries": [
     {
+      "id": "mount-william-he8i|sunset|2026-12-01",
+      "t": 1796117658000,
+      "key": "sunset",
+      "locId": "mount-william-he8i",
+      "loc": "Mount William",
+      "score": 100,
+      "why": "Mid/high cloud 48%, low cloud 0% here / 0% on the horizon",
+      "sent": 1795883048703
+    },
+    {
+      "id": "mount-mckay-eta1|fog|2026-12-01",
+      "t": 1796064317000,
+      "key": "fog",
+      "locId": "mount-mckay-eta1",
+      "loc": "Mount McKay",
+      "score": 60,
+      "why": "Visibility 1.4 km, humidity 77%, wind 4 km/h around 2:45am",
+      "sent": 1795883048703
+    },
+    {
       "id": "albert-park-i4kh|sunset|2026-11-30",
       "t": 1796030728000,
       "key": "sunset",
@@ -11,13 +31,23 @@
       "sent": 1795831874393
     },
     {
+      "id": "rowville-xpvw|sunrise|2026-11-30",
+      "t": 1795978266000,
+      "key": "sunrise",
+      "locId": "rowville-xpvw",
+      "loc": "Rowville",
+      "score": 66,
+      "why": "Mid/high cloud 43%, low cloud 66% here / 23% on the horizon",
+      "sent": 1795883048703
+    },
+    {
       "id": "mount-buffalo-664r|fog|2026-11-30",
       "t": 1795978074000,
       "key": "fog",
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
       "score": 80,
-      "why": "Visibility 21.0 km, humidity 97%, wind 6 km/h around 2:47am",
+      "why": "Visibility 7.9 km, humidity 97%, wind 5 km/h around 3:47am",
       "sent": 1795746277046
     },
     {
@@ -26,8 +56,8 @@
       "key": "fog",
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
-      "score": 80,
-      "why": "Visibility 22.7 km, humidity 99%, wind 5 km/h around 4:45am",
+      "score": 100,
+      "why": "Visibility 320 m, humidity 100%, wind 4 km/h around 5:45am",
       "sent": 1795746277046
     },
     {
@@ -66,8 +96,8 @@
       "key": "sunset",
       "locId": "albert-park-i4kh",
       "loc": "Albert Park",
-      "score": 67,
-      "why": "Mid/high cloud 73%, low cloud 44% here / 8% on the horizon",
+      "score": 83,
+      "why": "Mid/high cloud 46%, low cloud 11% here / 13% on the horizon",
       "sent": 1795801159910
     },
     {
@@ -86,8 +116,8 @@
       "key": "sunset",
       "locId": "rowville-xpvw",
       "loc": "Rowville",
-      "score": 68,
-      "why": "Mid/high cloud 68%, low cloud 17% here / 30% on the horizon",
+      "score": 71,
+      "why": "Mid/high cloud 54%, low cloud 15% here / 9% on the horizon, 53% rain chance",
       "sent": 1795801159910
     },
     {
@@ -96,8 +126,8 @@
       "key": "sunset",
       "locId": "mount-donna-buang-x8z6",
       "loc": "Mount Donna Buang",
-      "score": 67,
-      "why": "Mid/high cloud 34%, low cloud 42% here / 17% on the horizon, 37% rain chance",
+      "score": 60,
+      "why": "Mid/high cloud 47%, low cloud 44% here / 15% on the horizon, 53% rain chance",
       "sent": 1795801159910
     },
     {
@@ -117,7 +147,7 @@
       "locId": "cathedral-abnm",
       "loc": "Cathedral Ranges",
       "score": 80,
-      "why": "Visibility 4.7 km, humidity 98%, wind 5 km/h around 5:50am",
+      "why": "Visibility 1.0 km, humidity 97%, wind 5 km/h around 2:50am",
       "sent": 1795660036243
     },
     {
@@ -127,7 +157,7 @@
       "locId": "mount-buffalo-664r",
       "loc": "Mount Buffalo",
       "score": 100,
-      "why": "Visibility 220 m, humidity 100%, wind 4 km/h around 2:48am",
+      "why": "Visibility 80 m, humidity 99%, wind 2 km/h around 2:48am",
       "sent": 1795660036243
     },
     {
@@ -137,7 +167,7 @@
       "locId": "mount-mckay-eta1",
       "loc": "Mount McKay",
       "score": 100,
-      "why": "Visibility 280 m, humidity 100%, wind 7 km/h around 3:45am",
+      "why": "Visibility 440 m, humidity 100%, wind 6 km/h around 2:45am",
       "sent": 1795660036243
     },
     {
@@ -4968,36 +4998,6 @@
       "loc": "Rowville",
       "score": 75,
       "why": "Thunderstorm forecast around 1:00pm, 100% rain chance",
-      "sent": 1793176013917
-    },
-    {
-      "id": "cape-schanck|storm|2026-10-31",
-      "t": 1793412000000,
-      "key": "storm",
-      "locId": "cape-schanck",
-      "loc": "Cape Schanck (Pulpit Rock)",
-      "score": 75,
-      "why": "Thunderstorm forecast around 1:00pm, 98% rain chance",
-      "sent": 1793176013917
-    },
-    {
-      "id": "cathedral-abnm|storm|2026-10-31",
-      "t": 1793408400000,
-      "key": "storm",
-      "locId": "cathedral-abnm",
-      "loc": "Cathedral Ranges",
-      "score": 75,
-      "why": "Thunderstorm forecast around 12:00pm, 100% rain chance",
-      "sent": 1793176013917
-    },
-    {
-      "id": "mount-buffalo-664r|storm|2026-10-31",
-      "t": 1793408400000,
-      "key": "storm",
-      "locId": "mount-buffalo-664r",
-      "loc": "Mount Buffalo",
-      "score": 75,
-      "why": "Thunderstorm forecast around 12:00pm, 100% rain chance",
       "sent": 1793176013917
     }
   ],
